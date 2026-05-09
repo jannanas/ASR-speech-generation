@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from collections import defaultdict
+from typing import Self
 import pandas as pd
 from pathlib import Path
 
@@ -12,9 +13,12 @@ class BaseCorpus(ABC):
     def __init__(self) -> None:
         self.id: str = None
         self.dirpath: Path = None
-        self.datasets: list["BaseDataset"] = []
+        self.datasets: list[BaseDataset] = []
+        self.speakers: dict[str, Speaker] = {}
+        self.utterances: dict[str, list[Utterance]] = defaultdict(list)
         self._setup_corpus_info()
         self._scan()
+        self._consolidate_datasets()
 
     @abstractmethod
     def _setup_corpus_info(self) -> None:
@@ -24,6 +28,18 @@ class BaseCorpus(ABC):
     def _scan(self) -> None:
         pass
 
+    def _consolidate_datasets(self) -> None:
+        for dataset in self.datasets:
+            for speaker in dataset.speakers.values():
+                self.speakers[speaker.id] = speaker
+            for speaker_id, utterances in dataset.utterances.items():
+                self.utterances[speaker_id].extend(utterances)
+
+    def limit_speakers(self, limit: int) -> Self:
+        self.speakers = dict(list(self.speakers.items())[:limit])
+        self.utterances = {speaker_id: utterance for speaker_id, utterance in self.utterances.items() if speaker_id in self.speakers}
+        return self
+   
 class ZwitserloodCorpus(BaseCorpus):
     def _setup_corpus_info(self) -> None:
         self.id = "Zwitserlood"
@@ -60,7 +76,8 @@ class BaseDataset(ABC):
     def __init__(self, corpus: BaseCorpus) -> None:
         self.id: str = None
         self.dirpath: Path = None
-        self.data: dict[str, tuple[Speaker, list[Utterance]]] = defaultdict(list)
+        self.speakers: dict[str, Speaker] = {}
+        self.utterances: dict[str, list[Utterance]] = defaultdict(list)
         self._setup_dataset_info(corpus)
         self._scan()
 
@@ -74,8 +91,6 @@ class BaseDataset(ABC):
 
 class ZwitserloodDataset(BaseDataset):
     def _scan(self) -> None:
-        speaker_utterance_dict = defaultdict(list)
-
         for utterance_path in self.dirpath.iterdir():
             if utterance_path.is_dir():
                 continue
@@ -83,6 +98,16 @@ class ZwitserloodDataset(BaseDataset):
                 continue
 
             speaker_id, utterance_id = utterance_path.name.split("_")
+
+            # Add speaker (override if already exists)
+            speaker = Speaker(
+                id=f"{self.id}_{speaker_id}",
+                age_range=(6, 8),   # more accurate info exists in the headers of .cha files
+                disorder=Disorder.developmental_language_disorder
+            )
+            self.speakers[speaker.id] = speaker
+            
+            # Add utterance to that speaker
             utterance = Utterance(
                 id=utterance_id[:-4],
                 filepath=utterance_path,
@@ -91,23 +116,13 @@ class ZwitserloodDataset(BaseDataset):
                 speaker=speaker_id,
                 fragments=None
             )
-            speaker_utterance_dict[speaker_id].append(utterance)
-
-        for speaker_id, utterances in speaker_utterance_dict.items():
-            speaker = Speaker(
-                id=f"{self.id}_{speaker_id}",
-                age_range=(6, 8),   # more accurate info exists in the headers of .cha files
-                disorder=Disorder.developmental_language_disorder,
-            )
-
-            self.data[speaker.id] = (speaker, utterances)
+            self.utterances[speaker.id].append(utterance)
 
 class SixToEightDataset(ZwitserloodDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = '678_wav'
         self.id = f"{corpus.id}_{dirname}"
         self.dirpath = corpus.dirpath / dirname
-
 
 class EightToTenDataset(ZwitserloodDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
@@ -126,11 +141,9 @@ class UltraSuiteDataset(BaseDataset):
             id_col = "id"
         speaker_info = speaker_info_df[speaker_info_df[id_col] == speaker_id].iloc[0]
 
+        disorder = Disorder.unknown
         if 'ssd_subtype' in speaker_info_df.columns: 
             disorder = Disorder(speaker_info['ssd_subtype'])
-       
-        else: 
-            disorder = Disorder.unknown
         
         speaker = Speaker(
             id=f"{self.id}_{speaker_id}",
@@ -145,6 +158,7 @@ class UltraSuiteDataset(BaseDataset):
             if not speaker_path.is_dir(): continue
 
             speaker = self.get_speaker(speaker_path.name)
+            self.speakers[speaker.id] = speaker
 
             utterances = []
             for utterance_path in speaker_path.rglob('*'):
@@ -159,9 +173,7 @@ class UltraSuiteDataset(BaseDataset):
                     speaker=speaker.id,
                     fragments=None
                 )
-                utterances.append(utterance)
-            
-            self.data[speaker.id] = (speaker, utterances)
+                self.utterances[speaker.id].append(utterance)
 
 class UPXDataSet(UltraSuiteDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:

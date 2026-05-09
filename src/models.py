@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from typing import Optional
+import numpy as np
 
 class Disorder(Enum):
     developmental_language_disorder = 'developmental language disorder'
@@ -27,5 +28,6 @@ class Speaker:
     id: str
     age_range: tuple[int, int]      # more accurate info exists than currently implemented
     # sex: str                      # omitted
-    disorder: Disorder
+    disorder: Disorder = Disorder.unknown
+    mfcc_vector: np.ndarray = None
 

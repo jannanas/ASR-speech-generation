@@ -1,38 +1,52 @@
 from collections import defaultdict
-from speechbrain.inference.speaker import SpeakerRecognition
+from config import N_MFCC
 from connectors import BaseCorpus, ZwitserloodCorpus, UltraSuiteCorpus
 from models import *
-import torch
+import numpy as np
+import librosa
+from sklearn.metrics.pairwise import cosine_similarity
+from pprint import pprint
 
-def pair_speakers(source: BaseCorpus, target: BaseCorpus, keep: int = 2, limit: int = -1) -> dict[str, dict[str, float]]:
-    # Make dict of speaker.id to utterances
-    source_data: dict[Speaker, list[Utterance]] = {}
-    for dataset in source.datasets:
-        items = [(data[0].id, data[1]) for _, data in dataset.data.items()][:limit]
-        source_data.update(dict(items))
- 
-    target_data: dict[Speaker, list[Utterance]] = {}
-    for dataset in target.datasets:
-        items = [(data[0].id, data[1]) for _, data in dataset.data.items()][:limit]
-        target_data.update(dict(items))
+def extract_mfcc(path: Path) -> np.ndarray:
+    y, sr = librosa.load(path, sr=None)
+    return librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
 
-    # Setup cosine similiarity model
-    verification = SpeakerRecognition.from_hparams(
-        source="speechbrain/spkrec-ecapa-voxceleb",
-        savedir="pretrained_models/spkrec-ecapa-voxceleb",
-        # run_opts={"device":"cuda"}
-    )
+def extract_mfcc_vectors(corpus: BaseCorpus) -> None:
+    for speaker in corpus.speakers.values():
 
-    # Calculate pairwise similarity scores
-    pairing_matrix: dict[str, dict[str, float]] = {}
-    for source_speaker, source_utterances in source_data.items():
-        for target_speaker, target_utterances in target_data.items():
+        utterance_represantations = []
+        for utterance in corpus.utterances[speaker.id]:
+            utterance_mfcc = extract_mfcc(utterance.filepath)
+            utterance_representation = np.concatenate([utterance_mfcc.mean(axis=1), utterance_mfcc.std(axis=1)])
+            utterance_represantations.append(utterance_representation)
+        speaker.mfcc_vector = np.mean(utterance_represantations, axis=0)
 
-            source_utterance_filepath = str(source_utterances[0].filepath.resolve().absolute())
-            target_utterance_filepath = str(target_utterances[0].filepath.resolve().absolute())
-            
-            score, _ = verification.verify_files(source_utterance_filepath, target_utterance_filepath)
-            pairing_matrix[source_speaker.id][target_speaker.id] = score
+def calculate_similarity(source: BaseCorpus, target: BaseCorpus) -> dict[str, dict[str, float]]:
+    pairing_matrix: dict[str, dict[str, float]] = defaultdict(dict)
+
+    source_speakers = list(source.speakers.values())
+    target_speakers = list(target.speakers.values())
+
+    src_matrix = np.array([s.mfcc_vector for s in source_speakers])  # (N_src, N_MFCC)
+    tgt_matrix = np.array([t.mfcc_vector for t in target_speakers])  # (N_tgt, N_MFCC)
+
+    sim_matrix = cosine_similarity(src_matrix, tgt_matrix)  # (N_src, N_tgt)
+
+    for i, src in enumerate(source_speakers):
+        for j, tgt in enumerate(target_speakers):
+            pairing_matrix[src.id][tgt.id] = sim_matrix[i, j]
+
+    return pairing_matrix
+
+def pair_speakers(source: BaseCorpus, target: BaseCorpus, limit: int = 3) -> dict[str, dict[str, float]]:
+    # Keep first `limit` speakers
+    source.limit_speakers(limit)
+    target.limit_speakers(limit)
+
+    extract_mfcc_vectors(source)
+    extract_mfcc_vectors(target)
+
+    pairing_matrix = calculate_similarity(source, target)
 
     return pairing_matrix
     
@@ -44,4 +58,4 @@ if __name__ == "__main__":
         limit = 5
     )
 
-    print()
+    pprint(pairing_matrix)
