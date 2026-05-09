@@ -124,9 +124,10 @@ def pair_speakers(
 if __name__ == "__main__":
     configure_logging()
     pairs = pair_speakers(
-        source=ZwitserloodCorpus(use_cache=False),
-        target=UltraSuiteCorpus(use_cache=False),
-        use_mfcc_cache=False,
+        source=ZwitserloodCorpus(use_cache=True),
+        target=UltraSuiteCorpus(use_cache=True),
+        strategy=PairingStrategy.DISSIMILAR,
+        use_mfcc_cache=True,
     )
 
     pprint(pairs)

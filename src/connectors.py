@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 import logging
 from typing import Self
-from numpy import True_
 import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
