@@ -4,6 +4,11 @@ from pathlib import Path
 from typing import Optional
 import numpy as np
 
+class PairingStrategy(Enum):
+    SIMILAR = 'similar'
+    DISSIMILAR = 'dissimilar'
+    STRATIFIED = 'stratified'
+
 class Disorder(Enum):
     developmental_language_disorder = 'developmental language disorder'
     inconsistent_phonological_disorder = 'inconsistent phonological disorder'

@@ -1,24 +1,56 @@
 from abc import ABC, abstractmethod
 from collections import defaultdict
+import logging
 from typing import Self
+from numpy import True_
 import pandas as pd
 from pathlib import Path
+from tqdm import tqdm
 
 import config
 from models import *
-from utils import wav_duration, wav_sample_rate
+from utils import *
+
+log = logging.getLogger(__name__)
 
 
 class BaseCorpus(ABC):
-    def __init__(self) -> None:
+    def __init__(self, use_cache: bool = True) -> None:
         self.id: str = None
-        self.dirpath: Path = None
-        self.datasets: list[BaseDataset] = []
+        self._dirpath: Path = None
+        self._datasets: list[BaseDataset] = []
         self.speakers: dict[str, Speaker] = {}
         self.utterances: dict[str, list[Utterance]] = defaultdict(list)
         self._setup_corpus_info()
+
+        if use_cache:
+            cached = try_load(self.id)
+            if cached is not None:
+                self._datasets = []
+                self.speakers = cached["speakers"]
+                self.utterances = defaultdict(list)
+                for sid, utts in cached["utterances"].items():
+                    self.utterances[sid] = list(utts)
+                n_utts = sum(len(u) for u in self.utterances.values())
+                log.info(
+                    "Corpus %r (from cache): %d speakers, %d utterances",
+                    self.id,
+                    len(self.speakers),
+                    n_utts,
+                )
+                return
+
         self._scan()
         self._consolidate_datasets()
+        n_utts = sum(len(u) for u in self.utterances.values())
+        log.info(
+            "Corpus %r: %d speakers, %d utterances",
+            self.id,
+            len(self.speakers),
+            n_utts,
+        )
+        if use_cache:
+            save_after_scan(self.id, self.speakers, self.utterances)
 
     @abstractmethod
     def _setup_corpus_info(self) -> None:
@@ -29,24 +61,30 @@ class BaseCorpus(ABC):
         pass
 
     def _consolidate_datasets(self) -> None:
-        for dataset in self.datasets:
+        for dataset in self._datasets:
             for speaker in dataset.speakers.values():
                 self.speakers[speaker.id] = speaker
             for speaker_id, utterances in dataset.utterances.items():
                 self.utterances[speaker_id].extend(utterances)
 
-    def limit_speakers(self, limit: int) -> Self:
+    def limit_speakers(self, limit: int | None) -> Self:
+        if limit is None or limit < 0:
+            return self
         self.speakers = dict(list(self.speakers.items())[:limit])
-        self.utterances = {speaker_id: utterance for speaker_id, utterance in self.utterances.items() if speaker_id in self.speakers}
+        self.utterances = {
+            speaker_id: utts
+            for speaker_id, utts in self.utterances.items()
+            if speaker_id in self.speakers
+        }
         return self
    
 class ZwitserloodCorpus(BaseCorpus):
     def _setup_corpus_info(self) -> None:
         self.id = "Zwitserlood"
-        self.dirpath = config.DATA_DIR / self.id
+        self._dirpath = config.DATA_DIR / self.id
 
     def _scan(self) -> None:
-        self.datasets = [
+        self._datasets = [
             SixToEightDataset(self),
             EightToTenDataset(self),
         ]
@@ -54,7 +92,7 @@ class ZwitserloodCorpus(BaseCorpus):
 class UltraSuiteCorpus(BaseCorpus):
     def _setup_corpus_info(self) -> None:
         self.id = "UltraSuite"
-        self.dirpath = config.DATA_DIR / self.id
+        self._dirpath = config.DATA_DIR / self.id
 
     def _scan(self) -> None:
         upxDataset = UPXDataSet(self)
@@ -66,7 +104,7 @@ class UltraSuiteCorpus(BaseCorpus):
         uxssdDataset = UXSSDDataSet(self)
         uxssdDataset._scan()
 
-        self.datasets = [
+        self._datasets = [
             upxDataset,
             ux2020Dataset,
             uxssdDataset
@@ -91,7 +129,8 @@ class BaseDataset(ABC):
 
 class ZwitserloodDataset(BaseDataset):
     def _scan(self) -> None:
-        for utterance_path in self.dirpath.iterdir():
+        paths = list(self.dirpath.iterdir())
+        for utterance_path in tqdm(paths, desc=f"Scan {self.id}", unit="file"):
             if utterance_path.is_dir():
                 continue
             if utterance_path.suffix != ".wav":
@@ -122,13 +161,13 @@ class SixToEightDataset(ZwitserloodDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = '678_wav'
         self.id = f"{corpus.id}_{dirname}"
-        self.dirpath = corpus.dirpath / dirname
+        self.dirpath = corpus._dirpath / dirname
 
 class EightToTenDataset(ZwitserloodDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = '8910_wav'
         self.id = f"{corpus.id}_{dirname}"
-        self.dirpath = corpus.dirpath / dirname
+        self.dirpath = corpus._dirpath / dirname
 
 class UltraSuiteDataset(BaseDataset):
     def get_speaker(self, speaker_id: str) -> Speaker:
@@ -154,16 +193,22 @@ class UltraSuiteDataset(BaseDataset):
         return speaker
 
     def _scan(self) -> None:
-        for speaker_path in self.dirpath.iterdir():
-            if not speaker_path.is_dir(): continue
-
+        speaker_dirs = [p for p in self.dirpath.iterdir() if p.is_dir()]
+        for speaker_path in tqdm(speaker_dirs, desc=f"Scan {self.id}", unit="spk"):
             speaker = self.get_speaker(speaker_path.name)
             self.speakers[speaker.id] = speaker
 
-            utterances = []
-            for utterance_path in speaker_path.rglob('*'):
-                if utterance_path.is_dir(): continue
-                if utterance_path.suffix != ".wav": continue
+            wav_files = [
+                p
+                for p in speaker_path.rglob("*")
+                if not p.is_dir() and p.suffix == ".wav"
+            ]
+            for utterance_path in tqdm(
+                wav_files,
+                leave=False,
+                desc="wav",
+                unit="file",
+            ):
 
                 utterance = Utterance(
                     id=f"{utterance_path.parent.name}_{utterance_path.name[:-4]}" if utterance_path.parent.name != speaker_path.name else utterance_path.name[:-4],
@@ -179,19 +224,19 @@ class UPXDataSet(UltraSuiteDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = 'core-upx'
         self.id = f"{corpus.id}_{dirname}"
-        self.dirpath = corpus.dirpath / dirname / 'core'
-        self.docpath = corpus.dirpath / dirname / 'doc'
+        self.dirpath = corpus._dirpath / dirname / 'core'
+        self.docpath = corpus._dirpath / dirname / 'doc'
 
 class UX2020DataSet(UltraSuiteDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = 'core-ux2020'
         self.id = f"{corpus.id}_{dirname}"
-        self.dirpath = corpus.dirpath / dirname / 'core'
-        self.docpath = corpus.dirpath / dirname / 'doc'
+        self.dirpath = corpus._dirpath / dirname / 'core'
+        self.docpath = corpus._dirpath / dirname / 'doc'
 
 class UXSSDDataSet(UltraSuiteDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = 'core-uxssd'
         self.id = f"{corpus.id}_{dirname}"
-        self.dirpath = corpus.dirpath / dirname / 'core'
-        self.docpath = corpus.dirpath / dirname / 'doc'
+        self.dirpath = corpus._dirpath / dirname / 'core'
+        self.docpath = corpus._dirpath / dirname / 'doc'
