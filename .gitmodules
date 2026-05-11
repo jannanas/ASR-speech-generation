@@ -1,0 +1,6 @@
+[submodule "vendor/Pytorch-MBNet"]
+	path = vendor/Pytorch-MBNet
+	url = https://github.com/sky1456723/Pytorch-MBNet
+[submodule "vendor/LDNet"]
+	path = vendor/LDNet
+	url = https://github.com/unilight/LDNet
