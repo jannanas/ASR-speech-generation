@@ -2,7 +2,7 @@
 
 ## Pairing pipeline
 
-All of this is in **`src/pair.py`**.
+All of this is in **`src/pairing.py`**.
 
 1. **Speaker vectors** — **`extract_mfcc_vectors`** loads each utterance with librosa, builds MFCCs, reduces each utterance to a fixed vector (per-coefficient mean and std over time, concatenated), then averages those vectors over the speaker’s utterances and stores the result on **`Speaker.mfcc_vector`**. For each corpus, MFCC disk merge and “skip if vector already present” follow that corpus’s constructor flag **`use_cache`** (same as scan cache): see **`merge_mfcc_from_corpus`** in `src/utils.py`.
 
@@ -16,17 +16,17 @@ The public entry point is **`pair_speakers(source, target, limit=None, strategy=
 
 1. Put data under **`data/`** as expected by the corpus classes (see `connectors.py` and `config.DATA_DIR`).
 
-2. Install dependencies (to be cleaned up):
+2. Install dependencies:
 
-   - **Conda:** `conda env create -f environment.yml` then `conda activate asr-speech-generation`
+   - **Core / pairing (env name `DataAugmentation`):** from the repo root, `conda env create -f ./envs/rp_core_env.yml` (first time only). To refresh packages later: `conda env update -n DataAugmentation -f ./envs/rp_core_env.yml`. Then `conda activate DataAugmentation`.
 
-   - **Pip only:** `pip install -r requirements.txt`
+   - **MeanVC stack (env name `MeanVC`):** `conda env create -f ./envs/rp_meanvc_env.yml`, then `conda activate MeanVC`.
 
 3. Run pairing from **`src/`** so imports resolve:
 
    ```bash
    cd src
-   python pair.py
+   python pairing.py
    ```
 
 4. Credit

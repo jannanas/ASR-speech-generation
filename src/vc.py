@@ -40,12 +40,12 @@ def convert_voice(
     Run MeanVC: **content** from ``source`` wav, **timbre / prompt** from ``target`` wav.
 
     By default uses ``source.utterances_concat_filepath`` and ``target.utterances_concat_filepath``
-    (e.g. after ``concat_ultrasuite_speakers``). Pass ``source_wav`` / ``reference_wav`` to override.
+    (e.g. after ``concat_ultrasuite_speakers`` / Zwitserlood concat). Pass ``source_wav`` / ``reference_wav`` to override.
 
     Returns the path to ``output_wav`` (written on disk).
     """
-    src_path = Path(source_wav) if source_wav is not None else source.utterances_concat_filepath
-    ref_path = Path(reference_wav) if reference_wav is not None else target.utterances_concat_filepath
+    src_path = Path(source_wav) if source_wav is not None else source.utterances_concat.filepath
+    ref_path = Path(reference_wav) if reference_wav is not None else target.utterances_concat.filepath
 
     if not src_path or not src_path.is_file():
         raise ValueError(
@@ -128,10 +128,10 @@ def main():
     targetCorpus = UltraSuiteCorpus()
 
     convert_voice(
-        sourceCorpus.speakers['Zwitserlood_678_wav_01'],
-        targetCorpus.speakers['UltraSuite_core-upx_14M'],
+        sourceCorpus.speakers['Zwitserlood_678_wav_02'],
+        targetCorpus.speakers['UltraSuite_core-ux2020_17M'],
         output_wav='./out/test.wav',
-        source_wav='./data/Zwitserlood/678_wav/01_T1.wav'
+        source_wav='./data/Zwitserlood/678_wav/02_T1.wav'
     )
 
 

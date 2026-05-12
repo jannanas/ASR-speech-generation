@@ -69,6 +69,7 @@ dependencies:
       - jmespath==1.1.0
       - joblib==1.5.3
       - jsonlines==4.0.0
+      - --find-links https://k2-fsa.github.io/k2/cpu.html
       - k2==1.24.4.dev20260423+cpu.torch2.11.0
       - kiwisolver==1.5.0
       - langdetect==1.0.9

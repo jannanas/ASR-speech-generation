@@ -26,7 +26,7 @@ class Utterance:
     duration: int       # in seconds
     sample_rate: int
     speaker: str
-    fragments: Optional[list[Path]] = None
+    # fragments: Optional[list[Path]] = None
     mos: float | None = None 
     embedding: np.ndarray = None
 
@@ -37,6 +37,6 @@ class Speaker:
     age_range: tuple[int, int]      # more accurate info exists than currently implemented
     # sex: str                      # omitted
     disorder: Disorder = Disorder.unknown
-    utterances_concat_filepath: Path | None = None
+    utterances_concat: Utterance | None = None
     embedding: np.ndarray = None
 

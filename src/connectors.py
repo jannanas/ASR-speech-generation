@@ -137,12 +137,19 @@ class ZwitserloodDataset(BaseDataset):
 
             speaker_id, utterance_id = utterance_path.name.split("_")
 
-            # Add speaker (override if already exists)
+            utterances_concat_filepath = self.dirpath / f"{speaker_id}_concat.wav"
             speaker = Speaker(
                 id=f"{self.id}_{speaker_id}",
                 dataset=self.id,
                 age_range=(6, 8),   # more accurate info exists in the headers of .cha files
-                disorder=Disorder.developmental_language_disorder
+                disorder=Disorder.developmental_language_disorder,
+                utterances_concat=Utterance(
+                    id=f"{speaker_id}_concat.wav",
+                    filepath=utterances_concat_filepath,
+                    duration=wav_duration(utterances_concat_filepath),
+                    sample_rate=wav_sample_rate(utterances_concat_filepath),
+                    speaker=f"{self.id}_{speaker_id}"
+                )
             )
             self.speakers[speaker.id] = speaker
             
@@ -153,7 +160,6 @@ class ZwitserloodDataset(BaseDataset):
                 duration=wav_duration(utterance_path),
                 sample_rate=wav_sample_rate(utterance_path),
                 speaker=speaker_id,
-                fragments=None
             )
             self.utterances[speaker.id].append(utterance)
 
@@ -184,12 +190,19 @@ class UltraSuiteDataset(BaseDataset):
         if 'ssd_subtype' in speaker_info_df.columns: 
             disorder = Disorder(speaker_info['ssd_subtype'])
         
+        utterances_concat_filepath = self.dirpath / speaker_id / f"{speaker_id}_concat.wav"
         speaker = Speaker(
             id=f"{self.id}_{speaker_id}",
             dataset=self.id,
             age_range=(int(speaker_info['age']), int(speaker_info['age'])),
             disorder=disorder,
-            utterances_concat_filepath=self.dirpath / speaker_id / f"{speaker_id}_concat.wav"
+            utterances_concat=Utterance(
+                id=f"{speaker_id}_concat.wav",
+                filepath=utterances_concat_filepath,
+                duration=wav_duration(utterances_concat_filepath),
+                sample_rate=wav_sample_rate(utterances_concat_filepath),
+                speaker=f"{self.id}_{speaker_id}"
+            )
         )
 
         return speaker
@@ -219,7 +232,6 @@ class UltraSuiteDataset(BaseDataset):
                     duration=wav_duration(utterance_path),
                     sample_rate=wav_sample_rate(utterance_path),
                     speaker=speaker.id,
-                    fragments=None
                 )
                 self.utterances[speaker.id].append(utterance)
 
