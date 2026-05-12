@@ -27,6 +27,7 @@ class Utterance:
     sample_rate: int
     speaker: str
     fragments: Optional[list[Path]]
+    embedding: np.ndarray = None
 
 @dataclass
 class Speaker:

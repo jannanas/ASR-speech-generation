@@ -8,6 +8,7 @@ from models import *
 import numpy as np
 import librosa
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import normalize
 from tqdm import tqdm
 from pprint import pprint
 import torch  # noqa: F401
@@ -19,11 +20,26 @@ from speechbrain.inference.classifiers import EncoderClassifier
 log = logging.getLogger(__name__)
 
 
-def extract_utterance_embedding(utterance: Utterance, classifier: EncoderClassifier) -> np.array:
-
-
-def extract_speaker_embedding(speaker: Speaker, classifier: EncoderClassifier) -> None:
+def extract_utterance_embedding(utterance: Utterance, encoder: EncoderClassifier) -> np.array:
+    data, fs = sf.read(utterance.filepath, dtype="float32", always_2d=True)
+    signal = torch.from_numpy(data.T)
+    embedding = encoder.encode_batch(signal)[0][0].numpy()
+    normalized_embedding = normalize(embedding.reshape(1, -1), norm="l2", axis=1)[0]
     
+    utterance.embedding = normalized_embedding
+    return normalized_embedding
+
+def extract_speaker_embedding(corpus: BaseCorpus, speaker: Speaker, encoder: EncoderClassifier) -> np.array:
+    utterance_embeddings = []
+    for utterance in corpus.utterances[speaker.id]:
+        utterance_embedding = extract_utterance_embedding(utterance, encoder)
+        utterance_embeddings.append(utterance_embedding)
+
+    speaker_embedding = np.mean(utterance_embeddings)
+    normalized_speaker_embedding = normalize(np.array(speaker_embedding).reshape(1, -1), norm="l2", axis=1)[0]
+    speaker.embedding = normalized_speaker_embedding
+    return normalized_speaker_embedding
+
     # log.info(
     #     "MFCC extraction | corpus=%r | speakers=%d | utterances=%d | use_cache=%s",
     #     corpus.id,
@@ -51,9 +67,10 @@ def extract_speaker_embedding(speaker: Speaker, classifier: EncoderClassifier) -
     #     merge_mfcc_from_corpus(corpus.id, corpus.speakers)
 
 def extract_all_speaker_embeddings(corpus: BaseCorpus, use_cache=True) -> None:
-    classifier = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb")
-    
-    # signal, fs = load_wav_torch("C:/Users/Jannes/Repos/ASR-speech-generation/data/001E.wav")
+    encoder = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb")
+
+    for speaker in corpus.speakers.values():
+        extract_speaker_embedding(speaker, encoder)
 
 def calculate_similarity(source: BaseCorpus, target: BaseCorpus) -> dict[str, dict[str, float]]:
     pairing_matrix: dict[str, dict[str, float]] = defaultdict(dict)
