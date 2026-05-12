@@ -34,5 +34,5 @@ class Speaker:
     age_range: tuple[int, int]      # more accurate info exists than currently implemented
     # sex: str                      # omitted
     disorder: Disorder = Disorder.unknown
-    mfcc_vector: np.ndarray = None
+    embedding: np.ndarray = None
 

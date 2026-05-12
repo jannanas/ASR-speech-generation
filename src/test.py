@@ -20,5 +20,4 @@ def load_wav_torch(path: str) -> tuple[torch.Tensor, int]:
 classifier = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb")
 signal, fs = load_wav_torch("C:/Users/Jannes/Repos/ASR-speech-generation/data/001E.wav")
 
-embeddings = classifier.encode_batch(signal)
-pprint(embeddings)
+embeddings = classifier.encode_batch(signal)[0][0].numpy()

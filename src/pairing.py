@@ -10,40 +10,50 @@ import librosa
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 from pprint import pprint
+import torch  # noqa: F401
+import transformers  # noqa: F401
+import flair  # noqa: F401
+import soundfile as sf
+from speechbrain.inference.classifiers import EncoderClassifier
 
 log = logging.getLogger(__name__)
 
 
-def extract_mfcc(path: Path) -> np.ndarray:
-    y, sr = librosa.load(path, sr=None)
-    return librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
+def extract_utterance_embedding(utterance: Utterance, classifier: EncoderClassifier) -> np.array:
 
-def extract_mfcc_vectors(corpus: BaseCorpus, use_cache: bool = False) -> None:
-    log.info(
-        "MFCC extraction | corpus=%r | speakers=%d | utterances=%d | use_cache=%s",
-        corpus.id,
-        len(corpus.speakers),
-        sum(len(corpus.utterances[sid]) for sid in corpus.speakers),
-        use_cache,
-    )
 
-    speakers = list(corpus.speakers.values())
-    for speaker in tqdm(speakers, desc=f"MFCC {corpus.id}", unit="speaker"):
-        if use_cache and speaker.mfcc_vector is not None:
-            continue
-        utterance_represantations = []
-        for utterance in tqdm(
-            corpus.utterances[speaker.id],
-            desc="utterances",
-            leave=False,
-            unit="utt",
-        ):
-            utterance_mfcc = extract_mfcc(utterance.filepath)
-            utterance_representation = np.concatenate([utterance_mfcc.mean(axis=1), utterance_mfcc.std(axis=1)])
-            utterance_represantations.append(utterance_representation)
-        speaker.mfcc_vector = np.mean(utterance_represantations, axis=0)
-    if use_cache:
-        merge_mfcc_from_corpus(corpus.id, corpus.speakers)
+def extract_speaker_embedding(speaker: Speaker, classifier: EncoderClassifier) -> None:
+    
+    # log.info(
+    #     "MFCC extraction | corpus=%r | speakers=%d | utterances=%d | use_cache=%s",
+    #     corpus.id,
+    #     len(corpus.speakers),
+    #     sum(len(corpus.utterances[sid]) for sid in corpus.speakers),
+    #     use_cache,
+    # )
+
+    # speakers = list(corpus.speakers.values())
+    # for speaker in tqdm(speakers, desc=f"MFCC {corpus.id}", unit="speaker"):
+    #     if use_cache and speaker.mfcc_vector is not None:
+    #         continue
+    #     utterance_represantations = []
+    #     for utterance in tqdm(
+    #         corpus.utterances[speaker.id],
+    #         desc="utterances",
+    #         leave=False,
+    #         unit="utt",
+    #     ):
+    #         utterance_mfcc = extract_mfcc(utterance.filepath)
+    #         utterance_representation = np.concatenate([utterance_mfcc.mean(axis=1), utterance_mfcc.std(axis=1)])
+    #         utterance_represantations.append(utterance_representation)
+    #     speaker.mfcc_vector = np.mean(utterance_represantations, axis=0)
+    # if use_cache:
+    #     merge_mfcc_from_corpus(corpus.id, corpus.speakers)
+
+def extract_all_speaker_embeddings(corpus: BaseCorpus, use_cache=True) -> None:
+    classifier = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb")
+    
+    # signal, fs = load_wav_torch("C:/Users/Jannes/Repos/ASR-speech-generation/data/001E.wav")
 
 def calculate_similarity(source: BaseCorpus, target: BaseCorpus) -> dict[str, dict[str, float]]:
     pairing_matrix: dict[str, dict[str, float]] = defaultdict(dict)
