@@ -1,9 +1,9 @@
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).resolve().parent
-DATA_DIR = ROOT_DIR.parent / "data"
-
 PIPELINE_VERSION = "1"
+N_MFCC = 13
+
+ROOT_DIR = Path(__file__).parent.parent
+DATA_DIR = ROOT_DIR / "data"
 CACHE_DIR = DATA_DIR / ".cache" / PIPELINE_VERSION
 
-N_MFCC = 13

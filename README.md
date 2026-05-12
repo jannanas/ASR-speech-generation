@@ -2,15 +2,15 @@
 
 ## Pairing pipeline
 
-All of this is in **`src/pairing.py`**.
+All of this is in **`src/pair.py`**.
 
-1. **Speaker vectors** — **`extract_mfcc_vectors`** loads each utterance with librosa, builds MFCCs, reduces each utterance to a fixed vector (per-coefficient mean and std over time, concatenated), then averages those vectors over the speaker’s utterances and stores the result on **`Speaker.mfcc_vector`**. With **`use_mfcc_cache=True`**, speakers that already have a vector are skipped; new vectors are merged back into the corpus checkpoint on disk via **`merge_mfcc_from_corpus`** in `src/utils.py`.
+1. **Speaker vectors** — **`extract_mfcc_vectors`** loads each utterance with librosa, builds MFCCs, reduces each utterance to a fixed vector (per-coefficient mean and std over time, concatenated), then averages those vectors over the speaker’s utterances and stores the result on **`Speaker.mfcc_vector`**. For each corpus, MFCC disk merge and “skip if vector already present” follow that corpus’s constructor flag **`use_cache`** (same as scan cache): see **`merge_mfcc_from_corpus`** in `src/utils.py`.
 
 2. **Cross-corpus similarity** — **`calculate_similarity`** stacks source and target **`mfcc_vector`** rows and runs **cosine similarity** (scikit-learn), producing a dense map: each source speaker id → each target speaker id → score.
 
 3. **Top‑k pairs** — **`k_fold_match`** sorts targets per source (by score). **`PairingStrategy.SIMILAR`** keeps the highest scores; **`DISSIMILAR`** the lowest. **`STRATIFIED`** is not implemented yet. Returns a flat list of **`(source_speaker_id, target_speaker_id)`**, up to **`k`** targets per source.
 
-The public entry point is **`pair_speakers(source, target, limit=None, strategy=..., k=2, use_mfcc_cache=True)`**.
+The public entry point is **`pair_speakers(source, target, limit=None, strategy=..., k=2)`**; MFCC caching uses **`source.use_cache`** and **`target.use_cache`** from how each corpus was constructed.
 
 ## Getting started
 
@@ -26,5 +26,12 @@ The public entry point is **`pair_speakers(source, target, limit=None, strategy=
 
    ```bash
    cd src
-   python pairing.py
+   python pair.py
    ```
+
+4. Credit
+
+https://huggingface.co/datasets/kgrosero14/ultrasuite-benchmark
+https://ultrasuite.github.io/
+
+https://talkbank.org/childes/access/Clinical-Other/Zwitserlood.html

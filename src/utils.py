@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 import logging
 import pickle
 import sys
@@ -7,7 +8,9 @@ import wave
 from pathlib import Path
 from typing import Any
 
-import config
+from sympy.core.expr import Float
+
+from config import *
 
 # --- WAV ---------------------------------------------------------------------------
 
@@ -48,13 +51,13 @@ _log = logging.getLogger(__name__)
 
 
 def cache_path(corpus_id: str) -> Path:
-    return config.CACHE_DIR / f"{corpus_id}.pkl"
+    return CACHE_DIR / f"{corpus_id}.pkl"
 
 
 def _validate_payload(data: Any, corpus_id: str) -> bool:
     if not isinstance(data, dict):
         return False
-    if data.get("pipeline_version") != config.PIPELINE_VERSION:
+    if data.get("pipeline_version") != PIPELINE_VERSION:
         return False
     if data.get("corpus_id") != corpus_id:
         return False
@@ -93,7 +96,7 @@ def save(payload: dict) -> None:
 
 def save_after_scan(corpus_id: str, speakers: dict, utterances: dict) -> None:
     payload = {
-        "pipeline_version": config.PIPELINE_VERSION,
+        "pipeline_version": PIPELINE_VERSION,
         "corpus_id": corpus_id,
         "speakers": dict(speakers),
         "utterances": {k: list(v) for k, v in utterances.items()},
@@ -118,3 +121,12 @@ def merge_mfcc_from_corpus(corpus_id: str, corpus_speakers: dict) -> None:
             sp.mfcc_vector.copy() if sp.mfcc_vector is not None else None
         )
     save(data)
+
+# --- Pairing -----------------------------------------------------------------
+
+def invert(data: dict[str, dict[str, float]]) -> dict[str, dict[str, float]]:
+    inverted = defaultdict(dict)
+    for key, val in data.items():
+        for subkey, subval in val.items():
+            inverted[subkey][key] = subval
+    return inverted

@@ -26,13 +26,16 @@ class Utterance:
     duration: int       # in seconds
     sample_rate: int
     speaker: str
-    fragments: Optional[list[Path]]
+    fragments: Optional[list[Path]] = None
+    mos: float | None = None  # e.g. LDNet non-intrusive MOS, set by src.mos
 
 @dataclass
 class Speaker:
     id: str
+    dataset: str
     age_range: tuple[int, int]      # more accurate info exists than currently implemented
     # sex: str                      # omitted
     disorder: Disorder = Disorder.unknown
     mfcc_vector: np.ndarray = None
+    utterances_concat_filepath: Path | None = None
 

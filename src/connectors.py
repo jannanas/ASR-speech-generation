@@ -6,15 +6,15 @@ import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
 
-import config
+from config import DATA_DIR
 from models import *
 from utils import *
 
 log = logging.getLogger(__name__)
 
-
 class BaseCorpus(ABC):
     def __init__(self, use_cache: bool = True) -> None:
+        self.use_cache = use_cache
         self.id: str = None
         self._dirpath: Path = None
         self._datasets: list[BaseDataset] = []
@@ -80,7 +80,7 @@ class BaseCorpus(ABC):
 class ZwitserloodCorpus(BaseCorpus):
     def _setup_corpus_info(self) -> None:
         self.id = "Zwitserlood"
-        self._dirpath = config.DATA_DIR / self.id
+        self._dirpath = DATA_DIR / self.id
 
     def _scan(self) -> None:
         self._datasets = [
@@ -91,7 +91,7 @@ class ZwitserloodCorpus(BaseCorpus):
 class UltraSuiteCorpus(BaseCorpus):
     def _setup_corpus_info(self) -> None:
         self.id = "UltraSuite"
-        self._dirpath = config.DATA_DIR / self.id
+        self._dirpath = DATA_DIR / self.id
 
     def _scan(self) -> None:
         upxDataset = UPXDataSet(self)
@@ -140,6 +140,7 @@ class ZwitserloodDataset(BaseDataset):
             # Add speaker (override if already exists)
             speaker = Speaker(
                 id=f"{self.id}_{speaker_id}",
+                dataset=self.id,
                 age_range=(6, 8),   # more accurate info exists in the headers of .cha files
                 disorder=Disorder.developmental_language_disorder
             )
@@ -185,8 +186,10 @@ class UltraSuiteDataset(BaseDataset):
         
         speaker = Speaker(
             id=f"{self.id}_{speaker_id}",
+            dataset=self.id,
             age_range=(int(speaker_info['age']), int(speaker_info['age'])),
-            disorder=disorder
+            disorder=disorder,
+            utterances_concat_filepath=self.dirpath / speaker_id / f"{speaker_id}_concat.wav"
         )
 
         return speaker
@@ -200,7 +203,8 @@ class UltraSuiteDataset(BaseDataset):
             wav_files = [
                 p
                 for p in speaker_path.rglob("*")
-                if not p.is_dir() and p.suffix == ".wav"
+                if not p.is_dir() and p.suffix == ".wav" and p.name and "_concat" not in p.name
+           
             ]
             for utterance_path in tqdm(
                 wav_files,
