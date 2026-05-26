@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from collections import defaultdict
-import logging
+from collections import Counter, defaultdict
+import re
 from typing import Self
 import pandas as pd
 from pathlib import Path
@@ -9,8 +9,6 @@ from tqdm import tqdm
 from config import DATA_DIR
 from models import *
 from utils import *
-
-log = logging.getLogger(__name__)
 
 class BaseCorpus(ABC):
     def __init__(self, use_cache: bool = True) -> None:
@@ -31,7 +29,8 @@ class BaseCorpus(ABC):
                 for sid, utts in cached["utterances"].items():
                     self.utterances[sid] = list(utts)
                 n_utts = sum(len(u) for u in self.utterances.values())
-                log.info(
+                tlog(
+                    __name__,
                     "Corpus %r (from cache): %d speakers, %d utterances",
                     self.id,
                     len(self.speakers),
@@ -42,7 +41,8 @@ class BaseCorpus(ABC):
         self._scan()
         self._consolidate_datasets()
         n_utts = sum(len(u) for u in self.utterances.values())
-        log.info(
+        tlog(
+            __name__,
             "Corpus %r: %d speakers, %d utterances",
             self.id,
             len(self.speakers),
@@ -127,31 +127,103 @@ class BaseDataset(ABC):
         pass
 
 class ZwitserloodDataset(BaseDataset):
+    _CHAT_AGE_RE = re.compile(r"^(?P<years>\d+);(?P<months>\d+)\.")
+
+    def _parse_chat_age_years(self, age: str) -> float | None:
+        match = self._CHAT_AGE_RE.match(age.strip())
+        if match is None:
+            return None
+        return int(match.group("years")) + int(match.group("months")) / 12
+
+    def _load_speaker_metadata(self) -> dict[str, dict[str, object]]:
+        metadata: dict[str, dict[str, object]] = {}
+        raw: dict[str, list[tuple[Path, float | None, str | None]]] = defaultdict(list)
+
+        for cha_path in sorted(self.chapath.glob("*.cha")):
+            speaker_id = cha_path.stem.split("_", maxsplit=1)[0]
+            for line in cha_path.read_text(encoding="utf-8", errors="replace").splitlines():
+                if not line.startswith("@ID:") or "|CHI|" not in line:
+                    continue
+                fields = line.split("\t", maxsplit=1)[-1].split("|")
+                age = self._parse_chat_age_years(fields[3]) if len(fields) > 3 else None
+                sex = fields[4].strip().lower() if len(fields) > 4 and fields[4].strip() else None
+                raw[speaker_id].append((cha_path, age, sex))
+                break
+
+        for speaker_id, rows in raw.items():
+            ages = [age for _, age, _ in rows if age is not None]
+            sexes = [sex for _, _, sex in rows if sex]
+            sex = None
+            if sexes:
+                sex_counts = Counter(sexes)
+                sex = sorted(sex_counts.items(), key=lambda item: (-item[1], item[0]))[0][0]
+                if len(sex_counts) > 1:
+                    twarning(
+                        __name__,
+                        "Inconsistent Zwitserlood sex metadata for %s_%s: %s; using %s",
+                        self.id,
+                        speaker_id,
+                        dict(sex_counts),
+                        sex,
+                    )
+            if not ages:
+                twarning(__name__, "No Zwitserlood age metadata for %s_%s", self.id, speaker_id)
+                continue
+            metadata[speaker_id] = {
+                "age": sum(ages) / len(ages),
+                "sex": sex,
+            }
+
+        return metadata
+
     def _scan(self) -> None:
+        speaker_metadata = self._load_speaker_metadata()
         paths = list(self.dirpath.iterdir())
         for utterance_path in tqdm(paths, desc=f"Scan {self.id}", unit="file"):
-            if utterance_path.is_dir():
-                continue
-            if utterance_path.suffix != ".wav":
+            if utterance_path.is_dir() or utterance_path.suffix != ".wav" or "_concat" in utterance_path.name:
                 continue
 
-            speaker_id, utterance_id = utterance_path.name.split("_")
+            speaker_id, utterance_id = utterance_path.name.split("_", maxsplit=1)
+            metadata = speaker_metadata.get(speaker_id)
+            if metadata is None:
+                twarning(__name__, "No Zwitserlood metadata for %s_%s", self.id, speaker_id)
+                age = 0.0
+                sex = None
+            else:
+                age = metadata["age"]
+                sex = metadata["sex"]
 
-            utterances_concat_filepath = self.dirpath / f"{speaker_id}_concat.wav"
+            # utterances_concat_filepath = self.dirpath / f"{speaker_id}_concat.wav"
             speaker = Speaker(
                 id=f"{self.id}_{speaker_id}",
                 dataset=self.id,
-                age_range=(6, 8),   # more accurate info exists in the headers of .cha files
+                age=age,
+                sex=sex,
                 disorder=Disorder.developmental_language_disorder,
-                utterances_concat=Utterance(
-                    id=f"{speaker_id}_concat.wav",
-                    filepath=utterances_concat_filepath,
-                    duration=wav_duration(utterances_concat_filepath),
-                    sample_rate=wav_sample_rate(utterances_concat_filepath),
-                    speaker=f"{self.id}_{speaker_id}"
-                )
+                # utterances_concat=Utterance(
+                #     id=f"{speaker_id}_concat.wav",
+                #     filepath=utterances_concat_filepath,
+                #     duration=wav_duration(utterances_concat_filepath),
+                #     sample_rate=wav_sample_rate(utterances_concat_filepath),
+                #     speaker=f"{self.id}_{speaker_id}"
+                # )
             )
             self.speakers[speaker.id] = speaker
+
+            # # Get fragments
+            # frag_paths = (self.dirpath / f"{self.id[12:-4]}_fragments").iterdir()
+            # fragments = []
+            # for frag_path in frag_paths:
+            #     if f"{speaker_id}_{utterance_id[:-4]}" not in frag_path.name:
+            #         continue
+            #     fragments.append(Utterance(
+            #         id=frag_path.name[:-4],
+            #         filepath=frag_path,
+            #         duration=wav_duration(frag_path),
+            #         sample_rate=wav_sample_rate(frag_path),
+            #         speaker=speaker_id
+            #     ))
+       
             
             # Add utterance to that speaker
             utterance = Utterance(
@@ -160,6 +232,7 @@ class ZwitserloodDataset(BaseDataset):
                 duration=wav_duration(utterance_path),
                 sample_rate=wav_sample_rate(utterance_path),
                 speaker=speaker_id,
+                # fragments=fragments
             )
             self.utterances[speaker.id].append(utterance)
 
@@ -168,12 +241,14 @@ class SixToEightDataset(ZwitserloodDataset):
         dirname = '678_wav'
         self.id = f"{corpus.id}_{dirname}"
         self.dirpath = corpus._dirpath / dirname
+        self.chapath = self.dirpath / '678_cha'
 
 class EightToTenDataset(ZwitserloodDataset):
     def _setup_dataset_info(self, corpus: BaseCorpus) -> None:
         dirname = '8910_wav'
         self.id = f"{corpus.id}_{dirname}"
         self.dirpath = corpus._dirpath / dirname
+        self.chapath = self.dirpath / '8910_cha'
 
 class UltraSuiteDataset(BaseDataset):
     def get_speaker(self, speaker_id: str) -> Speaker:
@@ -194,7 +269,8 @@ class UltraSuiteDataset(BaseDataset):
         speaker = Speaker(
             id=f"{self.id}_{speaker_id}",
             dataset=self.id,
-            age_range=(int(speaker_info['age']), int(speaker_info['age'])),
+            age=float(speaker_info['age']),
+            sex=str(speaker_info['sex']).lower() if 'sex' in speaker_info_df.columns else None,
             disorder=disorder,
             utterances_concat=Utterance(
                 id=f"{speaker_id}_concat.wav",

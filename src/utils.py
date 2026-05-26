@@ -1,32 +1,32 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import datetime
 import logging
 import pickle
 import sys
 import warnings
-import wave
 from pathlib import Path
 from typing import Any
 
 import numpy as np
+import soundfile as sf
 from sympy.core.expr import Float
+from tqdm import tqdm
 
 from config import *
 
 # --- WAV ---------------------------------------------------------------------------
 
 def wav_duration(path: Path) -> float:
-    with wave.open(str(path), "rb") as wf:
-        n_frames = wf.getnframes()
-        sample_rate = wf.getframerate()
-    return n_frames / sample_rate
+    """Duration in seconds (metadata read; supports IEEE float WAV from ``torchaudio.save``)."""
+    info = sf.info(str(path))
+    return info.duration
 
 
 def wav_sample_rate(path: Path) -> float:
-    with wave.open(str(path), "rb") as wf:
-        sample_rate = wf.getframerate()
-    return sample_rate
+    info = sf.info(str(path))
+    return float(info.samplerate)
 
 
 # --- Logging ------------------------------------------------------------------------
@@ -66,6 +66,44 @@ def _silence_speechbrain_logging(min_level: int = logging.ERROR) -> None:
             h.addFilter(_speechbrain_log_filter)
 
 
+_s3prl_log_filter: logging.Filter | None = None
+
+# Log records from this logger (and its children) are the only ``s3prl.*`` lines emitted;
+# only ERROR and above pass through.
+_S3PRL_WAVLM_LOGGER = "s3prl.upstream.wavlm.WavLM"
+
+
+class _S3prlWavlmOnlyErrorsFilter(logging.Filter):
+    """Drop all ``s3prl.*`` log records except ERROR+ from ``s3prl.upstream.wavlm.WavLM``."""
+
+    __slots__ = ("_prefix",)
+
+    def __init__(self, prefix: str = _S3PRL_WAVLM_LOGGER) -> None:
+        super().__init__()
+        self._prefix = prefix
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        if not record.name.startswith("s3prl"):
+            return True
+        if record.name == self._prefix or record.name.startswith(self._prefix + "."):
+            return record.levelno >= logging.ERROR
+        return False
+
+
+def _silence_s3prl_except_wavlm_errors() -> None:
+    global _s3prl_log_filter
+    if _s3prl_log_filter is None:
+        _s3prl_log_filter = _S3prlWavlmOnlyErrorsFilter()
+    for h in logging.getLogger().handlers:
+        if _s3prl_log_filter not in h.filters:
+            h.addFilter(_s3prl_log_filter)
+
+
+def _suppress_future_and_user_warnings() -> None:
+    warnings.filterwarnings("ignore", category=FutureWarning)
+    warnings.filterwarnings("ignore", category=UserWarning)
+
+
 def configure_logging(
     level: int = logging.INFO,
     *,
@@ -84,12 +122,29 @@ def configure_logging(
         )
         root.addHandler(handler)
         root.setLevel(level)
+    _suppress_future_and_user_warnings()
     _silence_speechbrain_logging(speechbrain_min_level)
+    _silence_s3prl_except_wavlm_errors()
+
+
+# --- tqdm-safe status lines (use instead of logging for our own messages) ---------
+
+
+def tlog(name: str, msg: str, *args: object) -> None:
+    """Log to stderr without breaking active tqdm bars (same role as ``logging.info``)."""
+    text = msg % args if args else msg
+    ts = datetime.now().strftime("%H:%M:%S")
+    tqdm.write(f"{ts} | INFO | {name} | {text}", file=sys.stderr)
+
+
+def twarning(name: str, msg: str, *args: object) -> None:
+    """Warning to stderr without breaking active tqdm bars."""
+    text = msg % args if args else msg
+    ts = datetime.now().strftime("%H:%M:%S")
+    tqdm.write(f"{ts} | WARNING | {name} | {text}", file=sys.stderr)
 
 
 # --- Corpus cache (DATA_DIR / .cache / <PIPELINE_VERSION>) -------------------------
-
-_log = logging.getLogger(__name__)
 
 
 def _read_pickle(path: Path) -> Any | None:
@@ -99,7 +154,7 @@ def _read_pickle(path: Path) -> Any | None:
         with open(path, "rb") as f:
             return pickle.load(f)
     except (pickle.UnpicklingError, OSError, EOFError) as e:
-        _log.warning("Cache unreadable %s: %s", path, e)
+        twarning(__name__, "Cache unreadable %s: %s", path, e)
         return None
 
 
@@ -109,7 +164,7 @@ def _write_pickle_atomic(path: Path, obj: Any) -> None:
     with open(tmp, "wb") as f:
         pickle.dump(obj, f, protocol=pickle.HIGHEST_PROTOCOL)
     tmp.replace(path)
-    _log.info("Wrote cache %s", path)
+    tlog(__name__, "Wrote cache %s", path)
 
 
 def cache_path(corpus_id: str) -> Path:
@@ -134,10 +189,10 @@ def try_load(corpus_id: str, *, log_hit: bool = True) -> dict | None:
     if data is None:
         return None
     if not _validate_payload(data, corpus_id):
-        _log.info("Cache miss or stale pipeline for corpus %r (%s)", corpus_id, path)
+        tlog(__name__, "Cache miss or stale pipeline for corpus %r (%s)", corpus_id, path)
         return None
     if log_hit:
-        _log.info("Loaded corpus cache %s", path)
+        tlog(__name__, "Loaded corpus cache %s", path)
     return data
 
 
@@ -158,7 +213,8 @@ def save_after_scan(corpus_id: str, speakers: dict, utterances: dict) -> None:
 def merge_mfcc_from_corpus(corpus_id: str, corpus_speakers: dict) -> None:
     data = try_load(corpus_id, log_hit=False)
     if data is None:
-        _log.warning(
+        twarning(
+            __name__,
             "No valid scan cache for %r; cannot persist MFCC. Run corpus with use_cache=True after scan.",
             corpus_id,
         )
@@ -182,7 +238,8 @@ def merge_embeddings_from_corpus(
     """Persist speaker/utterance embeddings into the main corpus scan cache (same as __init__ load)."""
     data = try_load(corpus_id, log_hit=False)
     if data is None:
-        _log.warning(
+        twarning(
+            __name__,
             "No valid scan cache for %r; cannot persist embeddings. Run corpus with use_cache=True after scan.",
             corpus_id,
         )
@@ -223,10 +280,10 @@ def try_load_embedding_cache(
     if data is None:
         return None
     if not _validate_payload(data, corpus_id):
-        _log.info("Embedding cache miss or stale for corpus %r (%s)", corpus_id, path)
+        tlog(__name__, "Embedding cache miss or stale for corpus %r (%s)", corpus_id, path)
         return None
     if log_hit:
-        _log.info("Loaded embedding cache %s", path)
+        tlog(__name__, "Loaded embedding cache %s", path)
     return data["utterances"], data["speakers"]
 
 
@@ -265,4 +322,6 @@ def _suppress_speechbrain_deprecation_warnings() -> None:
 
 
 _suppress_speechbrain_deprecation_warnings()
+_suppress_future_and_user_warnings()
 _silence_speechbrain_logging()
+_silence_s3prl_except_wavlm_errors()

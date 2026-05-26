@@ -1,8 +1,9 @@
+import csv
 from collections import defaultdict
-import logging
 
+from config import DATA_DIR
 from connectors import BaseCorpus, ZwitserloodCorpus, UltraSuiteCorpus
-from utils import configure_logging, merge_embeddings_from_corpus
+from utils import configure_logging, merge_embeddings_from_corpus, tlog
 from models import *
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
@@ -15,9 +16,6 @@ import flair  # noqa: F401
 import soundfile as sf
 from speechbrain.inference.classifiers import EncoderClassifier
 
-log = logging.getLogger(__name__)
-
-
 def extract_utterance_embedding(utterance: Utterance, encoder: EncoderClassifier) -> np.array:
     data, fs = sf.read(utterance.filepath, dtype="float32", always_2d=True)
     signal = torch.from_numpy(data.T)
@@ -26,6 +24,11 @@ def extract_utterance_embedding(utterance: Utterance, encoder: EncoderClassifier
     
     utterance.embedding = normalized_embedding
     return normalized_embedding
+
+    # data, fs = sf.read(utterance.filepath)
+    # signal = torch.from_numpy(data).float().unsqueeze(0)
+    # embedding = encoder.encode_batch(signal).squeeze()
+    # return embedding
 
 def extract_speaker_embedding(corpus: BaseCorpus, speaker: Speaker, encoder: EncoderClassifier) -> np.array:
     # speaker_embedding = np.mean(utterance_embeddings, axis=0)
@@ -71,13 +74,14 @@ def _mean_center_and_renormalize(
 def extract_all_speaker_embeddings(corpus: BaseCorpus) -> None:
     first_speaker = next(iter(corpus.speakers.values()))
     if corpus.use_cache and first_speaker.embedding is not None:
-        log.info(
+        tlog(
+            __name__,
             "Speaker embeddings | corpus=%r | using cached values",
             corpus.id,
         )
         return
 
-    log.info("Speaker embeddings | corpus=%r | computing with SpeechBrain", corpus.id)
+    tlog(__name__, "Speaker embeddings | corpus=%r | computing with SpeechBrain", corpus.id)
     encoder = EncoderClassifier.from_hparams(source="speechbrain/spkrec-xvect-voxceleb")
 
     speaker_embeddings: dict[str, np.ndarray] = {}
@@ -99,7 +103,8 @@ def calculate_similarity(source: BaseCorpus, target: BaseCorpus) -> dict[str, di
 
     source_speakers = list(source.speakers.values())
     target_speakers = list(target.speakers.values())
-    log.info(
+    tlog(
+        __name__,
         "Similarity matrix | %r x %r | %d x %d speakers",
         source.id,
         target.id,
@@ -121,18 +126,60 @@ def k_fold_match(
     pairing_matrix: dict[str, dict[str, float]],
     strategy: PairingStrategy,
     k: int,
-) -> list[tuple[str, str, float]]:
+) -> list[tuple[str, str]]:
     if strategy == PairingStrategy.STRATIFIED:
         raise NotImplementedError()
     reverse = strategy == PairingStrategy.SIMILAR
 
-    pairs: list[tuple[str, str, float]] = []
+    pairs: list[tuple[str, str]] = []
     for source_id in sorted(pairing_matrix.keys()):
         targets = pairing_matrix[source_id]
         top_k_target = sorted(targets.items(), key=lambda x: x[1], reverse=reverse)[:k]
         for target_id, score in top_k_target:
-            pairs.append((source_id, target_id, score))
+            tlog(__name__, "Pair speaker | %r: %s -> %s", score, source_id, target_id)
+            pairs.append((source_id, target_id))
     return pairs
+
+def load_split_speaker_ids(split_csv_path, split: str) -> set[str]:
+    speaker_ids: set[str] = set()
+    with open(split_csv_path, newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        required_columns = {"split", "speaker_id"}
+        if reader.fieldnames is None or not required_columns.issubset(reader.fieldnames):
+            raise ValueError(
+                f"Split CSV must contain columns {sorted(required_columns)}: {split_csv_path}"
+            )
+        for row in reader:
+            if row["split"] == split:
+                speaker_ids.add(row["speaker_id"])
+    if not speaker_ids:
+        raise ValueError(f"No speakers found for split {split!r} in {split_csv_path}")
+    return speaker_ids
+
+
+def keep_speakers(corpus: BaseCorpus, speaker_ids: set[str]) -> BaseCorpus:
+    missing_speaker_ids = sorted(speaker_ids - set(corpus.speakers))
+    if missing_speaker_ids:
+        raise ValueError(
+            f"Split contains {len(missing_speaker_ids)} speakers absent from {corpus.id}: "
+            f"{missing_speaker_ids[:5]}"
+        )
+
+    corpus.speakers = {
+        speaker_id: speaker
+        for speaker_id, speaker in corpus.speakers.items()
+        if speaker_id in speaker_ids
+    }
+    corpus.utterances = defaultdict(
+        list,
+        {
+            speaker_id: list(utterances)
+            for speaker_id, utterances in corpus.utterances.items()
+            if speaker_id in corpus.speakers
+        },
+    )
+    return corpus
+
 
 def pair_speakers(
     source: BaseCorpus,
@@ -140,8 +187,9 @@ def pair_speakers(
     limit: int | None = None,
     strategy: PairingStrategy = PairingStrategy.SIMILAR,
     k: int = 2,
-) -> list[tuple[str, str, float]]:
-    log.info(
+) -> list[tuple[str, str]]:
+    tlog(
+        __name__,
         "Pair speakers | source=%r target=%r limit=%r k=%r strategy=%s",
         source.id,
         target.id,
@@ -157,7 +205,8 @@ def pair_speakers(
 
     pairing_matrix = calculate_similarity(source, target)
     pairs = k_fold_match(pairing_matrix, strategy, k=k)
-    log.info(
+    tlog(
+        __name__,
         "Pairing done | matrix %d x %d | %d (source, target) pairs",
         len(source.speakers),
         len(target.speakers),
@@ -169,8 +218,19 @@ def pair_speakers(
 
 if __name__ == "__main__":
     configure_logging()
+
+    split_csv_path = DATA_DIR / "Zwitserlood" / "zwitserlood_speakers_split.csv"
+    train_speaker_ids = load_split_speaker_ids(split_csv_path, split="train")
+    source = keep_speakers(ZwitserloodCorpus(use_cache=True), train_speaker_ids)
+    tlog(
+        __name__,
+        "Loaded Zwitserlood train split | csv=%s | speakers=%d",
+        split_csv_path,
+        len(source.speakers),
+    )
+
     pairs = pair_speakers(
-        source=ZwitserloodCorpus(use_cache=True),
+        source=source,
         target=UltraSuiteCorpus(use_cache=True),
         strategy=PairingStrategy.SIMILAR,
         # limit=3

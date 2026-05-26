@@ -13,7 +13,6 @@ Uses the bundled VoiceMOS pretrained LDNet (BVCC-style STFT). Typical use::
 
 from __future__ import annotations
 
-import logging
 from collections.abc import Iterable
 from pathlib import Path
 
@@ -26,9 +25,8 @@ from tqdm import tqdm
 
 from connectors import BaseCorpus
 from models import Utterance
+from utils import tlog
 from vendor.LDNet.models.LDNet import LDNet
-
-log = logging.getLogger(__name__)
 
 _ROOT = Path(__file__).resolve().parents[1]
 _LDNET_ROOT = _ROOT / "vendor" / "LDNet"
@@ -94,7 +92,8 @@ class LDNetMOSPredictor:
         state = torch.load(str(self.ckpt_path), map_location=self.device)
         self._model.load_state_dict(state, strict=False)
         self._model.eval()
-        log.info(
+        tlog(
+            __name__,
             "LDNet MOS predictor ready | device=%s | ckpt=%s",
             self.device,
             self.ckpt_path,
