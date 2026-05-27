@@ -8,9 +8,9 @@ All of this is in **`src/pairing.py`**.
 
 2. **Cross-corpus similarity** — **`calculate_similarity`** stacks source and target **`mfcc_vector`** rows and runs **cosine similarity** (scikit-learn), producing a dense map: each source speaker id → each target speaker id → score.
 
-3. **Top‑k pairs** — **`k_fold_match`** sorts targets per source (by score). **`PairingStrategy.SIMILAR`** keeps the highest scores; **`DISSIMILAR`** the lowest. **`STRATIFIED`** is not implemented yet. Returns a flat list of **`(source_speaker_id, target_speaker_id)`**, up to **`k`** targets per source.
+3. **Top‑k pairs** — **`k_fold_match`** sorts targets per source (by score). **`PairingStrategy.SIMILAR`** keeps the highest scores; **`DISSIMILAR`** the lowest. **`RANDOM`** samples up to **`k`** targets per source using a deterministic seed and does not compute embeddings. Returns a flat list of **`(source_speaker_id, target_speaker_id)`**, up to **`k`** targets per source.
 
-The public entry point is **`pair_speakers(source, target, limit=None, strategy=..., k=2)`**; MFCC caching uses **`source.use_cache`** and **`target.use_cache`** from how each corpus was constructed.
+The public entry point is **`pair_speakers(source, target, limit=None, strategy=..., k=2, random_seed=42)`**; embedding caching uses **`source.use_cache`** and **`target.use_cache`** from how each corpus was constructed.
 
 ## Getting started
 

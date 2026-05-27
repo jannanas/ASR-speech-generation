@@ -5,6 +5,7 @@ import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
+import pandas as pd
 from tqdm import tqdm
 
 # Repo root (parent of ``src/``) so ``vendor.*`` resolves when running ``python .../src/vc.py``.
@@ -20,129 +21,6 @@ from utils import configure_logging, tlog, wav_duration, wav_sample_rate
 from vendor.MeanVC.src.infer.infer_ref import *
 from vendor.MeanVC.src.infer.dit_kvcache import DiT
 from vendor.MeanVC.src.runtime.speaker_verification.ecapa_tdnn import ECAPA_TDNN
-
-pairs = [
- ('Zwitserlood_678_wav_01', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_678_wav_01', 'UltraSuite_core-ux2020_09M'),
- ('Zwitserlood_678_wav_02', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_678_wav_02', 'UltraSuite_core-upx_18F'),
- ('Zwitserlood_678_wav_03', 'UltraSuite_core-upx_10M'),
- ('Zwitserlood_678_wav_03', 'UltraSuite_core-upx_02F'),
- ('Zwitserlood_678_wav_04', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_678_wav_04', 'UltraSuite_core-ux2020_06F'),
- ('Zwitserlood_678_wav_05', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_678_wav_05', 'UltraSuite_core-ux2020_19M'),
- ('Zwitserlood_678_wav_06', 'UltraSuite_core-ux2020_03M'),
- ('Zwitserlood_678_wav_06', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_678_wav_07', 'UltraSuite_core-upx_17M'),
- ('Zwitserlood_678_wav_07', 'UltraSuite_core-ux2020_11M'),
- ('Zwitserlood_678_wav_08', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_678_wav_08', 'UltraSuite_core-ux2020_11M'),
- ('Zwitserlood_678_wav_09', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_678_wav_09', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_678_wav_10', 'UltraSuite_core-ux2020_29M'),
- ('Zwitserlood_678_wav_10', 'UltraSuite_core-upx_11M'),
- ('Zwitserlood_678_wav_11', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_678_wav_11', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_678_wav_12', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_678_wav_12', 'UltraSuite_core-ux2020_25M'),
- ('Zwitserlood_678_wav_13', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_678_wav_13', 'UltraSuite_core-upx_09M'),
- ('Zwitserlood_678_wav_14', 'UltraSuite_core-ux2020_32M'),
- ('Zwitserlood_678_wav_14', 'UltraSuite_core-ux2020_22M'),
- ('Zwitserlood_678_wav_15', 'UltraSuite_core-ux2020_07M'),
- ('Zwitserlood_678_wav_15', 'UltraSuite_core-ux2020_37F'),
- ('Zwitserlood_678_wav_16', 'UltraSuite_core-ux2020_37F'),
- ('Zwitserlood_678_wav_16', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_678_wav_17', 'UltraSuite_core-ux2020_10M'),
- ('Zwitserlood_678_wav_17', 'UltraSuite_core-uxssd_01M'),
- ('Zwitserlood_678_wav_18', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_678_wav_18', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_678_wav_19', 'UltraSuite_core-upx_01F'),
- ('Zwitserlood_678_wav_19', 'UltraSuite_core-ux2020_13F'),
- ('Zwitserlood_678_wav_20', 'UltraSuite_core-upx_12M'),
- ('Zwitserlood_678_wav_20', 'UltraSuite_core-upx_17M'),
- ('Zwitserlood_678_wav_21', 'UltraSuite_core-ux2020_19M'),
- ('Zwitserlood_678_wav_21', 'UltraSuite_core-ux2020_23M'),
- ('Zwitserlood_678_wav_22', 'UltraSuite_core-ux2020_29M'),
- ('Zwitserlood_678_wav_22', 'UltraSuite_core-ux2020_07M'),
- ('Zwitserlood_678_wav_23', 'UltraSuite_core-ux2020_18M'),
- ('Zwitserlood_678_wav_23', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_678_wav_24', 'UltraSuite_core-upx_17M'),
- ('Zwitserlood_678_wav_24', 'UltraSuite_core-uxssd_01M'),
- ('Zwitserlood_678_wav_25', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_678_wav_25', 'UltraSuite_core-ux2020_05M'),
- ('Zwitserlood_678_wav_26', 'UltraSuite_core-upx_17M'),
- ('Zwitserlood_678_wav_26', 'UltraSuite_core-ux2020_33M'),
- ('Zwitserlood_678_wav_27', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_678_wav_27', 'UltraSuite_core-ux2020_29M'),
- ('Zwitserlood_678_wav_28', 'UltraSuite_core-ux2020_07M'),
- ('Zwitserlood_678_wav_28', 'UltraSuite_core-ux2020_27M'),
- ('Zwitserlood_678_wav_29', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_678_wav_29', 'UltraSuite_core-upx_02F'),
- ('Zwitserlood_678_wav_30', 'UltraSuite_core-upx_15M'),
- ('Zwitserlood_678_wav_30', 'UltraSuite_core-upx_01F'),
- ('Zwitserlood_8910_wav_01', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_8910_wav_01', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_02', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_8910_wav_02', 'UltraSuite_core-upx_09M'),
- ('Zwitserlood_8910_wav_03', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_8910_wav_03', 'UltraSuite_core-ux2020_36M'),
- ('Zwitserlood_8910_wav_04', 'UltraSuite_core-upx_09M'),
- ('Zwitserlood_8910_wav_04', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_8910_wav_05', 'UltraSuite_core-ux2020_18M'),
- ('Zwitserlood_8910_wav_05', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_8910_wav_06', 'UltraSuite_core-ux2020_33M'),
- ('Zwitserlood_8910_wav_06', 'UltraSuite_core-ux2020_13F'),
- ('Zwitserlood_8910_wav_07', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_07', 'UltraSuite_core-ux2020_03M'),
- ('Zwitserlood_8910_wav_08', 'UltraSuite_core-ux2020_29M'),
- ('Zwitserlood_8910_wav_08', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_8910_wav_09', 'UltraSuite_core-ux2020_31M'),
- ('Zwitserlood_8910_wav_09', 'UltraSuite_core-ux2020_07M'),
- ('Zwitserlood_8910_wav_10', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_8910_wav_10', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_8910_wav_11', 'UltraSuite_core-ux2020_12M'),
- ('Zwitserlood_8910_wav_11', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_12', 'UltraSuite_core-ux2020_28F'),
- ('Zwitserlood_8910_wav_12', 'UltraSuite_core-ux2020_24F'),
- ('Zwitserlood_8910_wav_13', 'UltraSuite_core-ux2020_20M'),
- ('Zwitserlood_8910_wav_13', 'UltraSuite_core-ux2020_19M'),
- ('Zwitserlood_8910_wav_14', 'UltraSuite_core-ux2020_34F'),
- ('Zwitserlood_8910_wav_14', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_8910_wav_15', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_8910_wav_15', 'UltraSuite_core-upx_13M'),
- ('Zwitserlood_8910_wav_16', 'UltraSuite_core-ux2020_09M'),
- ('Zwitserlood_8910_wav_16', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_8910_wav_17', 'UltraSuite_core-ux2020_33M'),
- ('Zwitserlood_8910_wav_17', 'UltraSuite_core-ux2020_03M'),
- ('Zwitserlood_8910_wav_18', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_18', 'UltraSuite_core-ux2020_03M'),
- ('Zwitserlood_8910_wav_19', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_8910_wav_19', 'UltraSuite_core-upx_05M'),
- ('Zwitserlood_8910_wav_20', 'UltraSuite_core-upx_09M'),
- ('Zwitserlood_8910_wav_20', 'UltraSuite_core-upx_04M'),
- ('Zwitserlood_8910_wav_21', 'UltraSuite_core-ux2020_27M'),
- ('Zwitserlood_8910_wav_21', 'UltraSuite_core-ux2020_15M'),
- ('Zwitserlood_8910_wav_22', 'UltraSuite_core-upx_10M'),
- ('Zwitserlood_8910_wav_22', 'UltraSuite_core-ux2020_32M'),
- ('Zwitserlood_8910_wav_23', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_23', 'UltraSuite_core-ux2020_12M'),
- ('Zwitserlood_8910_wav_24', 'UltraSuite_core-ux2020_21M'),
- ('Zwitserlood_8910_wav_24', 'UltraSuite_core-upx_13M'),
- ('Zwitserlood_8910_wav_25', 'UltraSuite_core-ux2020_02F'),
- ('Zwitserlood_8910_wav_25', 'UltraSuite_core-ux2020_03M'),
- ('Zwitserlood_8910_wav_26', 'UltraSuite_core-ux2020_27M'),
- ('Zwitserlood_8910_wav_26', 'UltraSuite_core-ux2020_07M'),
- ('Zwitserlood_8910_wav_27', 'UltraSuite_core-ux2020_23M'),
- ('Zwitserlood_8910_wav_27', 'UltraSuite_core-ux2020_25M'),
- ('Zwitserlood_8910_wav_28', 'UltraSuite_core-upx_08M'),
- ('Zwitserlood_8910_wav_28', 'UltraSuite_core-ux2020_21M'),
- ('Zwitserlood_8910_wav_29', 'UltraSuite_core-ux2020_18M'),
- ('Zwitserlood_8910_wav_29', 'UltraSuite_core-ux2020_17M'),
- ('Zwitserlood_8910_wav_30', 'UltraSuite_core-ux2020_29M'),
- ('Zwitserlood_8910_wav_30', 'UltraSuite_core-ux2020_18M')
-]
 
 
 def select_longest_target_reference(target_corpus: BaseCorpus, target_speaker: str) -> Utterance:
@@ -176,7 +54,8 @@ class VoiceConverter:
     steps = 2
     device = 'cpu'
 
-    def __init__(self):
+    def __init__(self, pairing_type: str):
+        self.pairing_type = pairing_type
         self._load_vc()
         
     def _load_vc(self):
@@ -226,10 +105,10 @@ class VoiceConverter:
         self.mel_extractor = mel_extractor
 
     def convert(self, source_corpus: BaseCorpus, source_speaker: str, target_corpus: BaseCorpus, target_speaker: str) -> list[ConvertedUtterance]:
-        output_dir = OUTPUT_DIR / source_speaker / target_speaker
+        output_dir = OUTPUT_DIR / self.pairing_type / source_speaker / target_speaker
         os.makedirs(output_dir, exist_ok=True)
 
-        wav_subdir = OUTPUT_DIR / source_speaker / f"{target_speaker}_wav"
+        wav_subdir = OUTPUT_DIR / self.pairing_type / source_speaker / f"{target_speaker}_wav"
         sources: list[str] = []
         skipped = 0
         for utterance in source_corpus.utterances[source_speaker]:
@@ -295,8 +174,8 @@ class VoiceConverter:
 
         return converted_utterances
 
-def convert_pairs(source_corpus: BaseCorpus, target_corpus: BaseCorpus, pairs: tuple[str, str]) -> dict[str, dict[str, list[ConvertedUtterance]]]:
-    vc = VoiceConverter()
+def convert_pairs(pairing_type: str, source_corpus: BaseCorpus, target_corpus: BaseCorpus, pairs: tuple[str, str]) -> dict[str, dict[str, list[ConvertedUtterance]]]:
+    vc = VoiceConverter(pairing_type)
 
     conversions: dict[str, dict[str, list[ConvertedUtterance]]] = defaultdict(dict)
     pair_iter = tqdm(
@@ -323,7 +202,15 @@ def main():
     configure_logging()
     source = ZwitserloodCorpus(use_cache=True)
     target = UltraSuiteCorpus(use_cache=True)
-    convert_pairs(source, target, pairs)
+
+    top_2_pairs = list(pd.read_csv(OUTPUT_DIR / "top_2_pairs.csv", delimiter=", ").itertuples(index=False, name=None)) 
+    convert_pairs("top_2", source, target, top_2_pairs)
+
+    bottom_2_pairs = list(pd.read_csv(OUTPUT_DIR / "bottom_2_pairs.csv", delimiter=", ").itertuples(index=False, name=None)) 
+    convert_pairs("bottom_2", source, target, bottom_2_pairs)
+
+    random_2_pairs = list(pd.read_csv(OUTPUT_DIR / "random_2_pairs.csv", delimiter=", ").itertuples(index=False, name=None)) 
+    convert_pairs("random_2", source, target, random_2_pairs)
 
 if __name__ == "__main__":
     main()

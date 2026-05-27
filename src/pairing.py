@@ -1,7 +1,8 @@
 import csv
+import random
 from collections import defaultdict
 
-from config import DATA_DIR
+from config import OUTPUT_DIR
 from connectors import BaseCorpus, ZwitserloodCorpus, UltraSuiteCorpus
 from utils import configure_logging, merge_embeddings_from_corpus, tlog
 from models import *
@@ -126,12 +127,21 @@ def k_fold_match(
     pairing_matrix: dict[str, dict[str, float]],
     strategy: PairingStrategy,
     k: int,
+    random_seed: int | None = 42,
 ) -> list[tuple[str, str]]:
-    if strategy == PairingStrategy.STRATIFIED:
-        raise NotImplementedError()
-    reverse = strategy == PairingStrategy.SIMILAR
-
     pairs: list[tuple[str, str]] = []
+
+    if strategy == PairingStrategy.RANDOM:
+        rng = random.Random(random_seed)
+        for source_id in sorted(pairing_matrix.keys()):
+            target_ids = sorted(pairing_matrix[source_id].keys())
+            selected_targets = rng.sample(target_ids, k=min(k, len(target_ids)))
+            for target_id in selected_targets:
+                tlog(__name__, "Pair speaker | random: %s -> %s", source_id, target_id)
+                pairs.append((source_id, target_id))
+        return pairs
+
+    reverse = strategy == PairingStrategy.SIMILAR
     for source_id in sorted(pairing_matrix.keys()):
         targets = pairing_matrix[source_id]
         top_k_target = sorted(targets.items(), key=lambda x: x[1], reverse=reverse)[:k]
@@ -187,6 +197,7 @@ def pair_speakers(
     limit: int | None = None,
     strategy: PairingStrategy = PairingStrategy.SIMILAR,
     k: int = 2,
+    random_seed: int | None = 42,
 ) -> list[tuple[str, str]]:
     tlog(
         __name__,
@@ -200,11 +211,18 @@ def pair_speakers(
     source.limit_speakers(limit)
     target.limit_speakers(limit)
 
-    extract_all_speaker_embeddings(source)
-    extract_all_speaker_embeddings(target)
+    if strategy == PairingStrategy.RANDOM:
+        pairing_matrix = {
+            source_id: {target_id: 0.0 for target_id in target.speakers}
+            for source_id in source.speakers
+        }
+        pairs = k_fold_match(pairing_matrix, strategy, k=k, random_seed=random_seed)
+    else:
+        extract_all_speaker_embeddings(source)
+        extract_all_speaker_embeddings(target)
 
-    pairing_matrix = calculate_similarity(source, target)
-    pairs = k_fold_match(pairing_matrix, strategy, k=k)
+        pairing_matrix = calculate_similarity(source, target)
+        pairs = k_fold_match(pairing_matrix, strategy, k=k, random_seed=random_seed)
     tlog(
         __name__,
         "Pairing done | matrix %d x %d | %d (source, target) pairs",
@@ -219,7 +237,7 @@ def pair_speakers(
 if __name__ == "__main__":
     configure_logging()
 
-    split_csv_path = DATA_DIR / "Zwitserlood" / "zwitserlood_speakers_split.csv"
+    split_csv_path = OUTPUT_DIR / "zwitserlood_speakers_split.csv"
     train_speaker_ids = load_split_speaker_ids(split_csv_path, split="train")
     source = keep_speakers(ZwitserloodCorpus(use_cache=True), train_speaker_ids)
     tlog(
@@ -232,7 +250,7 @@ if __name__ == "__main__":
     pairs = pair_speakers(
         source=source,
         target=UltraSuiteCorpus(use_cache=True),
-        strategy=PairingStrategy.SIMILAR,
+        strategy=PairingStrategy.RANDOM,
         # limit=3
     )
 

@@ -16,7 +16,7 @@ if str(_repo_root) not in sys.path:
 class PairingStrategy(Enum):
     SIMILAR = 'similar'
     DISSIMILAR = 'dissimilar'
-    STRATIFIED = 'stratified'
+    RANDOM = 'random'
 
 class Disorder(Enum):
     developmental_language_disorder = 'developmental language disorder'
