@@ -1,0 +1,1230 @@
+2026-05-29 10:29:51,554 - speechbrain.utils.quirks - INFO - Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-05-29 10:29:51,554 - speechbrain.utils.quirks - INFO - Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-05-29 10:29:51,554 - speechbrain.core - INFO - Beginning experiment!
+2026-05-29 10:29:51,554 - speechbrain.core - INFO - Experiment folder: results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986
+2026-05-29 10:29:57,878 - speechbrain.utils.superpowers - DEBUG - annotated-types==0.7.0
+audioread==3.0.1
+certifi==2026.1.4
+cffi==2.0.0
+cfgv==3.4.0
+charset-normalizer==3.4.4
+click==8.1.7
+codespell==2.4.1
+coloredlogs==15.0.1
+decorator==5.1.1
+Distance==0.1.3
+distlib==0.4.0
+espnet-onnx==0.2.0
+espnet-tts-frontend==0.0.3
+exceptiongroup==1.3.1
+filelock==3.19.1
+flatbuffers==24.3.25
+fsspec==2025.10.0
+g2p-en==2.1.0
+hf-xet==1.2.0
+huggingface_hub==0.36.2
+humanfriendly==10.0
+HyperPyYAML==1.2.3
+identify==2.6.15
+idna==3.11
+importlib_metadata==7.1.0
+inflect==7.0.0
+iniconfig==2.1.0
+jaconv==0.3.4
+jamo==0.4.1
+Jinja2==3.1.6
+joblib==1.4.2
+lazy_loader==0.4
+librosa==0.10.2.post1
+llvmlite==0.42.0
+MarkupSafe==2.1.5
+mpmath==1.3.0
+msgpack==1.0.8
+networkx==3.2.1
+nltk==3.8.1
+nodeenv==1.10.0
+numba==0.59.1
+numpy==1.26.4
+nvidia-cublas-cu12==12.4.5.8
+nvidia-cuda-cupti-cu12==12.4.127
+nvidia-cuda-nvrtc-cu12==12.4.127
+nvidia-cuda-runtime-cu12==12.4.127
+nvidia-cudnn-cu12==9.1.0.70
+nvidia-cufft-cu12==11.2.1.3
+nvidia-curand-cu12==10.3.5.147
+nvidia-cusolver-cu12==11.6.1.9
+nvidia-cusparse-cu12==12.3.1.170
+nvidia-cusparselt-cu12==0.6.2
+nvidia-nccl-cu12==2.21.5
+nvidia-nvjitlink-cu12==12.4.127
+nvidia-nvtx-cu12==12.4.127
+onnxruntime==1.16.3
+packaging==24.0
+pandas==2.3.3
+pathspec==1.0.4
+platformdirs==4.2.2
+pluggy==1.6.0
+pooch==1.8.1
+pre_commit==4.3.0
+protobuf==5.27.0
+pycparser==2.23
+pydantic==2.7.2
+pydantic_core==2.18.3
+pypinyin==0.51.0
+pytest==7.4.0
+python-dateutil==2.9.0.post0
+pytz==2025.2
+PyYAML==6.0.1
+regex==2024.5.15
+requests==2.32.5
+ruamel.yaml==0.18.17
+ruamel.yaml.clib==0.2.15
+ruff==0.12.4
+safetensors==0.7.0
+scikit-learn==1.5.0
+scipy==1.13.1
+sentencepiece==0.2.0
+six==1.17.0
+soundfile==0.12.1
+soxr==0.3.7
+-e git+https://github.com/speechbrain/speechbrain.git@47d71953376db05d024acfd173a3d6005cf07478#egg=speechbrain
+sympy==1.13.1
+threadpoolctl==3.5.0
+tokenizers==0.15.2
+tomli==2.4.0
+torch==2.6.0
+torchaudio==2.6.0
+tqdm==4.67.3
+transformers==4.35.2
+triton==3.2.0
+typeguard==4.3.0
+typing_extensions==4.15.0
+tzdata==2025.3
+Unidecode==1.3.8
+urllib3==2.6.3
+virtualenv==20.37.0
+yamllint==1.35.1
+zipp==3.19.0
+
+
+2026-05-29 10:29:58,178 - speechbrain.utils.superpowers - DEBUG - 47d7195
+
+
+2026-05-29 10:29:58,406 - speechbrain.core - INFO - Run option precision from hparams is used
+2026-05-29 10:29:58,407 - speechbrain.core - INFO - Run option eval_precision from hparams is used
+2026-05-29 10:29:58,407 - speechbrain.core - INFO - Run option max_grad_norm from hparams is used
+2026-05-29 10:29:58,407 - speechbrain.core - INFO - Run option ckpt_interval_minutes from hparams is used
+2026-05-29 10:29:58,407 - speechbrain.core - INFO - Run option grad_accumulation_factor from hparams is used
+2026-05-29 10:29:59,611 - speechbrain.core - INFO - Gradscaler enabled: `True`
+2026-05-29 10:29:59,611 - speechbrain.core - INFO - Using training precision: `--precision=fp16`
+2026-05-29 10:29:59,611 - speechbrain.core - INFO - Using evaluation precision: `--eval_precision=fp16`
+2026-05-29 10:29:59,616 - speechbrain.core - INFO - ASR Model Statistics:
+* Total Number of Trainable Parameters: 28.8M
+* Total Number of Parameters: 1.6G
+* Trainable Parameters represent 1.8340% of the total size.
+2026-05-29 10:30:11,601 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2026-05-29 10:30:11,602 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
+2026-05-29 10:31:12,616 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-31-11+00
+2026-05-29 10:32:13,950 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-32-12+00
+2026-05-29 10:32:14,034 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-31-11+00
+2026-05-29 10:33:15,176 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-33-14+00
+2026-05-29 10:33:15,243 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-32-12+00
+2026-05-29 10:34:16,386 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-34-15+00
+2026-05-29 10:34:16,442 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-33-14+00
+2026-05-29 10:35:17,706 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-35-16+00
+2026-05-29 10:35:17,750 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-34-15+00
+2026-05-29 10:36:19,579 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-36-18+00
+2026-05-29 10:36:19,629 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-35-16+00
+2026-05-29 10:37:21,047 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-37-20+00
+2026-05-29 10:37:21,111 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-36-18+00
+2026-05-29 10:38:22,706 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-38-21+00
+2026-05-29 10:38:22,772 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-37-20+00
+2026-05-29 10:39:23,780 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-39-22+00
+2026-05-29 10:39:23,842 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-38-21+00
+2026-05-29 10:40:24,840 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-40-23+00
+2026-05-29 10:40:24,942 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-39-22+00
+2026-05-29 10:41:26,910 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-41-25+00
+2026-05-29 10:41:27,003 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-40-23+00
+2026-05-29 10:47:32,588 - speechbrain.utils.train_logger - INFO - epoch: 1, lr: 1.00e-05 - train loss: 2.71 - valid loss: 1.31, valid CER: 32.04, valid WER: 48.71
+2026-05-29 10:47:33,572 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-47-32+00
+2026-05-29 10:47:33,661 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-41-25+00
+2026-05-29 10:47:33,661 - speechbrain.utils.epoch_loop - INFO - Going into epoch 2
+2026-05-29 10:48:34,817 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-48-33+00
+2026-05-29 10:49:36,383 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-49-35+00
+2026-05-29 10:49:36,525 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-48-33+00
+2026-05-29 10:50:37,762 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-50-36+00
+2026-05-29 10:50:37,889 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-49-35+00
+2026-05-29 10:51:39,137 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-51-38+00
+2026-05-29 10:51:39,276 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-50-36+00
+2026-05-29 10:52:40,735 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-52-39+00
+2026-05-29 10:52:40,976 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-51-38+00
+2026-05-29 10:53:42,305 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-53-41+00
+2026-05-29 10:53:42,458 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-52-39+00
+2026-05-29 10:54:44,033 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-54-42+00
+2026-05-29 10:54:44,212 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-53-41+00
+2026-05-29 10:55:45,710 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-55-44+00
+2026-05-29 10:55:45,875 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-54-42+00
+2026-05-29 10:56:47,346 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-56-46+00
+2026-05-29 10:56:47,576 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-55-44+00
+2026-05-29 11:02:37,468 - speechbrain.utils.train_logger - INFO - epoch: 2, lr: 1.00e-05 - train loss: 2.59 - valid loss: 1.27, valid CER: 25.56, valid WER: 40.14
+2026-05-29 11:02:38,515 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-02-37+00
+2026-05-29 11:02:38,714 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-56-46+00
+2026-05-29 11:02:38,759 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+10-47-32+00
+2026-05-29 11:02:38,760 - speechbrain.utils.epoch_loop - INFO - Going into epoch 3
+2026-05-29 11:03:39,901 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-03-39+00
+2026-05-29 11:04:41,268 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-04-40+00
+2026-05-29 11:04:41,463 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-03-39+00
+2026-05-29 11:05:42,869 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-05-41+00
+2026-05-29 11:05:43,083 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-04-40+00
+2026-05-29 11:06:44,351 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-06-43+00
+2026-05-29 11:06:44,583 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-05-41+00
+2026-05-29 11:07:45,935 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-07-45+00
+2026-05-29 11:07:46,171 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-06-43+00
+2026-05-29 11:08:47,677 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-08-46+00
+2026-05-29 11:08:47,920 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-07-45+00
+2026-05-29 11:09:49,294 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-09-48+00
+2026-05-29 11:09:49,499 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-08-46+00
+2026-05-29 11:10:51,338 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-10-50+00
+2026-05-29 11:10:51,606 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-09-48+00
+2026-05-29 11:11:53,373 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-11-52+00
+2026-05-29 11:11:53,615 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-10-50+00
+2026-05-29 11:17:42,245 - speechbrain.utils.train_logger - INFO - epoch: 3, lr: 1.00e-05 - train loss: 2.40 - valid loss: 1.23, valid CER: 25.34, valid WER: 39.69
+2026-05-29 11:17:43,235 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-17-42+00
+2026-05-29 11:17:43,508 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-02-37+00
+2026-05-29 11:17:43,560 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-11-52+00
+2026-05-29 11:17:43,560 - speechbrain.utils.epoch_loop - INFO - Going into epoch 4
+2026-05-29 11:18:44,725 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-18-43+00
+2026-05-29 11:19:46,297 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-19-45+00
+2026-05-29 11:19:46,582 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-18-43+00
+2026-05-29 11:20:47,945 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-20-46+00
+2026-05-29 11:20:48,204 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-19-45+00
+2026-05-29 11:21:49,527 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-21-48+00
+2026-05-29 11:21:49,780 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-20-46+00
+2026-05-29 11:22:51,203 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-22-50+00
+2026-05-29 11:22:51,506 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-21-48+00
+2026-05-29 11:23:52,784 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-23-51+00
+2026-05-29 11:23:53,077 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-22-50+00
+2026-05-29 11:24:54,493 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-24-53+00
+2026-05-29 11:24:54,820 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-23-51+00
+2026-05-29 11:25:56,255 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-25-55+00
+2026-05-29 11:25:56,549 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-24-53+00
+2026-05-29 11:26:57,840 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-26-56+00
+2026-05-29 11:26:58,150 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-25-55+00
+2026-05-29 11:32:24,381 - speechbrain.utils.train_logger - INFO - epoch: 4, lr: 1.00e-05 - train loss: 2.21 - valid loss: 1.19, valid CER: 21.76, valid WER: 33.72
+2026-05-29 11:32:25,330 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-32-24+00
+2026-05-29 11:32:25,685 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-26-56+00
+2026-05-29 11:32:25,758 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-17-42+00
+2026-05-29 11:32:25,758 - speechbrain.utils.epoch_loop - INFO - Going into epoch 5
+2026-05-29 11:33:27,087 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-33-26+00
+2026-05-29 11:34:28,951 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-34-27+00
+2026-05-29 11:34:29,290 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-33-26+00
+2026-05-29 11:35:31,063 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-35-30+00
+2026-05-29 11:35:31,394 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-34-27+00
+2026-05-29 11:36:33,055 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-36-32+00
+2026-05-29 11:36:33,422 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-35-30+00
+2026-05-29 11:37:35,093 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-37-34+00
+2026-05-29 11:37:35,490 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-36-32+00
+2026-05-29 11:38:36,562 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-38-35+00
+2026-05-29 11:38:36,939 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-37-34+00
+2026-05-29 11:39:38,096 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-39-37+00
+2026-05-29 11:39:39,104 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-38-35+00
+2026-05-29 11:40:41,027 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-40-39+00
+2026-05-29 11:40:41,517 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-39-37+00
+2026-05-29 11:41:42,761 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-41-41+00
+2026-05-29 11:41:43,244 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-40-39+00
+2026-05-29 11:47:14,728 - speechbrain.utils.train_logger - INFO - epoch: 5, lr: 1.00e-05 - train loss: 2.08 - valid loss: 1.15, valid CER: 20.60, valid WER: 32.34
+2026-05-29 11:47:15,655 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-47-14+00
+2026-05-29 11:47:16,062 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-32-24+00
+2026-05-29 11:47:16,105 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-41-41+00
+2026-05-29 11:47:16,105 - speechbrain.utils.epoch_loop - INFO - Going into epoch 6
+2026-05-29 11:48:17,567 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-48-16+00
+2026-05-29 11:49:19,177 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-49-18+00
+2026-05-29 11:49:19,593 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-48-16+00
+2026-05-29 11:50:21,263 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-50-20+00
+2026-05-29 11:50:21,677 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-49-18+00
+2026-05-29 11:51:23,236 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-51-22+00
+2026-05-29 11:51:23,814 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-50-20+00
+2026-05-29 11:52:25,343 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-52-24+00
+2026-05-29 11:52:25,811 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-51-22+00
+2026-05-29 11:53:27,365 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-53-26+00
+2026-05-29 11:53:27,793 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-52-24+00
+2026-05-29 11:54:29,434 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-54-28+00
+2026-05-29 11:54:29,899 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-53-26+00
+2026-05-29 11:55:31,452 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-55-30+00
+2026-05-29 11:55:31,938 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-54-28+00
+2026-05-29 11:56:33,404 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-56-32+00
+2026-05-29 11:56:33,875 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-55-30+00
+2026-05-29 12:02:19,750 - speechbrain.utils.train_logger - INFO - epoch: 6, lr: 1.00e-05 - train loss: 1.98 - valid loss: 1.12, valid CER: 26.47, valid WER: 42.21
+2026-05-29 12:02:20,896 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-02-19+00
+2026-05-29 12:02:21,344 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-56-32+00
+2026-05-29 12:02:21,344 - speechbrain.utils.epoch_loop - INFO - Going into epoch 7
+2026-05-29 12:03:22,824 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-03-21+00
+2026-05-29 12:04:24,563 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-04-23+00
+2026-05-29 12:04:25,139 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-03-21+00
+2026-05-29 12:05:26,676 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-05-25+00
+2026-05-29 12:05:27,259 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-04-23+00
+2026-05-29 12:06:28,649 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-06-27+00
+2026-05-29 12:06:29,231 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-05-25+00
+2026-05-29 12:07:31,032 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-07-29+00
+2026-05-29 12:07:31,602 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-06-27+00
+2026-05-29 12:08:32,470 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-08-31+00
+2026-05-29 12:08:33,108 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-07-29+00
+2026-05-29 12:09:34,721 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-09-33+00
+2026-05-29 12:09:35,322 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-08-31+00
+2026-05-29 12:10:36,342 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-10-35+00
+2026-05-29 12:10:36,948 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-09-33+00
+2026-05-29 12:11:38,571 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-11-37+00
+2026-05-29 12:11:39,274 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-10-35+00
+2026-05-29 12:17:26,177 - speechbrain.utils.train_logger - INFO - epoch: 7, lr: 1.00e-05 - train loss: 1.90 - valid loss: 1.09, valid CER: 24.78, valid WER: 40.22
+2026-05-29 12:17:27,069 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-17-26+00
+2026-05-29 12:17:27,753 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-11-37+00
+2026-05-29 12:17:27,810 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-02-19+00
+2026-05-29 12:17:27,810 - speechbrain.utils.epoch_loop - INFO - Going into epoch 8
+2026-05-29 12:18:29,297 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-18-28+00
+2026-05-29 12:19:31,085 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-19-30+00
+2026-05-29 12:19:31,780 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-18-28+00
+2026-05-29 12:20:33,259 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-20-32+00
+2026-05-29 12:20:33,922 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-19-30+00
+2026-05-29 12:21:35,602 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-21-34+00
+2026-05-29 12:21:36,264 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-20-32+00
+2026-05-29 12:22:37,785 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-22-36+00
+2026-05-29 12:22:38,574 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-21-34+00
+2026-05-29 12:23:40,167 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-23-39+00
+2026-05-29 12:23:40,826 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-22-36+00
+2026-05-29 12:24:42,588 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-24-41+00
+2026-05-29 12:24:43,333 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-23-39+00
+2026-05-29 12:25:45,053 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-25-44+00
+2026-05-29 12:25:45,820 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-24-41+00
+2026-05-29 12:26:47,538 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-26-46+00
+2026-05-29 12:26:48,366 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-25-44+00
+2026-05-29 12:32:53,703 - speechbrain.utils.train_logger - INFO - epoch: 8, lr: 1.00e-05 - train loss: 1.84 - valid loss: 1.06, valid CER: 33.54, valid WER: 49.30
+2026-05-29 12:32:54,585 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-32-53+00
+2026-05-29 12:32:55,319 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-26-46+00
+2026-05-29 12:32:55,361 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-17-26+00
+2026-05-29 12:32:55,361 - speechbrain.utils.epoch_loop - INFO - Going into epoch 9
+2026-05-29 12:33:56,778 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-33-55+00
+2026-05-29 12:34:58,676 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-34-57+00
+2026-05-29 12:34:59,414 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-33-55+00
+2026-05-29 12:36:01,173 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-35-59+00
+2026-05-29 12:36:01,925 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-34-57+00
+2026-05-29 12:37:03,361 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-37-02+00
+2026-05-29 12:37:04,120 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-35-59+00
+2026-05-29 12:38:05,572 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-38-04+00
+2026-05-29 12:38:06,353 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-37-02+00
+2026-05-29 12:39:08,081 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-39-07+00
+2026-05-29 12:39:08,850 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-38-04+00
+2026-05-29 12:40:10,469 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-40-09+00
+2026-05-29 12:40:11,234 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-39-07+00
+2026-05-29 12:41:12,745 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-41-11+00
+2026-05-29 12:41:13,549 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-40-09+00
+2026-05-29 12:42:15,100 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-42-14+00
+2026-05-29 12:42:15,960 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-41-11+00
+2026-05-29 12:48:41,697 - speechbrain.utils.train_logger - INFO - epoch: 9, lr: 1.00e-05 - train loss: 1.78 - valid loss: 1.04, valid CER: 33.98, valid WER: 49.83
+2026-05-29 12:48:42,579 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-48-41+00
+2026-05-29 12:48:43,438 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-42-14+00
+2026-05-29 12:48:43,490 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-32-53+00
+2026-05-29 12:48:43,491 - speechbrain.utils.epoch_loop - INFO - Going into epoch 10
+2026-05-29 12:49:44,849 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-49-43+00
+2026-05-29 12:50:46,993 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-50-45+00
+2026-05-29 12:50:47,802 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-49-43+00
+2026-05-29 12:51:49,273 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-51-48+00
+2026-05-29 12:51:50,129 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-50-45+00
+2026-05-29 12:52:51,556 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-52-50+00
+2026-05-29 12:52:52,412 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-51-48+00
+2026-05-29 12:53:53,989 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-53-53+00
+2026-05-29 12:53:54,856 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-52-50+00
+2026-05-29 12:54:56,371 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-54-55+00
+2026-05-29 12:54:57,250 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-53-53+00
+2026-05-29 12:55:58,865 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-55-57+00
+2026-05-29 12:55:59,720 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-54-55+00
+2026-05-29 12:57:01,403 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-57-00+00
+2026-05-29 12:57:02,339 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-55-57+00
+2026-05-29 12:58:03,354 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-58-02+00
+2026-05-29 12:58:04,287 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-57-00+00
+2026-05-29 13:04:36,957 - speechbrain.utils.train_logger - INFO - epoch: 10, lr: 1.00e-05 - train loss: 1.74 - valid loss: 1.02, valid CER: 34.31, valid WER: 54.42
+2026-05-29 13:04:37,885 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-04-36+00
+2026-05-29 13:04:38,839 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-58-02+00
+2026-05-29 13:04:38,896 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+12-48-41+00
+2026-05-29 13:04:38,896 - speechbrain.utils.epoch_loop - INFO - Going into epoch 11
+2026-05-29 13:05:39,987 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-05-39+00
+2026-05-29 13:06:42,323 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-06-41+00
+2026-05-29 13:06:43,276 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-05-39+00
+2026-05-29 13:07:45,200 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-07-44+00
+2026-05-29 13:07:46,208 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-06-41+00
+2026-05-29 13:08:47,226 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-08-46+00
+2026-05-29 13:08:48,290 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-07-44+00
+2026-05-29 13:09:49,478 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-09-48+00
+2026-05-29 13:09:50,640 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-08-46+00
+2026-05-29 13:10:51,859 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-10-50+00
+2026-05-29 13:10:52,820 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-09-48+00
+2026-05-29 13:11:53,840 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-11-52+00
+2026-05-29 13:11:54,805 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-10-50+00
+2026-05-29 13:12:55,842 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-12-54+00
+2026-05-29 13:12:56,888 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-11-52+00
+2026-05-29 13:13:58,010 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-13-57+00
+2026-05-29 13:13:59,014 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-12-54+00
+2026-05-29 13:20:35,768 - speechbrain.utils.train_logger - INFO - epoch: 11, lr: 1.00e-05 - train loss: 1.70 - valid loss: 1.00, valid CER: 31.43, valid WER: 47.76
+2026-05-29 13:20:36,759 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-20-35+00
+2026-05-29 13:20:37,858 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-04-36+00
+2026-05-29 13:20:37,902 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-13-57+00
+2026-05-29 13:20:37,903 - speechbrain.utils.epoch_loop - INFO - Going into epoch 12
+2026-05-29 13:21:39,552 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-21-38+00
+2026-05-29 13:22:41,377 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-22-40+00
+2026-05-29 13:22:42,358 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-21-38+00
+2026-05-29 13:23:43,252 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-23-42+00
+2026-05-29 13:23:44,319 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-22-40+00
+2026-05-29 13:24:45,969 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-24-45+00
+2026-05-29 13:24:47,078 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-23-42+00
+2026-05-29 13:25:48,116 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-25-47+00
+2026-05-29 13:25:49,108 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-24-45+00
+2026-05-29 13:26:50,126 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-26-49+00
+2026-05-29 13:26:51,209 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-25-47+00
+2026-05-29 13:27:52,571 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-27-51+00
+2026-05-29 13:27:53,622 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-26-49+00
+2026-05-29 13:28:54,782 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-28-53+00
+2026-05-29 13:28:55,860 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-27-51+00
+2026-05-29 13:29:56,920 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-29-56+00
+2026-05-29 13:29:58,071 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-28-53+00
+2026-05-29 13:36:12,922 - speechbrain.utils.train_logger - INFO - epoch: 12, lr: 1.00e-05 - train loss: 1.66 - valid loss: 9.83e-01, valid CER: 27.93, valid WER: 49.38
+2026-05-29 13:36:13,888 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-36-12+00
+2026-05-29 13:36:14,974 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-20-35+00
+2026-05-29 13:36:15,017 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-29-56+00
+2026-05-29 13:36:15,018 - speechbrain.utils.epoch_loop - INFO - Going into epoch 13
+2026-05-29 13:37:16,746 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-37-15+00
+2026-05-29 13:38:19,227 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-38-18+00
+2026-05-29 13:38:20,321 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-37-15+00
+2026-05-29 13:39:21,860 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-39-20+00
+2026-05-29 13:39:22,945 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-38-18+00
+2026-05-29 13:40:24,805 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-40-23+00
+2026-05-29 13:40:26,113 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-39-20+00
+2026-05-29 13:41:27,062 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-41-26+00
+2026-05-29 13:41:28,190 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-40-23+00
+2026-05-29 13:42:29,123 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-42-28+00
+2026-05-29 13:42:30,261 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-41-26+00
+2026-05-29 13:43:31,379 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-43-30+00
+2026-05-29 13:43:32,597 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-42-28+00
+2026-05-29 13:44:33,539 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-44-32+00
+2026-05-29 13:44:34,730 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-43-30+00
+2026-05-29 13:45:35,843 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-45-34+00
+2026-05-29 13:45:37,013 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-44-32+00
+2026-05-29 13:52:12,986 - speechbrain.utils.train_logger - INFO - epoch: 13, lr: 1.00e-05 - train loss: 1.62 - valid loss: 9.64e-01, valid CER: 32.45, valid WER: 59.83
+2026-05-29 13:52:13,881 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-52-12+00
+2026-05-29 13:52:15,107 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-36-12+00
+2026-05-29 13:52:15,141 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-45-34+00
+2026-05-29 13:52:15,141 - speechbrain.utils.epoch_loop - INFO - Going into epoch 14
+2026-05-29 13:53:16,734 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-53-15+00
+2026-05-29 13:54:19,459 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-54-18+00
+2026-05-29 13:54:20,743 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-53-15+00
+2026-05-29 13:55:21,750 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-55-20+00
+2026-05-29 13:55:22,941 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-54-18+00
+2026-05-29 13:56:24,054 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-56-23+00
+2026-05-29 13:56:25,351 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-55-20+00
+2026-05-29 13:57:26,430 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-57-25+00
+2026-05-29 13:57:27,665 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-56-23+00
+2026-05-29 13:58:28,645 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-58-27+00
+2026-05-29 13:58:29,999 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-57-25+00
+2026-05-29 13:59:31,679 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-59-30+00
+2026-05-29 13:59:32,925 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-58-27+00
+2026-05-29 14:00:34,334 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-00-33+00
+2026-05-29 14:00:35,524 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-59-30+00
+2026-05-29 14:01:36,579 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-01-35+00
+2026-05-29 14:01:37,826 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-00-33+00
+2026-05-29 14:08:11,991 - speechbrain.utils.train_logger - INFO - epoch: 14, lr: 1.00e-05 - train loss: 1.59 - valid loss: 9.48e-01, valid CER: 32.12, valid WER: 59.35
+2026-05-29 14:08:12,901 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-08-11+00
+2026-05-29 14:08:14,186 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-01-35+00
+2026-05-29 14:08:14,226 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+13-52-12+00
+2026-05-29 14:08:14,226 - speechbrain.utils.epoch_loop - INFO - Going into epoch 15
+2026-05-29 14:09:15,799 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-09-14+00
+2026-05-29 14:10:18,699 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-10-17+00
+2026-05-29 14:10:20,179 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-09-14+00
+2026-05-29 14:11:21,757 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-11-20+00
+2026-05-29 14:11:23,009 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-10-17+00
+2026-05-29 14:12:24,713 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-12-23+00
+2026-05-29 14:12:26,058 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-11-20+00
+2026-05-29 14:13:27,567 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-13-26+00
+2026-05-29 14:13:28,853 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-12-23+00
+2026-05-29 14:14:30,587 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-14-29+00
+2026-05-29 14:14:31,912 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-13-26+00
+2026-05-29 14:15:33,031 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-15-32+00
+2026-05-29 14:15:34,377 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-14-29+00
+2026-05-29 14:16:36,106 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-16-35+00
+2026-05-29 14:16:37,359 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-15-32+00
+2026-05-29 14:17:39,069 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-17-38+00
+2026-05-29 14:17:40,437 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-16-35+00
+2026-05-29 14:23:50,389 - speechbrain.utils.train_logger - INFO - epoch: 15, lr: 1.00e-05 - train loss: 1.56 - valid loss: 9.34e-01, valid CER: 28.15, valid WER: 49.24
+2026-05-29 14:23:51,435 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-23-50+00
+2026-05-29 14:23:52,756 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-08-11+00
+2026-05-29 14:23:52,794 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-17-38+00
+2026-05-29 14:23:52,794 - speechbrain.utils.epoch_loop - INFO - Going into epoch 16
+2026-05-29 14:24:54,159 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-24-53+00
+2026-05-29 14:25:56,746 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-25-55+00
+2026-05-29 14:25:58,223 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-24-53+00
+2026-05-29 14:26:59,814 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-26-58+00
+2026-05-29 14:27:01,262 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-25-55+00
+2026-05-29 14:28:02,936 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-28-01+00
+2026-05-29 14:28:04,403 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-26-58+00
+2026-05-29 14:29:06,009 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-29-05+00
+2026-05-29 14:29:07,335 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-28-01+00
+2026-05-29 14:30:08,900 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-30-07+00
+2026-05-29 14:30:10,406 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-29-05+00
+2026-05-29 14:31:12,102 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-31-11+00
+2026-05-29 14:31:13,551 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-30-07+00
+2026-05-29 14:32:15,126 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-32-14+00
+2026-05-29 14:32:16,481 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-31-11+00
+2026-05-29 14:33:18,152 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-33-17+00
+2026-05-29 14:33:19,670 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-32-14+00
+2026-05-29 14:40:05,698 - speechbrain.utils.train_logger - INFO - epoch: 16, lr: 1.00e-05 - train loss: 1.53 - valid loss: 9.22e-01, valid CER: 41.35, valid WER: 65.56
+2026-05-29 14:40:06,618 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-40-05+00
+2026-05-29 14:40:08,035 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-23-50+00
+2026-05-29 14:40:08,069 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-33-17+00
+2026-05-29 14:40:08,069 - speechbrain.utils.epoch_loop - INFO - Going into epoch 17
+2026-05-29 14:41:09,455 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-41-08+00
+2026-05-29 14:42:12,097 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-42-11+00
+2026-05-29 14:42:13,744 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-41-08+00
+2026-05-29 14:43:15,386 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-43-14+00
+2026-05-29 14:43:16,922 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-42-11+00
+2026-05-29 14:44:18,753 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-44-17+00
+2026-05-29 14:44:20,397 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-43-14+00
+2026-05-29 14:45:22,026 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-45-21+00
+2026-05-29 14:45:23,460 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-44-17+00
+2026-05-29 14:46:24,935 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-46-24+00
+2026-05-29 14:46:26,516 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-45-21+00
+2026-05-29 14:47:28,066 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-47-27+00
+2026-05-29 14:47:29,633 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-46-24+00
+2026-05-29 14:48:31,251 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-48-30+00
+2026-05-29 14:48:32,734 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-47-27+00
+2026-05-29 14:49:34,448 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-49-33+00
+2026-05-29 14:49:36,051 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-48-30+00
+2026-05-29 14:56:02,417 - speechbrain.utils.train_logger - INFO - epoch: 17, lr: 1.00e-05 - train loss: 1.51 - valid loss: 9.11e-01, valid CER: 35.46, valid WER: 56.33
+2026-05-29 14:56:03,525 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-56-02+00
+2026-05-29 14:56:05,182 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-49-33+00
+2026-05-29 14:56:05,235 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-40-05+00
+2026-05-29 14:56:05,235 - speechbrain.utils.epoch_loop - INFO - Going into epoch 18
+2026-05-29 14:57:06,534 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-57-05+00
+2026-05-29 14:58:09,196 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-58-08+00
+2026-05-29 14:58:11,091 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-57-05+00
+2026-05-29 14:59:12,792 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-59-11+00
+2026-05-29 14:59:14,341 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-58-08+00
+2026-05-29 15:00:15,800 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-00-14+00
+2026-05-29 15:00:17,759 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-59-11+00
+2026-05-29 15:01:19,288 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-01-18+00
+2026-05-29 15:01:21,129 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-00-14+00
+2026-05-29 15:02:22,724 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-02-21+00
+2026-05-29 15:02:24,300 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-01-18+00
+2026-05-29 15:03:25,933 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-03-25+00
+2026-05-29 15:03:27,591 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-02-21+00
+2026-05-29 15:04:29,049 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-04-28+00
+2026-05-29 15:04:30,613 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-03-25+00
+2026-05-29 15:05:32,339 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-05-31+00
+2026-05-29 15:05:33,920 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-04-28+00
+2026-05-29 15:12:00,483 - speechbrain.utils.train_logger - INFO - epoch: 18, lr: 1.00e-05 - train loss: 1.49 - valid loss: 9.03e-01, valid CER: 33.68, valid WER: 49.75
+2026-05-29 15:12:01,399 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-12-00+00
+2026-05-29 15:12:03,150 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-05-31+00
+2026-05-29 15:12:03,203 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+14-56-02+00
+2026-05-29 15:12:03,203 - speechbrain.utils.epoch_loop - INFO - Going into epoch 19
+2026-05-29 15:13:04,546 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-13-03+00
+2026-05-29 15:14:07,417 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-14-06+00
+2026-05-29 15:14:09,078 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-13-03+00
+2026-05-29 15:15:10,627 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-15-09+00
+2026-05-29 15:15:12,368 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-14-06+00
+2026-05-29 15:16:13,983 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-16-12+00
+2026-05-29 15:16:15,745 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-15-09+00
+2026-05-29 15:17:17,323 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-17-16+00
+2026-05-29 15:17:19,245 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-16-12+00
+2026-05-29 15:18:20,848 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-18-19+00
+2026-05-29 15:18:22,510 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-17-16+00
+2026-05-29 15:19:24,123 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-19-23+00
+2026-05-29 15:19:25,899 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-18-19+00
+2026-05-29 15:20:27,615 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-20-26+00
+2026-05-29 15:20:29,417 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-19-23+00
+2026-05-29 15:21:31,057 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-21-30+00
+2026-05-29 15:21:32,789 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-20-26+00
+2026-05-29 15:27:58,175 - speechbrain.utils.train_logger - INFO - epoch: 19, lr: 1.00e-05 - train loss: 1.47 - valid loss: 8.95e-01, valid CER: 33.66, valid WER: 49.75
+2026-05-29 15:27:59,105 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-27-58+00
+2026-05-29 15:28:00,840 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-21-30+00
+2026-05-29 15:28:00,890 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-12-00+00
+2026-05-29 15:28:00,891 - speechbrain.utils.epoch_loop - INFO - Going into epoch 20
+2026-05-29 15:29:02,328 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-29-01+00
+2026-05-29 15:30:05,144 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-30-04+00
+2026-05-29 15:30:06,823 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-29-01+00
+2026-05-29 15:31:08,310 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-31-07+00
+2026-05-29 15:31:10,174 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-30-04+00
+2026-05-29 15:32:11,700 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-32-10+00
+2026-05-29 15:32:13,525 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-31-07+00
+2026-05-29 15:33:15,016 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-33-14+00
+2026-05-29 15:33:16,819 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-32-10+00
+2026-05-29 15:34:18,697 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-34-17+00
+2026-05-29 15:34:20,628 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-33-14+00
+2026-05-29 15:35:22,303 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-35-21+00
+2026-05-29 15:35:24,268 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-34-17+00
+2026-05-29 15:36:25,981 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-36-25+00
+2026-05-29 15:36:27,863 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-35-21+00
+2026-05-29 15:37:29,567 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-37-28+00
+2026-05-29 15:37:31,344 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-36-25+00
+2026-05-29 15:43:59,659 - speechbrain.utils.train_logger - INFO - epoch: 20, lr: 1.00e-05 - train loss: 1.45 - valid loss: 8.88e-01, valid CER: 34.20, valid WER: 49.38
+2026-05-29 15:44:00,607 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-43-59+00
+2026-05-29 15:44:02,388 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-27-58+00
+2026-05-29 15:44:02,429 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-37-28+00
+2026-05-29 15:44:02,429 - speechbrain.utils.epoch_loop - INFO - Going into epoch 21
+2026-05-29 15:45:03,892 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-45-02+00
+2026-05-29 15:46:06,880 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-46-05+00
+2026-05-29 15:46:08,800 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-45-02+00
+2026-05-29 15:47:10,263 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-47-09+00
+2026-05-29 15:47:15,710 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-46-05+00
+2026-05-29 15:48:17,286 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-48-16+00
+2026-05-29 15:48:19,207 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-47-09+00
+2026-05-29 15:49:20,667 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-49-19+00
+2026-05-29 15:49:22,508 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-48-16+00
+2026-05-29 15:50:23,935 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-50-22+00
+2026-05-29 15:50:25,987 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-49-19+00
+2026-05-29 15:51:27,323 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-51-26+00
+2026-05-29 15:51:29,105 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-50-22+00
+2026-05-29 15:52:30,217 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-52-29+00
+2026-05-29 15:52:32,099 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-51-26+00
+2026-05-29 15:53:33,377 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-53-32+00
+2026-05-29 15:53:35,406 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-52-29+00
+2026-05-29 15:59:59,798 - speechbrain.utils.train_logger - INFO - epoch: 21, lr: 1.00e-05 - train loss: 1.43 - valid loss: 8.82e-01, valid CER: 33.92, valid WER: 49.01
+2026-05-29 16:00:00,670 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-59-59+00
+2026-05-29 16:00:02,520 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-53-32+00
+2026-05-29 16:00:02,564 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-43-59+00
+2026-05-29 16:00:02,564 - speechbrain.utils.epoch_loop - INFO - Going into epoch 22
+2026-05-29 16:01:03,768 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-01-02+00
+2026-05-29 16:02:06,642 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-02-05+00
+2026-05-29 16:02:08,748 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-01-02+00
+2026-05-29 16:03:09,972 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-03-09+00
+2026-05-29 16:03:11,767 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-02-05+00
+2026-05-29 16:04:13,302 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-04-12+00
+2026-05-29 16:04:15,298 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-03-09+00
+2026-05-29 16:05:16,537 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-05-15+00
+2026-05-29 16:05:18,324 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-04-12+00
+2026-05-29 16:06:19,677 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-06-18+00
+2026-05-29 16:06:21,659 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-05-15+00
+2026-05-29 16:07:23,236 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-07-22+00
+2026-05-29 16:07:25,325 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-06-18+00
+2026-05-29 16:08:26,724 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-08-25+00
+2026-05-29 16:08:28,749 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-07-22+00
+2026-05-29 16:09:30,089 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-09-29+00
+2026-05-29 16:09:32,050 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-08-25+00
+2026-05-29 16:15:13,699 - speechbrain.utils.train_logger - INFO - epoch: 22, lr: 1.00e-05 - train loss: 1.41 - valid loss: 8.76e-01, valid CER: 21.57, valid WER: 31.60
+2026-05-29 16:15:14,588 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-15-13+00
+2026-05-29 16:15:16,522 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+15-59-59+00
+2026-05-29 16:15:16,573 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+11-47-14+00
+2026-05-29 16:15:16,631 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-09-29+00
+2026-05-29 16:15:16,631 - speechbrain.utils.epoch_loop - INFO - Going into epoch 23
+2026-05-29 16:16:17,855 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-16-16+00
+2026-05-29 16:17:20,039 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-17-19+00
+2026-05-29 16:17:21,694 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-16-16+00
+2026-05-29 16:18:22,972 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-18-22+00
+2026-05-29 16:18:24,605 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-17-19+00
+2026-05-29 16:19:25,995 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-19-25+00
+2026-05-29 16:19:27,446 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-18-22+00
+2026-05-29 16:20:28,690 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-20-27+00
+2026-05-29 16:20:30,279 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-19-25+00
+2026-05-29 16:21:31,839 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-21-30+00
+2026-05-29 16:21:33,462 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-20-27+00
+2026-05-29 16:22:34,886 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-22-33+00
+2026-05-29 16:22:36,470 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-21-30+00
+2026-05-29 16:23:38,033 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-23-36+00
+2026-05-29 16:23:39,558 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-22-33+00
+2026-05-29 16:24:40,972 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-24-39+00
+2026-05-29 16:24:42,479 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-23-36+00
+2026-05-29 16:30:24,156 - speechbrain.utils.train_logger - INFO - epoch: 23, lr: 1.00e-05 - train loss: 1.39 - valid loss: 8.71e-01, valid CER: 21.32, valid WER: 31.39
+2026-05-29 16:30:25,053 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-30-24+00
+2026-05-29 16:30:26,582 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-15-13+00
+2026-05-29 16:30:26,634 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-24-39+00
+2026-05-29 16:30:26,634 - speechbrain.utils.epoch_loop - INFO - Going into epoch 24
+2026-05-29 16:31:27,837 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-31-26+00
+2026-05-29 16:32:30,372 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-32-29+00
+2026-05-29 16:32:32,145 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-31-26+00
+2026-05-29 16:33:33,308 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-33-32+00
+2026-05-29 16:33:34,898 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-32-29+00
+2026-05-29 16:34:36,167 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-34-35+00
+2026-05-29 16:34:37,808 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-33-32+00
+2026-05-29 16:35:39,261 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-35-38+00
+2026-05-29 16:35:40,783 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-34-35+00
+2026-05-29 16:36:42,131 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-36-41+00
+2026-05-29 16:36:43,826 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-35-38+00
+2026-05-29 16:37:45,939 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-37-44+00
+2026-05-29 16:37:47,579 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-36-41+00
+2026-05-29 16:38:48,961 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-38-48+00
+2026-05-29 16:38:50,477 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-37-44+00
+2026-05-29 16:39:51,800 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-39-50+00
+2026-05-29 16:39:53,458 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-38-48+00
+2026-05-29 16:45:35,359 - speechbrain.utils.train_logger - INFO - epoch: 24, lr: 1.00e-05 - train loss: 1.37 - valid loss: 8.66e-01, valid CER: 21.30, valid WER: 31.36
+2026-05-29 16:45:36,334 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-45-35+00
+2026-05-29 16:45:38,026 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-39-50+00
+2026-05-29 16:45:38,067 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-30-24+00
+2026-05-29 16:45:38,067 - speechbrain.utils.epoch_loop - INFO - Going into epoch 25
+2026-05-29 16:46:39,336 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-46-38+00
+2026-05-29 16:47:41,607 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-47-40+00
+2026-05-29 16:47:43,343 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-46-38+00
+2026-05-29 16:48:44,695 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-48-43+00
+2026-05-29 16:48:46,384 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-47-40+00
+2026-05-29 16:49:47,645 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-49-46+00
+2026-05-29 16:49:49,210 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-48-43+00
+2026-05-29 16:50:50,505 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-50-49+00
+2026-05-29 16:50:52,155 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-49-46+00
+2026-05-29 16:51:53,712 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-51-52+00
+2026-05-29 16:51:55,343 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-50-49+00
+2026-05-29 16:52:56,613 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-52-55+00
+2026-05-29 16:52:58,248 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-51-52+00
+2026-05-29 16:53:59,614 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-53-58+00
+2026-05-29 16:54:01,424 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-52-55+00
+2026-05-29 16:55:02,970 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-55-02+00
+2026-05-29 16:55:04,589 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-53-58+00
+2026-05-29 17:00:48,838 - speechbrain.utils.train_logger - INFO - epoch: 25, lr: 1.00e-05 - train loss: 1.36 - valid loss: 8.62e-01, valid CER: 21.21, valid WER: 31.18
+2026-05-29 17:00:49,724 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-00-48+00
+2026-05-29 17:00:51,450 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-45-35+00
+2026-05-29 17:00:51,496 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+16-55-02+00
+2026-05-29 17:00:51,496 - speechbrain.utils.epoch_loop - INFO - Going into epoch 26
+2026-05-29 17:01:52,918 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-01-52+00
+2026-05-29 17:02:55,417 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-02-54+00
+2026-05-29 17:02:57,112 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-01-52+00
+2026-05-29 17:03:58,423 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-03-57+00
+2026-05-29 17:04:00,082 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-02-54+00
+2026-05-29 17:05:01,681 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-05-00+00
+2026-05-29 17:05:03,536 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-03-57+00
+2026-05-29 17:06:05,092 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-06-04+00
+2026-05-29 17:06:06,973 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-05-00+00
+2026-05-29 17:07:08,351 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-07-07+00
+2026-05-29 17:07:10,166 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-06-04+00
+2026-05-29 17:08:11,621 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-08-10+00
+2026-05-29 17:08:13,476 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-07-07+00
+2026-05-29 17:09:14,734 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-09-13+00
+2026-05-29 17:09:16,405 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-08-10+00
+2026-05-29 17:10:18,099 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-10-16+00
+2026-05-29 17:10:21,146 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-09-13+00
+2026-05-29 17:16:04,090 - speechbrain.utils.train_logger - INFO - epoch: 26, lr: 1.00e-05 - train loss: 1.34 - valid loss: 8.58e-01, valid CER: 21.19, valid WER: 31.12
+2026-05-29 17:16:04,963 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-16-04+00
+2026-05-29 17:16:06,820 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-00-48+00
+2026-05-29 17:16:06,846 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-10-16+00
+2026-05-29 17:16:06,847 - speechbrain.utils.epoch_loop - INFO - Going into epoch 27
+2026-05-29 17:17:07,993 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-17-07+00
+2026-05-29 17:18:10,288 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-18-09+00
+2026-05-29 17:18:12,090 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-17-07+00
+2026-05-29 17:19:13,311 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-19-12+00
+2026-05-29 17:19:15,223 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-18-09+00
+2026-05-29 17:20:16,593 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-20-15+00
+2026-05-29 17:20:18,304 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-19-12+00
+2026-05-29 17:21:19,499 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-21-18+00
+2026-05-29 17:21:21,300 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-20-15+00
+2026-05-29 17:22:22,735 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-22-21+00
+2026-05-29 17:22:24,460 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-21-18+00
+2026-05-29 17:23:25,804 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-23-24+00
+2026-05-29 17:23:27,976 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-22-21+00
+2026-05-29 17:24:29,360 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-24-28+00
+2026-05-29 17:24:31,352 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-23-24+00
+2026-05-29 17:25:32,826 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-25-31+00
+2026-05-29 17:25:34,640 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-24-28+00
+2026-05-29 17:31:16,141 - speechbrain.utils.train_logger - INFO - epoch: 27, lr: 1.00e-05 - train loss: 1.32 - valid loss: 8.54e-01, valid CER: 21.02, valid WER: 30.78
+2026-05-29 17:31:17,061 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-31-16+00
+2026-05-29 17:31:18,842 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-25-31+00
+2026-05-29 17:31:18,898 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-16-04+00
+2026-05-29 17:31:18,898 - speechbrain.utils.epoch_loop - INFO - Going into epoch 28
+2026-05-29 17:32:19,941 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-32-18+00
+2026-05-29 17:33:22,416 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-33-21+00
+2026-05-29 17:33:24,173 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-32-18+00
+2026-05-29 17:34:25,367 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-34-24+00
+2026-05-29 17:34:27,595 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-33-21+00
+2026-05-29 17:35:28,990 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-35-27+00
+2026-05-29 17:35:31,281 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-34-24+00
+2026-05-29 17:36:32,471 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-36-31+00
+2026-05-29 17:36:34,257 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-35-27+00
+2026-05-29 17:37:35,619 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-37-34+00
+2026-05-29 17:37:37,706 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-36-31+00
+2026-05-29 17:38:39,140 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-38-38+00
+2026-05-29 17:38:40,870 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-37-34+00
+2026-05-29 17:39:42,182 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-39-41+00
+2026-05-29 17:39:44,086 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-38-38+00
+2026-05-29 17:40:45,427 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-40-44+00
+2026-05-29 17:40:47,377 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-39-41+00
+2026-05-29 17:46:28,209 - speechbrain.utils.train_logger - INFO - epoch: 28, lr: 1.00e-05 - train loss: 1.31 - valid loss: 8.51e-01, valid CER: 21.04, valid WER: 30.91
+2026-05-29 17:46:29,122 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-46-28+00
+2026-05-29 17:46:31,118 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-40-44+00
+2026-05-29 17:46:31,118 - speechbrain.utils.epoch_loop - INFO - Going into epoch 29
+2026-05-29 17:47:32,246 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-47-31+00
+2026-05-29 17:48:35,271 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-48-34+00
+2026-05-29 17:48:38,245 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-47-31+00
+2026-05-29 17:49:39,610 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-49-38+00
+2026-05-29 17:49:42,188 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-48-34+00
+2026-05-29 17:50:43,500 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-50-42+00
+2026-05-29 17:50:46,340 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-49-38+00
+2026-05-29 17:51:47,716 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-51-46+00
+2026-05-29 17:51:50,519 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-50-42+00
+2026-05-29 17:52:51,896 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-52-50+00
+2026-05-29 17:52:54,401 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-51-46+00
+2026-05-29 17:53:55,714 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-53-54+00
+2026-05-29 17:53:58,264 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-52-50+00
+2026-05-29 17:54:59,747 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-54-58+00
+2026-05-29 17:55:02,222 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-53-54+00
+2026-05-29 17:56:03,669 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-56-02+00
+2026-05-29 17:56:06,362 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-54-58+00
+2026-05-29 18:01:49,685 - speechbrain.utils.train_logger - INFO - epoch: 29, lr: 1.00e-05 - train loss: 1.29 - valid loss: 8.47e-01, valid CER: 21.42, valid WER: 31.20
+2026-05-29 18:01:50,606 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-01-49+00
+2026-05-29 18:01:53,271 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-56-02+00
+2026-05-29 18:01:53,334 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-46-28+00
+2026-05-29 18:01:53,335 - speechbrain.utils.epoch_loop - INFO - Going into epoch 30
+2026-05-29 18:02:54,414 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-02-53+00
+2026-05-29 18:03:57,555 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-03-56+00
+2026-05-29 18:04:00,066 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-02-53+00
+2026-05-29 18:05:01,733 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-05-00+00
+2026-05-29 18:05:04,603 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-03-56+00
+2026-05-29 18:06:05,468 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-06-04+00
+2026-05-29 18:06:07,950 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-05-00+00
+2026-05-29 18:07:08,949 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-07-08+00
+2026-05-29 18:07:11,667 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-06-04+00
+2026-05-29 18:08:12,795 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-08-11+00
+2026-05-29 18:08:15,466 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-07-08+00
+2026-05-29 18:09:16,479 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-09-15+00
+2026-05-29 18:09:19,117 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-08-11+00
+2026-05-29 18:10:20,448 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-10-19+00
+2026-05-29 18:10:23,214 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-09-15+00
+2026-05-29 18:11:24,193 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-11-23+00
+2026-05-29 18:11:26,770 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-10-19+00
+2026-05-29 18:17:03,876 - speechbrain.utils.train_logger - INFO - epoch: 30, lr: 1.00e-05 - train loss: 1.28 - valid loss: 8.44e-01, valid CER: 21.61, valid WER: 31.31
+2026-05-29 18:17:04,760 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-17-03+00
+2026-05-29 18:17:07,343 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-01-49+00
+2026-05-29 18:17:07,389 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-11-23+00
+2026-05-29 18:17:07,389 - speechbrain.utils.epoch_loop - INFO - Going into epoch 31
+2026-05-29 18:18:08,944 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-18-08+00
+2026-05-29 18:19:12,731 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-19-11+00
+2026-05-29 18:19:15,574 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-18-08+00
+2026-05-29 18:20:17,273 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-20-16+00
+2026-05-29 18:20:19,921 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-19-11+00
+2026-05-29 18:21:20,861 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-21-19+00
+2026-05-29 18:21:23,543 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-20-16+00
+2026-05-29 18:22:24,549 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-22-23+00
+2026-05-29 18:22:27,117 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-21-19+00
+2026-05-29 18:23:28,168 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-23-27+00
+2026-05-29 18:23:30,879 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-22-23+00
+2026-05-29 18:24:31,938 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-24-31+00
+2026-05-29 18:24:34,772 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-23-27+00
+2026-05-29 18:25:35,773 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-25-34+00
+2026-05-29 18:25:38,349 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-24-31+00
+2026-05-29 18:26:39,518 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-26-38+00
+2026-05-29 18:26:42,369 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-25-34+00
+2026-05-29 18:32:17,786 - speechbrain.utils.train_logger - INFO - epoch: 31, lr: 1.00e-05 - train loss: 1.26 - valid loss: 8.42e-01, valid CER: 21.46, valid WER: 31.20
+2026-05-29 18:32:18,705 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-32-17+00
+2026-05-29 18:32:21,442 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-17-03+00
+2026-05-29 18:32:21,489 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-26-38+00
+2026-05-29 18:32:21,489 - speechbrain.utils.epoch_loop - INFO - Going into epoch 32
+2026-05-29 18:33:22,947 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-33-22+00
+2026-05-29 18:34:26,536 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-34-25+00
+2026-05-29 18:34:29,356 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-33-22+00
+2026-05-29 18:35:30,262 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-35-29+00
+2026-05-29 18:35:33,132 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-34-25+00
+2026-05-29 18:36:34,138 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-36-33+00
+2026-05-29 18:36:36,729 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-35-29+00
+2026-05-29 18:37:37,721 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-37-36+00
+2026-05-29 18:37:40,516 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-36-33+00
+2026-05-29 18:38:41,499 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-38-40+00
+2026-05-29 18:38:44,172 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-37-36+00
+2026-05-29 18:39:45,133 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-39-44+00
+2026-05-29 18:39:48,035 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-38-40+00
+2026-05-29 18:40:49,072 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-40-48+00
+2026-05-29 18:40:52,054 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-39-44+00
+2026-05-29 18:41:53,034 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-41-52+00
+2026-05-29 18:41:55,777 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-40-48+00
+2026-05-29 18:47:31,834 - speechbrain.utils.train_logger - INFO - epoch: 32, lr: 1.00e-05 - train loss: 1.25 - valid loss: 8.39e-01, valid CER: 21.43, valid WER: 31.28
+2026-05-29 18:47:32,840 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-47-31+00
+2026-05-29 18:47:35,907 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-41-52+00
+2026-05-29 18:47:35,976 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-32-17+00
+2026-05-29 18:47:35,976 - speechbrain.utils.epoch_loop - INFO - Going into epoch 33
+2026-05-29 18:48:37,493 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-48-36+00
+2026-05-29 18:49:41,577 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-49-40+00
+2026-05-29 18:49:44,510 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-48-36+00
+2026-05-29 18:50:46,167 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-50-45+00
+2026-05-29 18:50:49,275 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-49-40+00
+2026-05-29 18:51:50,366 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-51-49+00
+2026-05-29 18:51:53,659 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-50-45+00
+2026-05-29 18:52:54,591 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-52-53+00
+2026-05-29 18:52:57,443 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-51-49+00
+2026-05-29 18:53:58,597 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-53-57+00
+2026-05-29 18:54:01,682 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-52-53+00
+2026-05-29 18:55:02,692 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-55-01+00
+2026-05-29 18:55:05,684 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-53-57+00
+2026-05-29 18:56:06,651 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-56-05+00
+2026-05-29 18:56:10,038 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-55-01+00
+2026-05-29 18:57:11,221 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-57-10+00
+2026-05-29 18:57:14,504 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-56-05+00
+2026-05-29 19:02:50,159 - speechbrain.utils.train_logger - INFO - epoch: 33, lr: 1.00e-05 - train loss: 1.24 - valid loss: 8.37e-01, valid CER: 21.35, valid WER: 31.18
+2026-05-29 19:02:51,065 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-02-50+00
+2026-05-29 19:02:54,147 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-57-10+00
+2026-05-29 19:02:54,211 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+18-47-31+00
+2026-05-29 19:02:54,211 - speechbrain.utils.epoch_loop - INFO - Going into epoch 34
+2026-05-29 19:03:55,657 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-03-54+00
+2026-05-29 19:04:59,439 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-04-58+00
+2026-05-29 19:05:02,525 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-03-54+00
+2026-05-29 19:06:03,507 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-06-02+00
+2026-05-29 19:06:06,470 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-04-58+00
+2026-05-29 19:07:08,194 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-07-07+00
+2026-05-29 19:07:10,999 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-06-02+00
+2026-05-29 19:08:12,076 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-08-11+00
+2026-05-29 19:08:15,153 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-07-07+00
+2026-05-29 19:09:16,161 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-09-15+00
+2026-05-29 19:09:18,978 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-08-11+00
+2026-05-29 19:10:20,304 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-10-19+00
+2026-05-29 19:10:23,294 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-09-15+00
+2026-05-29 19:11:24,335 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-11-23+00
+2026-05-29 19:11:27,445 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-10-19+00
+2026-05-29 19:12:28,426 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-12-27+00
+2026-05-29 19:12:31,600 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-11-23+00
+2026-05-29 19:18:06,638 - speechbrain.utils.train_logger - INFO - epoch: 34, lr: 1.00e-05 - train loss: 1.22 - valid loss: 8.35e-01, valid CER: 21.41, valid WER: 31.15
+2026-05-29 19:18:07,614 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-18-06+00
+2026-05-29 19:18:10,497 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-02-50+00
+2026-05-29 19:18:10,532 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-12-27+00
+2026-05-29 19:18:10,532 - speechbrain.utils.epoch_loop - INFO - Going into epoch 35
+2026-05-29 19:19:12,112 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-19-11+00
+2026-05-29 19:20:16,006 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-20-15+00
+2026-05-29 19:20:19,044 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-19-11+00
+2026-05-29 19:21:20,791 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-21-19+00
+2026-05-29 19:21:23,741 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-20-15+00
+2026-05-29 19:22:24,660 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-22-23+00
+2026-05-29 19:22:28,043 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-21-19+00
+2026-05-29 19:23:28,999 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-23-28+00
+2026-05-29 19:23:31,856 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-22-23+00
+2026-05-29 19:24:33,045 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-24-31+00
+2026-05-29 19:24:36,463 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-23-28+00
+2026-05-29 19:25:37,465 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-25-36+00
+2026-05-29 19:25:40,731 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-24-31+00
+2026-05-29 19:26:41,738 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-26-40+00
+2026-05-29 19:26:45,400 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-25-36+00
+2026-05-29 19:27:46,624 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-27-45+00
+2026-05-29 19:27:49,910 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-26-40+00
+2026-05-29 19:33:25,232 - speechbrain.utils.train_logger - INFO - epoch: 35, lr: 1.00e-05 - train loss: 1.21 - valid loss: 8.33e-01, valid CER: 21.33, valid WER: 31.04
+2026-05-29 19:33:26,171 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-33-25+00
+2026-05-29 19:33:29,346 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-27-45+00
+2026-05-29 19:33:29,389 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-18-06+00
+2026-05-29 19:33:29,389 - speechbrain.utils.epoch_loop - INFO - Going into epoch 36
+2026-05-29 19:34:30,884 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-34-29+00
+2026-05-29 19:35:34,741 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-35-33+00
+2026-05-29 19:35:38,051 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-34-29+00
+2026-05-29 19:36:39,036 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-36-38+00
+2026-05-29 19:36:41,994 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-35-33+00
+2026-05-29 19:37:42,944 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-37-42+00
+2026-05-29 19:37:46,171 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-36-38+00
+2026-05-29 19:38:47,269 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-38-46+00
+2026-05-29 19:38:50,536 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-37-42+00
+2026-05-29 19:39:51,443 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-39-50+00
+2026-05-29 19:39:54,385 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-38-46+00
+2026-05-29 19:40:55,451 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-40-54+00
+2026-05-29 19:40:58,575 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-39-50+00
+2026-05-29 19:41:59,667 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-41-58+00
+2026-05-29 19:42:02,735 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-40-54+00
+2026-05-29 19:43:03,729 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-43-02+00
+2026-05-29 19:43:07,084 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-41-58+00
+2026-05-29 19:48:42,316 - speechbrain.utils.train_logger - INFO - epoch: 36, lr: 1.00e-05 - train loss: 1.20 - valid loss: 8.31e-01, valid CER: 21.16, valid WER: 30.88
+2026-05-29 19:48:43,259 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-48-42+00
+2026-05-29 19:48:46,560 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-33-25+00
+2026-05-29 19:48:46,610 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-43-02+00
+2026-05-29 19:48:46,610 - speechbrain.utils.epoch_loop - INFO - Going into epoch 37
+2026-05-29 19:49:48,150 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-49-47+00
+2026-05-29 19:50:52,206 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-50-51+00
+2026-05-29 19:50:55,233 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-49-47+00
+2026-05-29 19:51:56,892 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-51-55+00
+2026-05-29 19:52:00,155 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-50-51+00
+2026-05-29 19:53:01,253 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-53-00+00
+2026-05-29 19:53:04,633 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-51-55+00
+2026-05-29 19:54:06,401 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-54-05+00
+2026-05-29 19:54:09,818 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-53-00+00
+2026-05-29 19:55:10,985 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-55-09+00
+2026-05-29 19:55:14,622 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-54-05+00
+2026-05-29 19:56:15,646 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-56-14+00
+2026-05-29 19:56:18,830 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-55-09+00
+2026-05-29 19:57:19,824 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-57-18+00
+2026-05-29 19:57:23,135 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-56-14+00
+2026-05-29 19:58:24,158 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-58-23+00
+2026-05-29 19:58:27,587 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-57-18+00
+2026-05-29 20:03:42,515 - speechbrain.utils.train_logger - INFO - epoch: 37, lr: 1.00e-05 - train loss: 1.18 - valid loss: 8.30e-01, valid CER: 15.50, valid WER: 25.90
+2026-05-29 20:04:11,438 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-03-42+00
+2026-05-29 20:04:14,618 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+17-31-16+00
+2026-05-29 20:04:14,667 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-58-23+00
+2026-05-29 20:04:14,716 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+19-48-42+00
+2026-05-29 20:04:14,718 - speechbrain.utils.epoch_loop - INFO - Going into epoch 38
+2026-05-29 20:05:16,304 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-05-15+00
+2026-05-29 20:06:19,688 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-06-18+00
+2026-05-29 20:06:22,448 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-05-15+00
+2026-05-29 20:07:23,400 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-07-22+00
+2026-05-29 20:07:25,951 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-06-18+00
+2026-05-29 20:08:26,920 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-08-26+00
+2026-05-29 20:08:29,458 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-07-22+00
+2026-05-29 20:09:30,524 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-09-29+00
+2026-05-29 20:09:32,898 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-08-26+00
+2026-05-29 20:10:34,001 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-10-32+00
+2026-05-29 20:10:36,641 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-09-29+00
+2026-05-29 20:11:37,757 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-11-36+00
+2026-05-29 20:11:40,406 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-10-32+00
+2026-05-29 20:12:41,504 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-12-40+00
+2026-05-29 20:12:43,897 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-11-36+00
+2026-05-29 20:13:44,921 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-13-44+00
+2026-05-29 20:13:47,640 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-12-40+00
+2026-05-29 20:19:04,017 - speechbrain.utils.train_logger - INFO - epoch: 38, lr: 1.00e-05 - train loss: 1.17 - valid loss: 8.28e-01, valid CER: 15.47, valid WER: 25.90
+2026-05-29 20:19:05,001 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-19-04+00
+2026-05-29 20:19:07,793 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-03-42+00
+2026-05-29 20:19:07,828 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-13-44+00
+2026-05-29 20:19:07,828 - speechbrain.utils.epoch_loop - INFO - Going into epoch 39
+2026-05-29 20:20:09,468 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-20-08+00
+2026-05-29 20:21:12,723 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-21-11+00
+2026-05-29 20:21:15,277 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-20-08+00
+2026-05-29 20:22:16,914 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-22-16+00
+2026-05-29 20:22:19,620 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-21-11+00
+2026-05-29 20:23:20,529 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-23-19+00
+2026-05-29 20:23:22,982 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-22-16+00
+2026-05-29 20:24:24,044 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-24-23+00
+2026-05-29 20:24:26,944 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-23-19+00
+2026-05-29 20:25:27,917 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-25-27+00
+2026-05-29 20:25:30,596 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-24-23+00
+2026-05-29 20:26:31,726 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-26-30+00
+2026-05-29 20:26:34,398 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-25-27+00
+2026-05-29 20:27:35,468 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-27-34+00
+2026-05-29 20:27:38,330 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-26-30+00
+2026-05-29 20:28:39,270 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-28-38+00
+2026-05-29 20:28:41,763 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-27-34+00
+2026-05-29 20:33:57,994 - speechbrain.utils.train_logger - INFO - epoch: 39, lr: 1.00e-05 - train loss: 1.16 - valid loss: 8.27e-01, valid CER: 15.47, valid WER: 25.90
+2026-05-29 20:33:58,902 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-33-57+00
+2026-05-29 20:34:01,389 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-28-38+00
+2026-05-29 20:34:01,436 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-19-04+00
+2026-05-29 20:34:01,436 - speechbrain.utils.epoch_loop - INFO - Going into epoch 40
+2026-05-29 20:35:03,010 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-35-02+00
+2026-05-29 20:36:06,459 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-36-05+00
+2026-05-29 20:36:08,963 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-35-02+00
+2026-05-29 20:37:10,691 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-37-09+00
+2026-05-29 20:37:13,170 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-36-05+00
+2026-05-29 20:38:14,102 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-38-13+00
+2026-05-29 20:38:16,862 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-37-09+00
+2026-05-29 20:39:17,790 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-39-16+00
+2026-05-29 20:39:20,315 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-38-13+00
+2026-05-29 20:40:21,376 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-40-20+00
+2026-05-29 20:40:24,062 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-39-16+00
+2026-05-29 20:41:25,075 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-41-24+00
+2026-05-29 20:41:27,891 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-40-20+00
+2026-05-29 20:42:28,848 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-42-27+00
+2026-05-29 20:42:31,405 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-41-24+00
+2026-05-29 20:43:32,587 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-43-31+00
+2026-05-29 20:43:35,452 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-42-27+00
+2026-05-29 20:49:07,888 - speechbrain.utils.train_logger - INFO - epoch: 40, lr: 1.00e-05 - train loss: 1.15 - valid loss: 8.26e-01, valid CER: 22.41, valid WER: 33.24
+2026-05-29 20:49:08,759 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-49-07+00
+2026-05-29 20:49:11,495 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-43-31+00
+2026-05-29 20:49:11,495 - speechbrain.utils.epoch_loop - INFO - Going into epoch 41
+2026-05-29 20:50:12,964 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-50-12+00
+2026-05-29 20:51:17,205 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-51-16+00
+2026-05-29 20:51:20,926 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-50-12+00
+2026-05-29 20:52:22,550 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-52-21+00
+2026-05-29 20:52:26,253 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-51-16+00
+2026-05-29 20:53:27,250 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-53-26+00
+2026-05-29 20:53:30,643 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-52-21+00
+2026-05-29 20:54:31,632 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-54-30+00
+2026-05-29 20:54:35,359 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-53-26+00
+2026-05-29 20:55:36,309 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-55-35+00
+2026-05-29 20:55:39,718 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-54-30+00
+2026-05-29 20:56:40,826 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-56-39+00
+2026-05-29 20:56:44,681 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-55-35+00
+2026-05-29 20:57:45,672 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-57-44+00
+2026-05-29 20:57:49,432 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-56-39+00
+2026-05-29 20:58:50,513 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-58-49+00
+2026-05-29 20:58:53,894 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-57-44+00
+2026-05-29 21:04:31,021 - speechbrain.utils.train_logger - INFO - epoch: 41, lr: 1.00e-05 - train loss: 1.13 - valid loss: 8.25e-01, valid CER: 22.19, valid WER: 32.98
+2026-05-29 21:04:32,011 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-04-31+00
+2026-05-29 21:04:35,428 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-58-49+00
+2026-05-29 21:04:35,464 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-49-07+00
+2026-05-29 21:04:35,465 - speechbrain.utils.epoch_loop - INFO - Going into epoch 42
+2026-05-29 21:05:36,590 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-05-35+00
+2026-05-29 21:06:40,613 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-06-39+00
+2026-05-29 21:06:44,154 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-05-35+00
+2026-05-29 21:07:45,407 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-07-44+00
+2026-05-29 21:07:50,220 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-06-39+00
+2026-05-29 21:08:51,547 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-08-50+00
+2026-05-29 21:08:55,828 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-07-44+00
+2026-05-29 21:09:57,066 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-09-56+00
+2026-05-29 21:10:00,525 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-08-50+00
+2026-05-29 21:11:01,725 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-11-00+00
+2026-05-29 21:11:05,658 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-09-56+00
+2026-05-29 21:12:06,907 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-12-06+00
+2026-05-29 21:12:10,361 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-11-00+00
+2026-05-29 21:13:11,476 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-13-10+00
+2026-05-29 21:13:15,171 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-12-06+00
+2026-05-29 21:14:16,468 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-14-15+00
+2026-05-29 21:14:20,477 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-13-10+00
+2026-05-29 21:19:58,539 - speechbrain.utils.train_logger - INFO - epoch: 42, lr: 1.00e-05 - train loss: 1.12 - valid loss: 8.25e-01, valid CER: 22.12, valid WER: 32.93
+2026-05-29 21:19:59,477 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-19-58+00
+2026-05-29 21:20:03,181 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-04-31+00
+2026-05-29 21:20:03,221 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-14-15+00
+2026-05-29 21:20:03,221 - speechbrain.utils.epoch_loop - INFO - Going into epoch 43
+2026-05-29 21:21:04,870 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-21-03+00
+2026-05-29 21:22:08,740 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-22-07+00
+2026-05-29 21:22:12,844 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-21-03+00
+2026-05-29 21:23:13,925 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-23-12+00
+2026-05-29 21:23:17,758 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-22-07+00
+2026-05-29 21:24:18,919 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-24-17+00
+2026-05-29 21:24:22,688 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-23-12+00
+2026-05-29 21:25:24,045 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-25-22+00
+2026-05-29 21:25:27,558 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-24-17+00
+2026-05-29 21:26:28,752 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-26-27+00
+2026-05-29 21:26:32,278 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-25-22+00
+2026-05-29 21:27:33,487 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-27-32+00
+2026-05-29 21:27:37,366 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-26-27+00
+2026-05-29 21:28:38,667 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-28-37+00
+2026-05-29 21:28:42,229 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-27-32+00
+2026-05-29 21:29:43,458 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-29-42+00
+2026-05-29 21:29:47,217 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-28-37+00
+2026-05-29 21:35:06,691 - speechbrain.utils.train_logger - INFO - epoch: 43, lr: 1.00e-05 - train loss: 1.11 - valid loss: 8.24e-01, valid CER: 14.86, valid WER: 25.26
+2026-05-29 21:35:07,639 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-35-06+00
+2026-05-29 21:35:11,628 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+20-33-57+00
+2026-05-29 21:35:11,668 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-29-42+00
+2026-05-29 21:35:11,707 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-19-58+00
+2026-05-29 21:35:11,707 - speechbrain.utils.epoch_loop - INFO - Going into epoch 44
+2026-05-29 21:36:13,511 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-36-12+00
+2026-05-29 21:37:16,416 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-37-15+00
+2026-05-29 21:37:19,494 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-36-12+00
+2026-05-29 21:38:20,634 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-38-19+00
+2026-05-29 21:38:24,230 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-37-15+00
+2026-05-29 21:39:25,355 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-39-24+00
+2026-05-29 21:39:28,742 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-38-19+00
+2026-05-29 21:40:29,891 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-40-28+00
+2026-05-29 21:40:34,016 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-39-24+00
+2026-05-29 21:41:35,174 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-41-34+00
+2026-05-29 21:41:38,434 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-40-28+00
+2026-05-29 21:42:39,691 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-42-38+00
+2026-05-29 21:42:42,750 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-41-34+00
+2026-05-29 21:43:43,808 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-43-42+00
+2026-05-29 21:43:47,164 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-42-38+00
+2026-05-29 21:44:48,473 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-44-47+00
+2026-05-29 21:44:51,468 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-43-42+00
+2026-05-29 21:50:12,015 - speechbrain.utils.train_logger - INFO - epoch: 44, lr: 1.00e-05 - train loss: 1.10 - valid loss: 8.24e-01, valid CER: 15.02, valid WER: 25.44
+2026-05-29 21:50:13,010 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-50-12+00
+2026-05-29 21:50:15,795 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-44-47+00
+2026-05-29 21:50:15,795 - speechbrain.utils.epoch_loop - INFO - Going into epoch 45
+2026-05-29 21:51:16,670 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-51-15+00
+2026-05-29 21:52:20,707 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-52-19+00
+2026-05-29 21:52:24,666 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-51-15+00
+2026-05-29 21:53:25,874 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-53-24+00
+2026-05-29 21:53:29,586 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-52-19+00
+2026-05-29 21:54:30,589 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-54-29+00
+2026-05-29 21:54:34,335 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-53-24+00
+2026-05-29 21:55:35,405 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-55-34+00
+2026-05-29 21:55:39,172 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-54-29+00
+2026-05-29 21:56:40,421 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-56-39+00
+2026-05-29 21:56:44,226 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-55-34+00
+2026-05-29 21:57:45,289 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-57-44+00
+2026-05-29 21:57:49,550 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-56-39+00
+2026-05-29 21:58:50,721 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-58-49+00
+2026-05-29 21:58:55,529 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-57-44+00
+2026-05-29 21:59:56,820 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-59-55+00
+2026-05-29 22:00:01,458 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-58-49+00
+2026-05-29 22:05:22,666 - speechbrain.utils.train_logger - INFO - epoch: 45, lr: 1.00e-05 - train loss: 1.09 - valid loss: 8.24e-01, valid CER: 15.07, valid WER: 25.52
+2026-05-29 22:05:23,690 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-05-22+00
+2026-05-29 22:05:27,568 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-50-12+00
+2026-05-29 22:05:27,598 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-59-55+00
+2026-05-29 22:05:27,598 - speechbrain.utils.epoch_loop - INFO - Going into epoch 46
+2026-05-29 22:06:28,618 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-06-27+00
+2026-05-29 22:07:32,759 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-07-31+00
+2026-05-29 22:07:36,913 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-06-27+00
+2026-05-29 22:08:37,864 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-08-36+00
+2026-05-29 22:08:42,002 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-07-31+00
+2026-05-29 22:09:43,086 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-09-42+00
+2026-05-29 22:09:47,001 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-08-36+00
+2026-05-29 22:10:48,288 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-10-47+00
+2026-05-29 22:10:52,103 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-09-42+00
+2026-05-29 22:11:53,250 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-11-52+00
+2026-05-29 22:11:57,130 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-10-47+00
+2026-05-29 22:12:58,356 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-12-57+00
+2026-05-29 22:13:02,229 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-11-52+00
+2026-05-29 22:14:03,388 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-14-02+00
+2026-05-29 22:14:07,376 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-12-57+00
+2026-05-29 22:15:08,545 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-15-07+00
+2026-05-29 22:15:12,451 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-14-02+00
+2026-05-29 22:20:34,177 - speechbrain.utils.train_logger - INFO - epoch: 46, lr: 1.00e-05 - train loss: 1.08 - valid loss: 8.23e-01, valid CER: 15.04, valid WER: 25.39
+2026-05-29 22:20:35,072 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-20-34+00
+2026-05-29 22:20:39,041 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-05-22+00
+2026-05-29 22:20:39,071 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-15-07+00
+2026-05-29 22:20:39,071 - speechbrain.utils.epoch_loop - INFO - Going into epoch 47
+2026-05-29 22:21:39,970 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-21-39+00
+2026-05-29 22:22:43,774 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-22-42+00
+2026-05-29 22:22:47,719 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-21-39+00
+2026-05-29 22:23:48,722 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-23-47+00
+2026-05-29 22:23:52,625 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-22-42+00
+2026-05-29 22:24:53,740 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-24-52+00
+2026-05-29 22:24:57,732 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-23-47+00
+2026-05-29 22:25:58,782 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-25-57+00
+2026-05-29 22:26:02,984 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-24-52+00
+2026-05-29 22:27:04,163 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-27-03+00
+2026-05-29 22:27:08,115 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-25-57+00
+2026-05-29 22:28:09,220 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-28-08+00
+2026-05-29 22:28:13,220 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-27-03+00
+2026-05-29 22:29:14,336 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-29-13+00
+2026-05-29 22:29:18,244 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-28-08+00
+2026-05-29 22:30:19,389 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-30-18+00
+2026-05-29 22:30:23,338 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-29-13+00
+2026-05-29 22:35:45,092 - speechbrain.utils.train_logger - INFO - epoch: 47, lr: 1.00e-05 - train loss: 1.06 - valid loss: 8.23e-01, valid CER: 15.06, valid WER: 25.31
+2026-05-29 22:35:45,981 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-35-45+00
+2026-05-29 22:35:50,074 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-20-34+00
+2026-05-29 22:35:50,104 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-30-18+00
+2026-05-29 22:35:50,104 - speechbrain.utils.epoch_loop - INFO - Going into epoch 48
+2026-05-29 22:36:51,863 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-36-50+00
+2026-05-29 22:37:56,220 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-37-55+00
+2026-05-29 22:38:00,385 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-36-50+00
+2026-05-29 22:39:01,353 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-39-00+00
+2026-05-29 22:39:05,467 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-37-55+00
+2026-05-29 22:40:06,541 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-40-05+00
+2026-05-29 22:40:10,473 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-39-00+00
+2026-05-29 22:41:11,603 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-41-10+00
+2026-05-29 22:41:15,875 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-40-05+00
+2026-05-29 22:42:16,990 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-42-16+00
+2026-05-29 22:42:21,000 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-41-10+00
+2026-05-29 22:43:22,153 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-43-21+00
+2026-05-29 22:43:26,227 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-42-16+00
+2026-05-29 22:44:27,401 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-44-26+00
+2026-05-29 22:44:31,425 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-43-21+00
+2026-05-29 22:45:32,601 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-45-31+00
+2026-05-29 22:45:36,578 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-44-26+00
+2026-05-29 22:51:12,806 - speechbrain.utils.train_logger - INFO - epoch: 48, lr: 1.00e-05 - train loss: 1.05 - valid loss: 8.24e-01, valid CER: 21.86, valid WER: 32.21
+2026-05-29 22:51:13,696 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-51-12+00
+2026-05-29 22:51:17,793 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-35-45+00
+2026-05-29 22:51:17,820 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-45-31+00
+2026-05-29 22:51:17,820 - speechbrain.utils.epoch_loop - INFO - Going into epoch 49
+2026-05-29 22:52:18,866 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-52-17+00
+2026-05-29 22:53:22,959 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-53-22+00
+2026-05-29 22:53:26,974 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-52-17+00
+2026-05-29 22:54:28,009 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-54-27+00
+2026-05-29 22:54:32,196 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-53-22+00
+2026-05-29 22:55:33,395 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-55-32+00
+2026-05-29 22:55:37,379 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-54-27+00
+2026-05-29 22:56:38,438 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-56-37+00
+2026-05-29 22:56:42,740 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-55-32+00
+2026-05-29 22:57:43,806 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-57-42+00
+2026-05-29 22:57:47,935 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-56-37+00
+2026-05-29 22:58:49,164 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-58-48+00
+2026-05-29 22:58:53,259 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-57-42+00
+2026-05-29 22:59:54,470 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-59-53+00
+2026-05-29 22:59:58,592 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-58-48+00
+2026-05-29 23:00:59,626 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-00-58+00
+2026-05-29 23:01:03,686 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-59-53+00
+2026-05-29 23:06:58,616 - speechbrain.utils.train_logger - INFO - epoch: 49, lr: 1.00e-05 - train loss: 1.04 - valid loss: 8.24e-01, valid CER: 25.56, valid WER: 41.26
+2026-05-29 23:06:59,481 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-06-58+00
+2026-05-29 23:07:03,602 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-00-58+00
+2026-05-29 23:07:03,642 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+22-51-12+00
+2026-05-29 23:07:03,642 - speechbrain.utils.epoch_loop - INFO - Going into epoch 50
+2026-05-29 23:08:04,627 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-08-03+00
+2026-05-29 23:09:08,993 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-09-08+00
+2026-05-29 23:09:13,035 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-08-03+00
+2026-05-29 23:10:14,218 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-10-13+00
+2026-05-29 23:10:18,822 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-09-08+00
+2026-05-29 23:11:20,022 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-11-19+00
+2026-05-29 23:11:24,512 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-10-13+00
+2026-05-29 23:12:25,693 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-12-24+00
+2026-05-29 23:12:31,430 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-11-19+00
+2026-05-29 23:13:32,892 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-13-31+00
+2026-05-29 23:13:38,227 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-12-24+00
+2026-05-29 23:14:39,749 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-14-38+00
+2026-05-29 23:14:45,500 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-13-31+00
+2026-05-29 23:15:47,219 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-15-46+00
+2026-05-29 23:15:54,190 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-14-38+00
+2026-05-29 23:16:56,035 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-16-54+00
+2026-05-29 23:17:02,058 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-15-46+00
+2026-05-29 23:23:00,048 - speechbrain.utils.train_logger - INFO - epoch: 50, lr: 1.00e-05 - train loss: 1.03 - valid loss: 8.25e-01, valid CER: 25.41, valid WER: 41.10
+2026-05-29 23:23:00,985 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-23-00+00
+2026-05-29 23:23:05,904 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-16-54+00
+2026-05-29 23:23:05,931 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+23-06-58+00
+2026-05-29 23:23:05,935 - speechbrain.utils.checkpoints - INFO - Loading a checkpoint from results/whisper-V3-L_FT_Zwiterlood_JannetBot2/1986/save/CKPT+2026-05-29+21-35-06+00
+2026-05-29 23:23:11,012 - speechbrain.dataio.dataloader - DEBUG - SaveableDataLoader was requested to load a checkpoint, but the DataLoader has already been iterated. The DataLoader file will be ignored. This is normal in evaluation, when a checkpoint is loaded just to retrieve the best model.
+2026-05-29 23:35:05,342 - speechbrain.utils.train_logger - INFO - Epoch loaded: 43 - test loss: 9.26e-01, test CER: 26.37, test WER: 38.40

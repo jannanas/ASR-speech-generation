@@ -1,0 +1,628 @@
+2026-05-29 10:07:07,623 - speechbrain.utils.quirks - INFO - Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-05-29 10:07:07,623 - speechbrain.utils.quirks - INFO - Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-05-29 10:07:07,624 - speechbrain.core - INFO - Beginning experiment!
+2026-05-29 10:07:07,624 - speechbrain.core - INFO - Experiment folder: results/whisper-V3-L_FT_Zwiterlood/1986
+2026-05-29 10:07:14,241 - speechbrain.utils.superpowers - DEBUG - annotated-types==0.7.0
+audioread==3.0.1
+certifi==2026.1.4
+cffi==2.0.0
+cfgv==3.4.0
+charset-normalizer==3.4.4
+click==8.1.7
+codespell==2.4.1
+coloredlogs==15.0.1
+decorator==5.1.1
+Distance==0.1.3
+distlib==0.4.0
+espnet-onnx==0.2.0
+espnet-tts-frontend==0.0.3
+exceptiongroup==1.3.1
+filelock==3.19.1
+flatbuffers==24.3.25
+fsspec==2025.10.0
+g2p-en==2.1.0
+hf-xet==1.2.0
+huggingface_hub==0.36.2
+humanfriendly==10.0
+HyperPyYAML==1.2.3
+identify==2.6.15
+idna==3.11
+importlib_metadata==7.1.0
+inflect==7.0.0
+iniconfig==2.1.0
+jaconv==0.3.4
+jamo==0.4.1
+Jinja2==3.1.6
+joblib==1.4.2
+lazy_loader==0.4
+librosa==0.10.2.post1
+llvmlite==0.42.0
+MarkupSafe==2.1.5
+mpmath==1.3.0
+msgpack==1.0.8
+networkx==3.2.1
+nltk==3.8.1
+nodeenv==1.10.0
+numba==0.59.1
+numpy==1.26.4
+nvidia-cublas-cu12==12.4.5.8
+nvidia-cuda-cupti-cu12==12.4.127
+nvidia-cuda-nvrtc-cu12==12.4.127
+nvidia-cuda-runtime-cu12==12.4.127
+nvidia-cudnn-cu12==9.1.0.70
+nvidia-cufft-cu12==11.2.1.3
+nvidia-curand-cu12==10.3.5.147
+nvidia-cusolver-cu12==11.6.1.9
+nvidia-cusparse-cu12==12.3.1.170
+nvidia-cusparselt-cu12==0.6.2
+nvidia-nccl-cu12==2.21.5
+nvidia-nvjitlink-cu12==12.4.127
+nvidia-nvtx-cu12==12.4.127
+onnxruntime==1.16.3
+packaging==24.0
+pandas==2.3.3
+pathspec==1.0.4
+platformdirs==4.2.2
+pluggy==1.6.0
+pooch==1.8.1
+pre_commit==4.3.0
+protobuf==5.27.0
+pycparser==2.23
+pydantic==2.7.2
+pydantic_core==2.18.3
+pypinyin==0.51.0
+pytest==7.4.0
+python-dateutil==2.9.0.post0
+pytz==2025.2
+PyYAML==6.0.1
+regex==2024.5.15
+requests==2.32.5
+ruamel.yaml==0.18.17
+ruamel.yaml.clib==0.2.15
+ruff==0.12.4
+safetensors==0.7.0
+scikit-learn==1.5.0
+scipy==1.13.1
+sentencepiece==0.2.0
+six==1.17.0
+soundfile==0.12.1
+soxr==0.3.7
+-e git+https://github.com/speechbrain/speechbrain.git@47d71953376db05d024acfd173a3d6005cf07478#egg=speechbrain
+sympy==1.13.1
+threadpoolctl==3.5.0
+tokenizers==0.15.2
+tomli==2.4.0
+torch==2.6.0
+torchaudio==2.6.0
+tqdm==4.67.3
+transformers==4.35.2
+triton==3.2.0
+typeguard==4.3.0
+typing_extensions==4.15.0
+tzdata==2025.3
+Unidecode==1.3.8
+urllib3==2.6.3
+virtualenv==20.37.0
+yamllint==1.35.1
+zipp==3.19.0
+
+
+2026-05-29 10:07:14,547 - speechbrain.utils.superpowers - DEBUG - 47d7195
+
+
+2026-05-29 10:07:14,766 - speechbrain.core - INFO - Run option precision from hparams is used
+2026-05-29 10:07:14,768 - speechbrain.core - INFO - Run option eval_precision from hparams is used
+2026-05-29 10:07:14,768 - speechbrain.core - INFO - Run option max_grad_norm from hparams is used
+2026-05-29 10:07:14,768 - speechbrain.core - INFO - Run option ckpt_interval_minutes from hparams is used
+2026-05-29 10:07:14,768 - speechbrain.core - INFO - Run option grad_accumulation_factor from hparams is used
+2026-05-29 10:07:15,846 - speechbrain.core - INFO - Gradscaler enabled: `True`
+2026-05-29 10:07:15,846 - speechbrain.core - INFO - Using training precision: `--precision=fp16`
+2026-05-29 10:07:15,846 - speechbrain.core - INFO - Using evaluation precision: `--eval_precision=fp16`
+2026-05-29 10:07:15,851 - speechbrain.core - INFO - ASR Model Statistics:
+* Total Number of Trainable Parameters: 28.8M
+* Total Number of Parameters: 1.6G
+* Trainable Parameters represent 1.8340% of the total size.
+2026-05-29 10:07:31,617 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2026-05-29 10:07:31,618 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
+2026-05-29 10:08:33,323 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-08-32+00
+2026-05-29 10:09:34,693 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-09-33+00
+2026-05-29 10:09:34,760 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-08-32+00
+2026-05-29 10:10:35,756 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-10-35+00
+2026-05-29 10:10:35,802 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-09-33+00
+2026-05-29 10:11:37,262 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-11-36+00
+2026-05-29 10:11:37,314 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-10-35+00
+2026-05-29 10:17:00,446 - speechbrain.utils.train_logger - INFO - epoch: 1, lr: 1.00e-05 - train loss: 1.52 - valid loss: 1.32, valid CER: 32.30, valid WER: 49.06
+2026-05-29 10:17:01,169 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-17-00+00
+2026-05-29 10:17:01,234 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-11-36+00
+2026-05-29 10:17:01,234 - speechbrain.utils.epoch_loop - INFO - Going into epoch 2
+2026-05-29 10:18:02,499 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-18-01+00
+2026-05-29 10:19:03,987 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-19-03+00
+2026-05-29 10:19:04,072 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-18-01+00
+2026-05-29 10:20:05,460 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-20-04+00
+2026-05-29 10:20:05,560 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-19-03+00
+2026-05-29 10:25:40,287 - speechbrain.utils.train_logger - INFO - epoch: 2, lr: 1.00e-05 - train loss: 1.52 - valid loss: 1.32, valid CER: 32.18, valid WER: 48.82
+2026-05-29 10:25:41,138 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-25-40+00
+2026-05-29 10:25:41,263 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-17-00+00
+2026-05-29 10:25:41,287 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-20-04+00
+2026-05-29 10:25:41,288 - speechbrain.utils.epoch_loop - INFO - Going into epoch 3
+2026-05-29 10:26:42,711 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-26-41+00
+2026-05-29 10:27:44,003 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-27-43+00
+2026-05-29 10:27:44,125 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-26-41+00
+2026-05-29 10:28:45,467 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-28-44+00
+2026-05-29 10:28:45,605 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-27-43+00
+2026-05-29 10:33:57,241 - speechbrain.utils.train_logger - INFO - epoch: 3, lr: 1.00e-05 - train loss: 1.50 - valid loss: 1.30, valid CER: 25.70, valid WER: 40.57
+2026-05-29 10:33:58,004 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-33-57+00
+2026-05-29 10:33:58,171 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-28-44+00
+2026-05-29 10:33:58,226 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-25-40+00
+2026-05-29 10:33:58,226 - speechbrain.utils.epoch_loop - INFO - Going into epoch 4
+2026-05-29 10:34:59,644 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-34-58+00
+2026-05-29 10:36:00,741 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-35-59+00
+2026-05-29 10:36:00,892 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-34-58+00
+2026-05-29 10:37:01,818 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-37-01+00
+2026-05-29 10:37:02,102 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-35-59+00
+2026-05-29 10:42:12,337 - speechbrain.utils.train_logger - INFO - epoch: 4, lr: 1.00e-05 - train loss: 1.48 - valid loss: 1.28, valid CER: 25.31, valid WER: 40.17
+2026-05-29 10:42:13,084 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-42-12+00
+2026-05-29 10:42:13,300 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-37-01+00
+2026-05-29 10:42:13,344 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-33-57+00
+2026-05-29 10:42:13,344 - speechbrain.utils.epoch_loop - INFO - Going into epoch 5
+2026-05-29 10:43:14,848 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-43-14+00
+2026-05-29 10:44:15,805 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-44-15+00
+2026-05-29 10:44:16,041 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-43-14+00
+2026-05-29 10:45:16,904 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-45-16+00
+2026-05-29 10:45:17,119 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-44-15+00
+2026-05-29 10:50:24,467 - speechbrain.utils.train_logger - INFO - epoch: 5, lr: 1.00e-05 - train loss: 1.46 - valid loss: 1.26, valid CER: 25.48, valid WER: 40.14
+2026-05-29 10:50:25,219 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-50-24+00
+2026-05-29 10:50:25,491 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-42-12+00
+2026-05-29 10:50:25,536 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-45-16+00
+2026-05-29 10:50:25,536 - speechbrain.utils.epoch_loop - INFO - Going into epoch 6
+2026-05-29 10:51:26,802 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-51-26+00
+2026-05-29 10:52:27,760 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-52-27+00
+2026-05-29 10:52:28,027 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-51-26+00
+2026-05-29 10:53:29,056 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-53-28+00
+2026-05-29 10:53:29,313 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-52-27+00
+2026-05-29 10:58:38,025 - speechbrain.utils.train_logger - INFO - epoch: 6, lr: 1.00e-05 - train loss: 1.43 - valid loss: 1.23, valid CER: 24.97, valid WER: 39.48
+2026-05-29 10:58:39,085 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-58-38+00
+2026-05-29 10:58:39,350 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-53-28+00
+2026-05-29 10:58:39,399 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-50-24+00
+2026-05-29 10:58:39,399 - speechbrain.utils.epoch_loop - INFO - Going into epoch 7
+2026-05-29 10:59:40,736 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-59-40+00
+2026-05-29 11:00:41,625 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-00-40+00
+2026-05-29 11:00:41,889 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-59-40+00
+2026-05-29 11:01:43,003 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-01-41+00
+2026-05-29 11:01:43,253 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-00-40+00
+2026-05-29 11:06:48,416 - speechbrain.utils.train_logger - INFO - epoch: 7, lr: 1.00e-05 - train loss: 1.40 - valid loss: 1.21, valid CER: 24.45, valid WER: 38.68
+2026-05-29 11:06:49,160 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-06-48+00
+2026-05-29 11:06:49,444 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-01-41+00
+2026-05-29 11:06:49,498 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+10-58-38+00
+2026-05-29 11:06:49,499 - speechbrain.utils.epoch_loop - INFO - Going into epoch 8
+2026-05-29 11:07:50,251 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-07-49+00
+2026-05-29 11:08:51,208 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-08-50+00
+2026-05-29 11:08:51,537 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-07-49+00
+2026-05-29 11:09:52,367 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-09-51+00
+2026-05-29 11:09:53,016 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-08-50+00
+2026-05-29 11:14:57,270 - speechbrain.utils.train_logger - INFO - epoch: 8, lr: 1.00e-05 - train loss: 1.37 - valid loss: 1.18, valid CER: 24.15, valid WER: 38.47
+2026-05-29 11:14:58,006 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-14-57+00
+2026-05-29 11:14:58,341 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-06-48+00
+2026-05-29 11:14:58,380 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-09-51+00
+2026-05-29 11:14:58,380 - speechbrain.utils.epoch_loop - INFO - Going into epoch 9
+2026-05-29 11:15:59,717 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-15-58+00
+2026-05-29 11:17:00,921 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-17-00+00
+2026-05-29 11:17:01,264 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-15-58+00
+2026-05-29 11:18:02,188 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-18-01+00
+2026-05-29 11:18:02,503 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-17-00+00
+2026-05-29 11:23:28,372 - speechbrain.utils.train_logger - INFO - epoch: 9, lr: 1.00e-05 - train loss: 1.34 - valid loss: 1.16, valid CER: 28.67, valid WER: 42.69
+2026-05-29 11:23:29,114 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-23-28+00
+2026-05-29 11:23:29,464 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-18-01+00
+2026-05-29 11:23:29,464 - speechbrain.utils.epoch_loop - INFO - Going into epoch 10
+2026-05-29 11:24:30,807 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-24-29+00
+2026-05-29 11:25:32,340 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-25-31+00
+2026-05-29 11:25:33,026 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-24-29+00
+2026-05-29 11:26:34,289 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-26-33+00
+2026-05-29 11:26:34,781 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-25-31+00
+2026-05-29 11:31:41,958 - speechbrain.utils.train_logger - INFO - epoch: 10, lr: 1.00e-05 - train loss: 1.31 - valid loss: 1.14, valid CER: 22.23, valid WER: 36.40
+2026-05-29 11:31:42,694 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-31-41+00
+2026-05-29 11:31:43,195 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-23-28+00
+2026-05-29 11:31:43,243 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-14-57+00
+2026-05-29 11:31:43,295 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-26-33+00
+2026-05-29 11:31:43,295 - speechbrain.utils.epoch_loop - INFO - Going into epoch 11
+2026-05-29 11:32:44,774 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-32-43+00
+2026-05-29 11:33:46,126 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-33-45+00
+2026-05-29 11:33:46,548 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-32-43+00
+2026-05-29 11:34:47,756 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-34-47+00
+2026-05-29 11:34:48,176 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-33-45+00
+2026-05-29 11:39:36,776 - speechbrain.utils.train_logger - INFO - epoch: 11, lr: 1.00e-05 - train loss: 1.28 - valid loss: 1.13, valid CER: 19.00, valid WER: 30.57
+2026-05-29 11:39:37,792 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-39-36+00
+2026-05-29 11:39:38,937 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-31-41+00
+2026-05-29 11:39:39,064 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-34-47+00
+2026-05-29 11:39:39,064 - speechbrain.utils.epoch_loop - INFO - Going into epoch 12
+2026-05-29 11:40:40,433 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-40-39+00
+2026-05-29 11:41:42,295 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-41-41+00
+2026-05-29 11:41:43,051 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-40-39+00
+2026-05-29 11:42:44,626 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-42-43+00
+2026-05-29 11:42:45,231 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-41-41+00
+2026-05-29 11:47:34,233 - speechbrain.utils.train_logger - INFO - epoch: 12, lr: 1.00e-05 - train loss: 1.26 - valid loss: 1.11, valid CER: 18.73, valid WER: 30.27
+2026-05-29 11:47:34,983 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-47-34+00
+2026-05-29 11:47:35,610 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-42-43+00
+2026-05-29 11:47:35,672 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-39-36+00
+2026-05-29 11:47:35,672 - speechbrain.utils.epoch_loop - INFO - Going into epoch 13
+2026-05-29 11:48:36,738 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-48-35+00
+2026-05-29 11:49:38,269 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-49-37+00
+2026-05-29 11:49:38,911 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-48-35+00
+2026-05-29 11:50:40,207 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-50-39+00
+2026-05-29 11:50:40,709 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-49-37+00
+2026-05-29 11:55:49,802 - speechbrain.utils.train_logger - INFO - epoch: 13, lr: 1.00e-05 - train loss: 1.23 - valid loss: 1.09, valid CER: 22.52, valid WER: 40.17
+2026-05-29 11:55:50,675 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-55-49+00
+2026-05-29 11:55:51,233 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-50-39+00
+2026-05-29 11:55:51,233 - speechbrain.utils.epoch_loop - INFO - Going into epoch 14
+2026-05-29 11:56:52,235 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-56-51+00
+2026-05-29 11:57:54,072 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-57-53+00
+2026-05-29 11:57:54,869 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-56-51+00
+2026-05-29 11:58:56,131 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-58-55+00
+2026-05-29 11:58:56,767 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-57-53+00
+2026-05-29 12:04:04,668 - speechbrain.utils.train_logger - INFO - epoch: 14, lr: 1.00e-05 - train loss: 1.21 - valid loss: 1.08, valid CER: 22.68, valid WER: 40.28
+2026-05-29 12:04:05,441 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-04-04+00
+2026-05-29 12:04:06,223 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-58-55+00
+2026-05-29 12:04:06,275 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-55-49+00
+2026-05-29 12:04:06,275 - speechbrain.utils.epoch_loop - INFO - Going into epoch 15
+2026-05-29 12:05:07,237 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-05-06+00
+2026-05-29 12:06:09,055 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-06-08+00
+2026-05-29 12:06:09,752 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-05-06+00
+2026-05-29 12:07:11,043 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-07-10+00
+2026-05-29 12:07:11,728 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-06-08+00
+2026-05-29 12:12:20,873 - speechbrain.utils.train_logger - INFO - epoch: 15, lr: 1.00e-05 - train loss: 1.19 - valid loss: 1.06, valid CER: 22.32, valid WER: 40.12
+2026-05-29 12:12:21,639 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-12-20+00
+2026-05-29 12:12:22,423 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-04-04+00
+2026-05-29 12:12:22,482 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-07-10+00
+2026-05-29 12:12:22,482 - speechbrain.utils.epoch_loop - INFO - Going into epoch 16
+2026-05-29 12:13:23,577 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-13-22+00
+2026-05-29 12:14:25,457 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-14-24+00
+2026-05-29 12:14:26,194 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-13-22+00
+2026-05-29 12:15:27,493 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-15-26+00
+2026-05-29 12:15:28,396 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-14-24+00
+2026-05-29 12:20:57,334 - speechbrain.utils.train_logger - INFO - epoch: 16, lr: 1.00e-05 - train loss: 1.17 - valid loss: 1.05, valid CER: 29.24, valid WER: 44.95
+2026-05-29 12:20:58,184 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-20-57+00
+2026-05-29 12:20:58,955 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-15-26+00
+2026-05-29 12:20:59,040 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-12-20+00
+2026-05-29 12:20:59,041 - speechbrain.utils.epoch_loop - INFO - Going into epoch 17
+2026-05-29 12:21:59,973 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-21-59+00
+2026-05-29 12:23:01,931 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-23-01+00
+2026-05-29 12:23:02,743 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-21-59+00
+2026-05-29 12:24:03,959 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-24-03+00
+2026-05-29 12:24:04,808 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-23-01+00
+2026-05-29 12:29:33,537 - speechbrain.utils.train_logger - INFO - epoch: 17, lr: 1.00e-05 - train loss: 1.15 - valid loss: 1.04, valid CER: 29.07, valid WER: 44.71
+2026-05-29 12:29:34,282 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-29-33+00
+2026-05-29 12:29:35,159 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-20-57+00
+2026-05-29 12:29:35,230 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-24-03+00
+2026-05-29 12:29:35,230 - speechbrain.utils.epoch_loop - INFO - Going into epoch 18
+2026-05-29 12:30:36,155 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-30-35+00
+2026-05-29 12:31:38,045 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-31-37+00
+2026-05-29 12:31:38,943 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-30-35+00
+2026-05-29 12:32:40,149 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-32-39+00
+2026-05-29 12:32:40,953 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-31-37+00
+2026-05-29 12:37:48,923 - speechbrain.utils.train_logger - INFO - epoch: 18, lr: 1.00e-05 - train loss: 1.13 - valid loss: 1.03, valid CER: 24.10, valid WER: 39.37
+2026-05-29 12:37:49,883 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-37-48+00
+2026-05-29 12:37:50,853 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-29-33+00
+2026-05-29 12:37:50,879 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-32-39+00
+2026-05-29 12:37:50,879 - speechbrain.utils.epoch_loop - INFO - Going into epoch 19
+2026-05-29 12:38:51,899 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-38-51+00
+2026-05-29 12:39:53,699 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-39-52+00
+2026-05-29 12:39:54,577 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-38-51+00
+2026-05-29 12:40:56,051 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-40-55+00
+2026-05-29 12:40:56,929 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-39-52+00
+2026-05-29 12:46:05,711 - speechbrain.utils.train_logger - INFO - epoch: 19, lr: 1.00e-05 - train loss: 1.11 - valid loss: 1.01, valid CER: 23.97, valid WER: 39.06
+2026-05-29 12:46:06,449 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-46-05+00
+2026-05-29 12:46:07,368 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-37-48+00
+2026-05-29 12:46:07,422 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-40-55+00
+2026-05-29 12:46:07,423 - speechbrain.utils.epoch_loop - INFO - Going into epoch 20
+2026-05-29 12:47:08,303 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-47-07+00
+2026-05-29 12:48:10,169 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-48-09+00
+2026-05-29 12:48:11,076 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-47-07+00
+2026-05-29 12:49:12,464 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-49-11+00
+2026-05-29 12:49:13,437 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-48-09+00
+2026-05-29 12:54:23,287 - speechbrain.utils.train_logger - INFO - epoch: 20, lr: 1.00e-05 - train loss: 1.10 - valid loss: 1.00, valid CER: 23.41, valid WER: 38.47
+2026-05-29 12:54:24,060 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-54-23+00
+2026-05-29 12:54:25,014 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-49-11+00
+2026-05-29 12:54:25,066 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-46-05+00
+2026-05-29 12:54:25,066 - speechbrain.utils.epoch_loop - INFO - Going into epoch 21
+2026-05-29 12:55:26,107 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-55-25+00
+2026-05-29 12:56:28,260 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-56-27+00
+2026-05-29 12:56:29,382 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-55-25+00
+2026-05-29 12:57:31,022 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-57-30+00
+2026-05-29 12:57:31,938 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-56-27+00
+2026-05-29 13:02:42,438 - speechbrain.utils.train_logger - INFO - epoch: 21, lr: 1.00e-05 - train loss: 1.08 - valid loss: 9.92e-01, valid CER: 23.47, valid WER: 38.39
+2026-05-29 13:02:43,266 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-02-42+00
+2026-05-29 13:02:44,274 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-57-30+00
+2026-05-29 13:02:44,330 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+12-54-23+00
+2026-05-29 13:02:44,330 - speechbrain.utils.epoch_loop - INFO - Going into epoch 22
+2026-05-29 13:03:45,572 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-03-44+00
+2026-05-29 13:04:47,701 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-04-46+00
+2026-05-29 13:04:48,762 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-03-44+00
+2026-05-29 13:05:50,174 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-05-49+00
+2026-05-29 13:05:51,133 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-04-46+00
+2026-05-29 13:11:00,360 - speechbrain.utils.train_logger - INFO - epoch: 22, lr: 1.00e-05 - train loss: 1.06 - valid loss: 9.81e-01, valid CER: 23.42, valid WER: 38.47
+2026-05-29 13:11:01,117 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-11-00+00
+2026-05-29 13:11:02,107 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-02-42+00
+2026-05-29 13:11:02,146 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-05-49+00
+2026-05-29 13:11:02,146 - speechbrain.utils.epoch_loop - INFO - Going into epoch 23
+2026-05-29 13:12:03,230 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-12-02+00
+2026-05-29 13:13:05,327 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-13-04+00
+2026-05-29 13:13:06,397 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-12-02+00
+2026-05-29 13:14:07,809 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-14-07+00
+2026-05-29 13:14:08,833 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-13-04+00
+2026-05-29 13:19:20,465 - speechbrain.utils.train_logger - INFO - epoch: 23, lr: 1.00e-05 - train loss: 1.05 - valid loss: 9.71e-01, valid CER: 23.20, valid WER: 38.47
+2026-05-29 13:19:21,290 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-19-20+00
+2026-05-29 13:19:22,343 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-11-00+00
+2026-05-29 13:19:22,391 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-14-07+00
+2026-05-29 13:19:22,391 - speechbrain.utils.epoch_loop - INFO - Going into epoch 24
+2026-05-29 13:20:23,470 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-20-22+00
+2026-05-29 13:21:25,527 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-21-24+00
+2026-05-29 13:21:26,618 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-20-22+00
+2026-05-29 13:22:27,973 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-22-27+00
+2026-05-29 13:22:29,059 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-21-24+00
+2026-05-29 13:27:20,402 - speechbrain.utils.train_logger - INFO - epoch: 24, lr: 1.00e-05 - train loss: 1.04 - valid loss: 9.62e-01, valid CER: 16.57, valid WER: 27.99
+2026-05-29 13:27:21,136 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-27-20+00
+2026-05-29 13:27:22,267 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-19-20+00
+2026-05-29 13:27:22,296 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-22-27+00
+2026-05-29 13:27:22,357 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+11-47-34+00
+2026-05-29 13:27:22,357 - speechbrain.utils.epoch_loop - INFO - Going into epoch 25
+2026-05-29 13:28:23,522 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-28-22+00
+2026-05-29 13:29:25,515 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-29-24+00
+2026-05-29 13:29:26,375 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-28-22+00
+2026-05-29 13:30:27,767 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-30-27+00
+2026-05-29 13:30:28,585 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-29-24+00
+2026-05-29 13:35:21,282 - speechbrain.utils.train_logger - INFO - epoch: 25, lr: 1.00e-05 - train loss: 1.02 - valid loss: 9.52e-01, valid CER: 16.40, valid WER: 27.70
+2026-05-29 13:35:22,133 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-35-21+00
+2026-05-29 13:35:23,041 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-30-27+00
+2026-05-29 13:35:23,098 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-27-20+00
+2026-05-29 13:35:23,098 - speechbrain.utils.epoch_loop - INFO - Going into epoch 26
+2026-05-29 13:36:24,257 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-36-23+00
+2026-05-29 13:37:26,402 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-37-25+00
+2026-05-29 13:37:27,335 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-36-23+00
+2026-05-29 13:38:28,796 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-38-28+00
+2026-05-29 13:38:29,704 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-37-25+00
+2026-05-29 13:43:20,699 - speechbrain.utils.train_logger - INFO - epoch: 26, lr: 1.00e-05 - train loss: 1.01 - valid loss: 9.43e-01, valid CER: 16.35, valid WER: 27.57
+2026-05-29 13:43:21,644 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-43-20+00
+2026-05-29 13:43:23,081 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-35-21+00
+2026-05-29 13:43:23,130 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-38-28+00
+2026-05-29 13:43:23,130 - speechbrain.utils.epoch_loop - INFO - Going into epoch 27
+2026-05-29 13:44:24,124 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-44-23+00
+2026-05-29 13:45:26,000 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-45-25+00
+2026-05-29 13:45:27,048 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-44-23+00
+2026-05-29 13:46:28,430 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-46-27+00
+2026-05-29 13:46:29,580 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-45-25+00
+2026-05-29 13:51:21,046 - speechbrain.utils.train_logger - INFO - epoch: 27, lr: 1.00e-05 - train loss: 9.94e-01 - valid loss: 9.35e-01, valid CER: 16.33, valid WER: 27.22
+2026-05-29 13:51:21,897 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-51-21+00
+2026-05-29 13:51:22,903 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-43-20+00
+2026-05-29 13:51:22,969 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-46-27+00
+2026-05-29 13:51:22,969 - speechbrain.utils.epoch_loop - INFO - Going into epoch 28
+2026-05-29 13:52:24,582 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-52-23+00
+2026-05-29 13:53:26,137 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-53-25+00
+2026-05-29 13:53:27,212 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-52-23+00
+2026-05-29 13:54:28,629 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-54-27+00
+2026-05-29 13:54:29,775 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-53-25+00
+2026-05-29 13:59:18,293 - speechbrain.utils.train_logger - INFO - epoch: 28, lr: 1.00e-05 - train loss: 9.81e-01 - valid loss: 9.27e-01, valid CER: 16.12, valid WER: 27.14
+2026-05-29 13:59:19,061 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-59-18+00
+2026-05-29 13:59:20,011 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-54-27+00
+2026-05-29 13:59:20,056 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-51-21+00
+2026-05-29 13:59:20,057 - speechbrain.utils.epoch_loop - INFO - Going into epoch 29
+2026-05-29 14:00:21,266 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-00-20+00
+2026-05-29 14:01:23,190 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-01-22+00
+2026-05-29 14:01:24,181 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-00-20+00
+2026-05-29 14:02:25,770 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-02-24+00
+2026-05-29 14:02:26,780 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-01-22+00
+2026-05-29 14:07:14,657 - speechbrain.utils.train_logger - INFO - epoch: 29, lr: 1.00e-05 - train loss: 9.68e-01 - valid loss: 9.20e-01, valid CER: 16.07, valid WER: 27.06
+2026-05-29 14:07:15,718 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-07-14+00
+2026-05-29 14:07:16,797 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-02-24+00
+2026-05-29 14:07:16,844 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+13-59-18+00
+2026-05-29 14:07:16,844 - speechbrain.utils.epoch_loop - INFO - Going into epoch 30
+2026-05-29 14:08:17,915 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-08-17+00
+2026-05-29 14:09:19,923 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-09-19+00
+2026-05-29 14:09:20,964 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-08-17+00
+2026-05-29 14:10:22,310 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-10-21+00
+2026-05-29 14:10:23,438 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-09-19+00
+2026-05-29 14:15:10,425 - speechbrain.utils.train_logger - INFO - epoch: 30, lr: 1.00e-05 - train loss: 9.57e-01 - valid loss: 9.13e-01, valid CER: 16.07, valid WER: 26.96
+2026-05-29 14:15:11,332 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-15-10+00
+2026-05-29 14:15:12,429 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-10-21+00
+2026-05-29 14:15:12,480 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-07-14+00
+2026-05-29 14:15:12,480 - speechbrain.utils.epoch_loop - INFO - Going into epoch 31
+2026-05-29 14:16:14,045 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-16-13+00
+2026-05-29 14:17:16,368 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-17-15+00
+2026-05-29 14:17:17,888 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-16-13+00
+2026-05-29 14:18:19,452 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-18-18+00
+2026-05-29 14:18:20,621 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-17-15+00
+2026-05-29 14:23:05,594 - speechbrain.utils.train_logger - INFO - epoch: 31, lr: 1.00e-05 - train loss: 9.46e-01 - valid loss: 9.07e-01, valid CER: 15.81, valid WER: 26.56
+2026-05-29 14:23:06,328 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-23-05+00
+2026-05-29 14:23:07,405 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-18-18+00
+2026-05-29 14:23:07,447 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-15-10+00
+2026-05-29 14:23:07,447 - speechbrain.utils.epoch_loop - INFO - Going into epoch 32
+2026-05-29 14:24:08,507 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-24-07+00
+2026-05-29 14:25:10,380 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-25-09+00
+2026-05-29 14:25:11,600 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-24-07+00
+2026-05-29 14:26:13,121 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-26-12+00
+2026-05-29 14:26:14,264 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-25-09+00
+2026-05-29 14:31:00,099 - speechbrain.utils.train_logger - INFO - epoch: 32, lr: 1.00e-05 - train loss: 9.35e-01 - valid loss: 9.02e-01, valid CER: 15.67, valid WER: 26.37
+2026-05-29 14:31:00,936 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-31-00+00
+2026-05-29 14:31:02,118 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-26-12+00
+2026-05-29 14:31:02,190 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-23-05+00
+2026-05-29 14:31:02,191 - speechbrain.utils.epoch_loop - INFO - Going into epoch 33
+2026-05-29 14:32:03,234 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-32-02+00
+2026-05-29 14:33:05,170 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-33-04+00
+2026-05-29 14:33:06,450 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-32-02+00
+2026-05-29 14:34:07,778 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-34-06+00
+2026-05-29 14:34:09,038 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-33-04+00
+2026-05-29 14:39:15,583 - speechbrain.utils.train_logger - INFO - epoch: 33, lr: 1.00e-05 - train loss: 9.25e-01 - valid loss: 8.97e-01, valid CER: 20.33, valid WER: 37.33
+2026-05-29 14:39:16,494 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-39-15+00
+2026-05-29 14:39:17,612 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-34-06+00
+2026-05-29 14:39:17,612 - speechbrain.utils.epoch_loop - INFO - Going into epoch 34
+2026-05-29 14:40:18,559 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-40-17+00
+2026-05-29 14:41:20,939 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-41-20+00
+2026-05-29 14:41:22,565 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-40-17+00
+2026-05-29 14:42:23,787 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-42-23+00
+2026-05-29 14:42:25,365 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-41-20+00
+2026-05-29 14:47:10,406 - speechbrain.utils.train_logger - INFO - epoch: 34, lr: 1.00e-05 - train loss: 9.16e-01 - valid loss: 8.93e-01, valid CER: 15.62, valid WER: 26.37
+2026-05-29 14:47:11,144 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-47-10+00
+2026-05-29 14:47:12,698 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-31-00+00
+2026-05-29 14:47:12,741 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-39-15+00
+2026-05-29 14:47:12,786 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-42-23+00
+2026-05-29 14:47:12,786 - speechbrain.utils.epoch_loop - INFO - Going into epoch 35
+2026-05-29 14:48:13,840 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-48-13+00
+2026-05-29 14:49:16,132 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-49-15+00
+2026-05-29 14:49:17,316 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-48-13+00
+2026-05-29 14:50:18,598 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-50-17+00
+2026-05-29 14:50:19,782 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-49-15+00
+2026-05-29 14:55:05,696 - speechbrain.utils.train_logger - INFO - epoch: 35, lr: 1.00e-05 - train loss: 9.07e-01 - valid loss: 8.89e-01, valid CER: 15.54, valid WER: 26.27
+2026-05-29 14:55:06,561 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-55-05+00
+2026-05-29 14:55:07,762 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-50-17+00
+2026-05-29 14:55:07,820 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-47-10+00
+2026-05-29 14:55:07,820 - speechbrain.utils.epoch_loop - INFO - Going into epoch 36
+2026-05-29 14:56:08,943 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-56-08+00
+2026-05-29 14:57:11,055 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-57-10+00
+2026-05-29 14:57:12,287 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-56-08+00
+2026-05-29 14:58:13,589 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-58-12+00
+2026-05-29 14:58:14,992 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-57-10+00
+2026-05-29 15:03:00,786 - speechbrain.utils.train_logger - INFO - epoch: 36, lr: 1.00e-05 - train loss: 8.99e-01 - valid loss: 8.86e-01, valid CER: 15.55, valid WER: 26.29
+2026-05-29 15:03:02,163 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-03-00+00
+2026-05-29 15:03:03,341 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-58-12+00
+2026-05-29 15:03:03,342 - speechbrain.utils.epoch_loop - INFO - Going into epoch 37
+2026-05-29 15:04:04,284 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-04-03+00
+2026-05-29 15:05:06,845 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-05-05+00
+2026-05-29 15:05:08,572 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-04-03+00
+2026-05-29 15:06:09,916 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-06-09+00
+2026-05-29 15:06:11,600 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-05-05+00
+2026-05-29 15:11:17,327 - speechbrain.utils.train_logger - INFO - epoch: 37, lr: 1.00e-05 - train loss: 8.90e-01 - valid loss: 8.83e-01, valid CER: 20.12, valid WER: 33.54
+2026-05-29 15:11:18,067 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-11-17+00
+2026-05-29 15:11:19,607 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-06-09+00
+2026-05-29 15:11:19,634 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-03-00+00
+2026-05-29 15:11:19,634 - speechbrain.utils.epoch_loop - INFO - Going into epoch 38
+2026-05-29 15:12:20,504 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-12-19+00
+2026-05-29 15:13:22,901 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-13-22+00
+2026-05-29 15:13:24,539 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-12-19+00
+2026-05-29 15:14:25,772 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-14-25+00
+2026-05-29 15:14:27,449 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-13-22+00
+2026-05-29 15:19:35,936 - speechbrain.utils.train_logger - INFO - epoch: 38, lr: 1.00e-05 - train loss: 8.82e-01 - valid loss: 8.80e-01, valid CER: 19.87, valid WER: 33.19
+2026-05-29 15:19:36,677 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-19-35+00
+2026-05-29 15:19:38,717 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-11-17+00
+2026-05-29 15:19:38,782 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-14-25+00
+2026-05-29 15:19:38,782 - speechbrain.utils.epoch_loop - INFO - Going into epoch 39
+2026-05-29 15:20:39,728 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-20-38+00
+2026-05-29 15:21:42,394 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-21-41+00
+2026-05-29 15:21:44,310 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-20-38+00
+2026-05-29 15:22:45,715 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-22-44+00
+2026-05-29 15:22:47,465 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-21-41+00
+2026-05-29 15:27:31,564 - speechbrain.utils.train_logger - INFO - epoch: 39, lr: 1.00e-05 - train loss: 8.74e-01 - valid loss: 8.77e-01, valid CER: 15.46, valid WER: 25.98
+2026-05-29 15:27:32,353 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-27-31+00
+2026-05-29 15:27:34,272 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-22-44+00
+2026-05-29 15:27:34,296 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-19-35+00
+2026-05-29 15:27:34,341 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+14-55-05+00
+2026-05-29 15:27:34,342 - speechbrain.utils.epoch_loop - INFO - Going into epoch 40
+2026-05-29 15:28:35,334 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-28-34+00
+2026-05-29 15:29:37,654 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-29-36+00
+2026-05-29 15:29:39,051 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-28-34+00
+2026-05-29 15:30:40,244 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-30-39+00
+2026-05-29 15:30:41,573 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-29-36+00
+2026-05-29 15:35:26,278 - speechbrain.utils.train_logger - INFO - epoch: 40, lr: 1.00e-05 - train loss: 8.66e-01 - valid loss: 8.75e-01, valid CER: 15.53, valid WER: 25.98
+2026-05-29 15:35:27,055 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-35-26+00
+2026-05-29 15:35:28,603 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-30-39+00
+2026-05-29 15:35:28,645 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-27-31+00
+2026-05-29 15:35:28,646 - speechbrain.utils.epoch_loop - INFO - Going into epoch 41
+2026-05-29 15:36:29,634 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-36-28+00
+2026-05-29 15:37:31,812 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-37-31+00
+2026-05-29 15:37:33,267 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-36-28+00
+2026-05-29 15:38:34,444 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-38-33+00
+2026-05-29 15:38:35,845 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-37-31+00
+2026-05-29 15:43:21,013 - speechbrain.utils.train_logger - INFO - epoch: 41, lr: 1.00e-05 - train loss: 8.59e-01 - valid loss: 8.73e-01, valid CER: 15.47, valid WER: 25.87
+2026-05-29 15:43:21,750 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-43-21+00
+2026-05-29 15:43:23,386 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-35-26+00
+2026-05-29 15:43:23,416 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-38-33+00
+2026-05-29 15:43:23,416 - speechbrain.utils.epoch_loop - INFO - Going into epoch 42
+2026-05-29 15:44:24,538 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-44-23+00
+2026-05-29 15:45:26,808 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-45-26+00
+2026-05-29 15:45:28,214 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-44-23+00
+2026-05-29 15:46:29,449 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-46-28+00
+2026-05-29 15:46:31,089 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-45-26+00
+2026-05-29 15:51:15,100 - speechbrain.utils.train_logger - INFO - epoch: 42, lr: 1.00e-05 - train loss: 8.51e-01 - valid loss: 8.71e-01, valid CER: 15.38, valid WER: 25.82
+2026-05-29 15:51:16,046 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-51-15+00
+2026-05-29 15:51:17,416 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-46-28+00
+2026-05-29 15:51:17,460 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-43-21+00
+2026-05-29 15:51:17,461 - speechbrain.utils.epoch_loop - INFO - Going into epoch 43
+2026-05-29 15:52:18,405 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-52-17+00
+2026-05-29 15:53:20,556 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-53-19+00
+2026-05-29 15:53:22,120 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-52-17+00
+2026-05-29 15:54:23,575 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-54-22+00
+2026-05-29 15:54:25,145 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-53-19+00
+2026-05-29 15:59:10,753 - speechbrain.utils.train_logger - INFO - epoch: 43, lr: 1.00e-05 - train loss: 8.44e-01 - valid loss: 8.69e-01, valid CER: 15.45, valid WER: 25.95
+2026-05-29 15:59:11,494 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-59-10+00
+2026-05-29 15:59:12,914 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-54-22+00
+2026-05-29 15:59:12,914 - speechbrain.utils.epoch_loop - INFO - Going into epoch 44
+2026-05-29 16:00:13,883 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-00-13+00
+2026-05-29 16:01:16,645 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-01-15+00
+2026-05-29 16:01:18,741 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-00-13+00
+2026-05-29 16:02:19,910 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-02-19+00
+2026-05-29 16:02:21,778 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-01-15+00
+2026-05-29 16:07:07,149 - speechbrain.utils.train_logger - INFO - epoch: 44, lr: 1.00e-05 - train loss: 8.36e-01 - valid loss: 8.67e-01, valid CER: 15.23, valid WER: 25.66
+2026-05-29 16:07:07,891 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-07-07+00
+2026-05-29 16:07:10,059 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-59-10+00
+2026-05-29 16:07:10,084 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-02-19+00
+2026-05-29 16:07:10,162 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+15-51-15+00
+2026-05-29 16:07:10,162 - speechbrain.utils.epoch_loop - INFO - Going into epoch 45
+2026-05-29 16:08:11,070 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-08-10+00
+2026-05-29 16:09:13,263 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-09-12+00
+2026-05-29 16:09:14,765 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-08-10+00
+2026-05-29 16:10:16,098 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-10-15+00
+2026-05-29 16:10:17,583 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-09-12+00
+2026-05-29 16:15:02,722 - speechbrain.utils.train_logger - INFO - epoch: 45, lr: 1.00e-05 - train loss: 8.29e-01 - valid loss: 8.66e-01, valid CER: 15.17, valid WER: 25.44
+2026-05-29 16:15:03,482 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-15-02+00
+2026-05-29 16:15:05,067 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-10-15+00
+2026-05-29 16:15:05,125 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-07-07+00
+2026-05-29 16:15:05,125 - speechbrain.utils.epoch_loop - INFO - Going into epoch 46
+2026-05-29 16:16:06,219 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-16-05+00
+2026-05-29 16:17:08,425 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-17-07+00
+2026-05-29 16:17:10,220 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-16-05+00
+2026-05-29 16:18:11,474 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-18-10+00
+2026-05-29 16:18:13,258 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-17-07+00
+2026-05-29 16:22:59,535 - speechbrain.utils.train_logger - INFO - epoch: 46, lr: 1.00e-05 - train loss: 8.22e-01 - valid loss: 8.64e-01, valid CER: 15.11, valid WER: 25.34
+2026-05-29 16:23:00,277 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-22-59+00
+2026-05-29 16:23:01,770 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-15-02+00
+2026-05-29 16:23:01,802 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-18-10+00
+2026-05-29 16:23:01,803 - speechbrain.utils.epoch_loop - INFO - Going into epoch 47
+2026-05-29 16:24:02,686 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-24-01+00
+2026-05-29 16:25:05,005 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-25-04+00
+2026-05-29 16:25:06,559 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-24-01+00
+2026-05-29 16:26:07,866 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-26-07+00
+2026-05-29 16:26:09,381 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-25-04+00
+2026-05-29 16:30:55,149 - speechbrain.utils.train_logger - INFO - epoch: 47, lr: 1.00e-05 - train loss: 8.15e-01 - valid loss: 8.63e-01, valid CER: 15.09, valid WER: 25.34
+2026-05-29 16:30:55,890 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-30-55+00
+2026-05-29 16:30:57,581 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-26-07+00
+2026-05-29 16:30:57,632 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-22-59+00
+2026-05-29 16:30:57,632 - speechbrain.utils.epoch_loop - INFO - Going into epoch 48
+2026-05-29 16:31:58,585 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-31-57+00
+2026-05-29 16:33:01,126 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-33-00+00
+2026-05-29 16:33:02,648 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-31-57+00
+2026-05-29 16:34:03,964 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-34-03+00
+2026-05-29 16:34:05,918 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-33-00+00
+2026-05-29 16:38:51,609 - speechbrain.utils.train_logger - INFO - epoch: 48, lr: 1.00e-05 - train loss: 8.08e-01 - valid loss: 8.61e-01, valid CER: 15.06, valid WER: 25.34
+2026-05-29 16:38:52,357 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-38-51+00
+2026-05-29 16:38:53,934 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-34-03+00
+2026-05-29 16:38:54,020 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-30-55+00
+2026-05-29 16:38:54,020 - speechbrain.utils.epoch_loop - INFO - Going into epoch 49
+2026-05-29 16:39:54,978 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-39-54+00
+2026-05-29 16:40:57,285 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-40-56+00
+2026-05-29 16:40:59,173 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-39-54+00
+2026-05-29 16:42:00,414 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-41-59+00
+2026-05-29 16:42:02,029 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-40-56+00
+2026-05-29 16:46:48,416 - speechbrain.utils.train_logger - INFO - epoch: 49, lr: 1.00e-05 - train loss: 8.01e-01 - valid loss: 8.60e-01, valid CER: 14.97, valid WER: 25.31
+2026-05-29 16:46:49,293 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-46-48+00
+2026-05-29 16:46:50,937 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-41-59+00
+2026-05-29 16:46:51,005 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-38-51+00
+2026-05-29 16:46:51,005 - speechbrain.utils.epoch_loop - INFO - Going into epoch 50
+2026-05-29 16:47:51,938 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-47-51+00
+2026-05-29 16:48:54,190 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-48-53+00
+2026-05-29 16:48:55,893 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-47-51+00
+2026-05-29 16:49:57,144 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-49-56+00
+2026-05-29 16:49:58,813 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-48-53+00
+2026-05-29 16:54:45,125 - speechbrain.utils.train_logger - INFO - epoch: 50, lr: 1.00e-05 - train loss: 7.94e-01 - valid loss: 8.59e-01, valid CER: 15.16, valid WER: 25.58
+2026-05-29 16:54:46,120 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-54-45+00
+2026-05-29 16:54:48,280 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-49-56+00
+2026-05-29 16:54:48,285 - speechbrain.utils.checkpoints - INFO - Loading a checkpoint from results/whisper-V3-L_FT_Zwiterlood/1986/save/CKPT+2026-05-29+16-46-48+00
+2026-05-29 16:54:53,410 - speechbrain.dataio.dataloader - DEBUG - SaveableDataLoader was requested to load a checkpoint, but the DataLoader has already been iterated. The DataLoader file will be ignored. This is normal in evaluation, when a checkpoint is loaded just to retrieve the best model.
+2026-05-29 17:06:20,669 - speechbrain.utils.train_logger - INFO - Epoch loaded: 49 - test loss: 9.41e-01, test CER: 20.49, test WER: 31.57
